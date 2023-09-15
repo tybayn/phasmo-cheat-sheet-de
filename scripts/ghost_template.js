@@ -60,10 +60,10 @@ class Ghost {
                 <div class="ghost_hunt_info">
                     <div class="ghost_hunt ${
                       parseInt(data.hunt_sanity) > 50
-                        ? "Hoch"
+                        ? "High"
                         : parseInt(data.hunt_sanity) < 50
-                        ? "Tief"
-                        : "Durchschnitt"
+                        ? "Low"
+                        : "Average"
                     }"><img src="imgs/sanity.png">${data.hunt_sanity}</div>
                     <div class="ghost_speed">
                         <img src="imgs/footsteps.png">
