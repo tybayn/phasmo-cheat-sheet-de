@@ -796,33 +796,29 @@
     <div id="cards" class="cards"><div class="dot-flashing"></div></div>
   </div>
 
-  <script src="scripts/metronome.js"></script>
-  <script src="scripts/timer.js"></script>
-  <script src="wiki/wiki.js"></script>
-  <script src="scripts/filter.js"></script>
-  <script src="events/events.js"></script>
-  <script src="scripts/wslink.js"></script>
-  <script src="scripts/zn.js"></script>
-  <script src="scripts/voice_recognition.js"></script>
-  <script src="scripts/sparkles.js"></script>
-  <script>
-    $(window).on("load", function () {
-      loadAllAndConnect();
-      $(function () {
-        $("#wiki-body").load("wiki/wiki.html");
-      });
-      if (getCookie("voice_recognition_on")) {
-        start_voice();
-      }
-      setInterval(function () {
-        if (!document.hidden) {
-          try {
-            heartbeat();
-          } catch (Error) {
-            console.error("Heartbeat failed!");
-          }
-        }
-      }, 300000);
-    });
-  </script>
+    <script src="scripts/metronome.js"></script>
+    <script src="scripts/timer.js"></script>
+    <script src="wiki/wiki.js"></script>
+    <script src="scripts/filter.js"></script>
+    <script src="events/events.js"></script>
+    <script src="scripts/wslink.js"></script>
+    <script src="scripts/zn.js"></script>
+    <script src="scripts/voice_de.js"></script>
+    <script src="scripts/voice_recognition.js"></script>
+    <script src="scripts/sparkles.js"></script>
+    <script>
+        $(window).on('load', function() {
+            loadAllAndConnect()
+            $(function(){$("#wiki-body").load("wiki/wiki.html")});
+            if(getCookie("voice_recognition_on")){
+                start_voice()
+            }
+            setInterval(function(){
+                if(!document.hidden){
+                    try{heartbeat()} catch(Error){console.error("Heartbeat failed!")}
+                }
+                }, 300000)
+        });
+    </script>
+
 </body>
