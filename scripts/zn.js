@@ -48,7 +48,7 @@ function loadAllAndConnect(){
             } catch(Error) {
                 id = false;
             }
-            fetch(`https://zero-network.net/zn/`,{headers:{Accept:"application/json"},signal: AbortSignal.timeout(10000)})
+            fetch(`https://zero-network.net/zn/?lang=${lang}`,{headers:{Accept:"application/json"},signal: AbortSignal.timeout(10000)})
             .then(e=>e.json())
             .then(e => {
                 znid = e.znid
@@ -144,6 +144,9 @@ function loadAllAndConnect(){
                 }
             }
             for (const [key, value] of Object.entries(start_state["evidence"])){ 
+                if($(document.getElementById(key)).parent().find(".monkey-paw-select").hasClass("monkey-paw-selected"))
+                    monkeyPawFilter($(document.getElementById(key)).parent().find(".monkey-paw-select"))
+                
                 if (value == 1){
                     tristate(document.getElementById(key));
                 }
