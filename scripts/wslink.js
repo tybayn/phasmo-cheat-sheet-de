@@ -1,6 +1,6 @@
 let ws = null
 let dlws = null
-const lang = "en"
+const lang = "de"
 
 function auto_link(){
     var room_id = getCookie("room_id")
@@ -153,11 +153,20 @@ function link_room(){
                     select(document.getElementById(key),true);
                 }
             }
+
+            var prev_evidence = state['evidence']
+            var new_mp = false
             for (const [key, value] of Object.entries(incoming_state["evidence"])){ 
                 if(value == -2){
-                    monkeyPawFilter($(document.getElementById(key)).parent().find(".monkey-paw-select"),true)
+                    if(prev_evidence[key] != -2){
+                        monkeyPawFilter($(document.getElementById(key)).parent().find(".monkey-paw-select"),true)
+                        new_mp = true
+                    }
                 }
                 else{
+                    if(prev_evidence[key] == -2 && !new_mp){
+                        monkeyPawFilter($(document.getElementById(key)).parent().find(".monkey-paw-select"),true)
+                    }
                     while (value != {"good":1,"bad":-1,"neutral":0}[document.getElementById(key).querySelector("#checkbox").classList[0]]){
                         tristate(document.getElementById(key),true);
                     }
@@ -170,7 +179,7 @@ function link_room(){
             }
             for (const [key, value] of Object.entries(incoming_state["sanity"])){ 
                 while (value != {"good":1,"neutral":0}[document.getElementById(key).querySelector("#checkbox").classList[0]]){
-                    dualstate(document.getElementById(key),true);
+                    dualstate(document.getElementById(key),true,true);
                 }
             }
             
