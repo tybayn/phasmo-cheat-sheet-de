@@ -9,7 +9,7 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["EMF 5", "Spirit Box", "Writing"],
+      "evidence": ["EMF Level 5", "Geisterbox", "Geisterbuch"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
@@ -17,7 +17,7 @@
       ]
     },
     {
-      "ghost": "Wraith",
+      "ghost": "Gespenst",
       "min_speed": 1.7,
       "max_speed": null,
       "alt_speed": null,
@@ -25,14 +25,14 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["EMF 5", "Spirit Box", "DOTs"],
+      "evidence": ["EMF Level 5", "Geisterbox", "D.O.T.S Projektor"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
         "Der Geist wird niemals in das Salz eines Tiers treten",
         "Wird während einer Jagd nicht durch Salz der Stufe 3 verlangsamt",
-        "<Behaviors>",
-        "Kann zu zufälligen Spielern teleportiert werden, wobei EMF 2 oder EMF 5 gezeigt werden"
+        "<Verhalten>",
+        "Kann zu zufälligen Spielern teleportiert werden, wobei EMF 2 oder EMF Level 5 gezeigt werden"
       ]
     },
     {
@@ -44,14 +44,14 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["Spirit Box", "Ultraviolet", "DOTs"],
+      "evidence": ["Geisterbox", "Ultraviolett", "D.O.T.S Projektor"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
         "Erscheint nicht in den Geister Fotos",
         "Während eines Hunts oder während des DOT-Zustands führt das Aufnehmen eines Fotos dazu, dass der Geist verschwindet",
         "Während der Jagd weniger sichtbar (siehe Registerkarte „Anleitungen“)",
-        "<Behaviors>",
+        "<Verhalten>",
         "Kann zu einem zufälligen Spieler wandern und EMF 2 hinterlassen"
       ]
     },
@@ -64,13 +64,13 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["Spirit Box", "Ultraviolet", "Writing"],
+      "evidence": ["Geisterbox", "Ultraviolett", "Geisterbuch"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
         "Kann mehrere Gegenstände gleichzeitig werfen, wodurch die geistige Gesundheit des Spielers pro geworfenem Gegenstand um 2 % sinkt",
         "Wirft während einer Jagd alle 0,5 Sekunden einen Gegenstand",
-        "<Behaviors>",
+        "<Verhalten>",
         "Höhere Chance, Objekte zu werfen und mit ihnen zu interagieren",
         "Kann Gegenstände schneller und weiter werfen"
       ]
@@ -84,12 +84,12 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["Ultraviolet", "Ghost Orbs", "DOTs"],
+      "evidence": ["Ultraviolett", "Geisterorb", "D.O.T.S Projektor"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
         "Banshee scream through paramic  <span class=\"sound\" onClick=\"playSound('https://zero-network.net/phasmophobia/static/assets/banshee_scream.wav')\">🔊</span>",
-        "<Behaviors>",
+        "<Verhalten>",
         "Verfolgt sein Ziel nur während einen Hunt)",
         "Wird auf sein Ziel zusteuern, ohne EMF 2 zu verlassen",
         "Wird versuchen, sich im DOT-Zustand auf sein Ziel zuzubewegen",
@@ -99,7 +99,7 @@
       ]
     },
     {
-      "ghost": "Jinn",
+      "ghost": "Dschinn",
       "min_speed": 1.7,
       "max_speed": 2.5,
       "alt_speed": null,
@@ -107,12 +107,12 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["EMF 5", "Ultraviolet", "Freezing"],
+      "evidence": ["EMF Level 5", "Ultraviolett", "Gefriertemperaturen"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
         "Die Fähigkeit verringert die geistige Gesundheit von Spielern in der Nähe um 25 %, wenn EMF 2 am Breaker ist",
-        "<Behaviors>",
+        "<Verhalten>",
         "Sicherungskasten lässt sich nicht ausschalten",
         "<Hunt Speed>",
         "2,5 m/s, wenn der Sicherungskasten eingeschaltet ist und der Geist weiter als 3 m von einem gesehenen Spieler entfernt ist, ansonsten 1,7 m/s"
@@ -127,13 +127,13 @@
       "hunt_sanity": "60%",
       "hunt_sanity_low": "40%",
       "hunt_sanity_high": "60%",
-      "evidence": ["Spirit Box", "Ghost Orbs", "Writing"],
+      "evidence": ["Geisterbox", "Geisterorb", "Geisterbuch"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
         "Es hatt die Möglichkeit, ein Licht, das ein Spieler eingeschaltet hat, sofort auszuschalten",
         "Das Licht kann nicht eingeschaltet werden (Tastatur und Fernseher ausgenommen)",
-        "<Behaviors>",
+        "<Verhalten>",
         "Es ist wahrscheinlicher, dass das Licht ausgeht und kaputtgeht",
         "<Hunt Sanity>",
         "60 % wenn das Licht im aktuellen Raum des Geistes ausgeschaltet ist, 40 % wenn es eingeschaltet ist"
@@ -148,7 +148,7 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["Ghost Orbs", "Writing", "Freezing"],
+      "evidence": ["Geisterorb", "Geisterbuch", "Gefriertemperaturen"],
       "nightmare_evidence": null,
       "behavior": [
         "<Hunt Speed>",
@@ -164,20 +164,20 @@
       "hunt_sanity": "35%",
       "hunt_sanity_low": "35%",
       "hunt_sanity_high": "35%",
-      "evidence": ["EMF 5", "Writing", "Freezing"],
+      "evidence": ["EMF Level 5", "Geisterbuch", "Gefriertemperaturen"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Führt keine Interaktionen mit jemandem im Raum durch, die zu EMF 2, 3 oder 5 führen (außer bei Writing).",
+        "Führt keine Interaktionen mit jemandem im Raum durch, die zu EMF 2, 3 oder 5 führen (außer bei Geisterbuch).",
         "Wird nicht jagen, wenn sich jemand im Raum aufhält",
-        "<Behaviors>",
+        "<Verhalten>",
         "Mehr Events bei geringerer geistiger Gesundheit",
         "Es ist weniger wahrscheinlich, dass es als vollständiges Geistermodell erscheint",
         "Hat eine Chance, als Schatten zu erscheinen, wenn er aus einer Spieluhr oder einem Beschwörungskreis beschworen wird"
       ]
     },
     {
-      "ghost": "Demon",
+      "ghost": "Dämon",
       "min_speed": 1.7,
       "max_speed": null,
       "alt_speed": null,
@@ -185,13 +185,13 @@
       "hunt_sanity": "70%",
       "hunt_sanity_low": "70%",
       "hunt_sanity_high": "100%",
-      "evidence": ["Ultraviolet", "Writing", "Freezing"],
+      "evidence": ["Ultraviolett", "Geisterbuch", "Gefriertemperaturen"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
         "Das Anfeuern des Geistes verhindert eine Jagd für 60er statt der normalen 90er",
         "20s minimum hunt cool-down (normal is 25s)",
-        "<Behaviors>",
+        "<Verhalten>",
         "Die Reichweite des Kruzifixes wurde pro Stufe um 50 % erhöht (4,5 m, 6 m bzw. 7,5 m).",
         "<Hunt Sanity>",
         "Fähigkeit, bei jeder Vernunft zu jagen, jagt normalerweise bei 70 %"
@@ -206,13 +206,13 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["Ghost Orbs", "Freezing", "DOTs"],
+      "evidence": ["Geisterorb", "Gefriertemperaturen", "D.O.T.S Projektor"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
         "Kann eine Tür schließen und die geistige Gesundheit von Spielern in der Nähe um 15 % senken <b><i>if</i></b> wenn eine Türe im Raum ist",
         "Nur ein Geist, der eine Ausgangstür außerhalb einer Jagd- oder Geisterevents schließen kann",
-        "<Behaviors>",
+        "<Verhalten>",
         "Mit Smudge-sticks fängt man die Geister in seinem Raum ein und verhindert 60 Sekunden lang, dass sie umherwandern"
       ]
     },
@@ -225,14 +225,14 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["EMF 5", "Freezing", "DOTs"],
+      "evidence": ["EMF Level 5", "Gefriertemperaturen", "D.O.T.S Projektor"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
         "Entzieht bei Geisterevents 20 % statt 10 %.",
         "Wird <b><i>nicht</i></b> das „Geisternebel“-Event durchführen",
         "Während der Jagd besser sichtbar (siehe Registerkarte „Guides“)",
-        "<Behaviors>",
+        "<Verhalten>",
         "Aktiver wenn spieler in der nähe sind"
       ]
     },
@@ -245,12 +245,12 @@
       "hunt_sanity": "80%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "80%",
-      "evidence": ["Spirit Box", "Ghost Orbs", "DOTs"],
+      "evidence": ["Geisterbox", "Geisterorb", "D.O.T.S Projektor"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
         "Der Hör-/Elektronikabstand beträgt bei der Jagd weniger als 2,5 m",
-        "<Behaviors>",
+        "<Verhalten>",
         "Aktiver, wenn man mit ihm spricht",
         "<Hunt Sanity>",
         "Kann bis zu 80 % des Verstandes jagen, wenn man in seiner Nähe spricht, jagt normalerweise mit 50 %"
@@ -265,13 +265,13 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["Ultraviolet", "Ghost Orbs", "Freezing"],
-      "nightmare_evidence": "Freezing",
+      "evidence": ["Ultraviolett", "Geisterorb", "Gefriertemperaturen"],
+      "nightmare_evidence": "Gefriertemperaturen",
       "behavior": [
         "<Tells>",
         "Geister können während der Jagd bei ausgeschaltetem Breaker in jedem Raum einen sichtbaren, eiskalten Atem verspüren",
         "Der Breaker kann nicht eingeschaltet werden",
-        "<Behaviors>",
+        "<Verhalten>",
         "Hohe chance den breaker auszuschalten",
         "<Hunt Speed>",
         "Schneller bei kälteren Temperaturen, <b>beschleunigt nicht in Sichtlinie</b>",
@@ -288,16 +288,16 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["EMF 5", "Ultraviolet", "DOTs"],
-      "nightmare_evidence": "DOTs",
+      "evidence": ["EMF Level 5", "Ultraviolett", "D.O.T.S Projektor"],
+      "nightmare_evidence": "D.O.T.S Projektor",
       "behavior": [
         "<Tells>",
-        "DOTs erscheinen nur auf der Kamera und werden selten angezeigt, wenn sich der Spieler im selben Raum befindet",
-        "<Behaviors>",
+        "D.O.T.S Projektor erscheinen nur auf der Kamera und werden selten angezeigt, wenn sich der Spieler im selben Raum befindet",
+        "<Verhalten>",
         "Lieblingsräume können nicht geändert werden",
         "Läuft nicht über weite Strecken",
         "<Evidence>",
-        "Garantierte DOTs im Albtraum-/Wahnsinnsmodus"
+        "Garantierte D.O.T.S Projektor im Albtraum-/Wahnsinnsmodus"
       ]
     },
     {
@@ -309,12 +309,12 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["EMF 5", "Ultraviolet", "Writing"],
+      "evidence": ["EMF Level 5", "Ultraviolett", "Geisterbuch"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
         "Schritte und Gesang sind bei der Jagd nicht weiter als 12 m entfernt zu hören (normal sind 20 m)",
-        "<Behaviors>",
+        "<Verhalten>",
         "Viele paranormale Geräusche durch Paramic"
       ]
     },
@@ -327,12 +327,12 @@
       "hunt_sanity": "60%",
       "hunt_sanity_low": "60%",
       "hunt_sanity_high": "100%",
-      "evidence": ["Spirit Box", "Ghost Orbs", "Freezing"],
+      "evidence": ["Geisterbox", "Geisterorb", "Gefriertemperaturen"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
         "Wird nach dem Löschen jeder dritten Flamme Jagd auf jeden Verstand machen, wenn keine anderen Flammen oder Kruzifixe dies verhindern",
-        "<Behaviors>",
+        "<Verhalten>",
         "Flammen wirken wie Kruzifixe und blasen eine Flamme aus, wenn sie versuchen zu jagen (innerhalb von 4 m)",
         "Je mehr Spieler tot sind, desto wahrscheinlicher ist es, dass eine Flamme gelöscht wird",
         "<Hunt Sanity>",
@@ -340,7 +340,7 @@
       ]
     },
     {
-      "ghost": "The Twins",
+      "ghost": "Die Zwillinge",
       "min_speed": 1.53,
       "max_speed": 1.87,
       "alt_speed": null,
@@ -348,12 +348,12 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["EMF 5", "Spirit Box", "Freezing"],
+      "evidence": ["EMF Level 5", "Geisterbox", "Gefriertemperaturen"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
         "Führt oft gleichzeitig Interaktionen durch ",
-        "<Behaviors>",
+        "<Verhalten>",
         "Decoy führt nur Interaktionen/EMF durch, keine Beweise oder Sensoren",
         "<Hunt Speed>",
         "Entweder 1,53 m/s oder 1,87 m/s, je nachdem, welcher „Zwilling“ jagte"
@@ -368,7 +368,7 @@
       "hunt_sanity": "65%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "65%",
-      "evidence": ["EMF 5", "Ghost Orbs", "DOTs"],
+      "evidence": ["EMF Level 5", "Geisterorb", "D.O.T.S Projektor"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
@@ -378,7 +378,7 @@
         "<Hunt Speed>",
         "2,5 m/s in der Nähe der aktiven Spielerausrüstung, ansonsten 1,7 m/s",
         "<Evidence>",
-        "EMF 5 + Ghost Orbs im Albtraummodus bestätigt Raiju"
+        "EMF Level 5 + Geisterorb im Albtraummodus bestätigt Raiju"
       ]
     },
     {
@@ -390,20 +390,20 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["EMF 5", "Ultraviolet", "Ghost Orbs"],
-      "nightmare_evidence": "Ultraviolet",
+      "evidence": ["EMF Level 5", "Ultraviolett", "Geisterorb"],
+      "nightmare_evidence": "Ultraviolett",
       "behavior": [
         "<Tells>",
         "Spezielle 6-Finger-Fingerabdrücke",
         "Hat eine Chance von 6,66 %, das Geistermodell zu ändern, wenn es während der Jagd flackert (garantiert einmal pro Jagd, kehrt zum Originalmodell zurück)",
-        "Hinterlässt nicht immer ultraviolette Spuren",
-        "Kann ultraviolette Spuren früher als 2 Minuten verschwinden lassen",
+        "Hinterlässt nicht immer Ultraviolettte Spuren",
+        "Kann Ultraviolettte Spuren früher als 2 Minuten verschwinden lassen",
         "<Evidence>",
-        "Garantiertes Ultraviolett im Albtraum-/Wahnsinnsmodus"
+        "Garantiertes Ultraviolettt im Albtraum-/Wahnsinnsmodus"
       ]
     },
     {
-      "ghost": "The Mimic",
+      "ghost": "Der Mimik",
       "min_speed": 1.7,
       "max_speed": null,
       "alt_speed": null,
@@ -411,7 +411,7 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "35%",
       "hunt_sanity_high": "100%",
-      "evidence": ["Spirit Box", "Ultraviolet", "Freezing"],
+      "evidence": ["Geisterbox", "Ultraviolett", "Gefriertemperaturen"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
@@ -433,8 +433,8 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["Spirit Box", "Writing", "Freezing"],
-      "nightmare_evidence": "Spirit Box",
+      "evidence": ["Geisterbox", "Geisterbuch", "Gefriertemperaturen"],
+      "nightmare_evidence": "Geisterbox",
       "behavior": [
         "<Tells>",
         "Verflucht den Spieler, wenn er durch Paramic oder Geisterbox gehört wird. Der Fluch lässt die geistige Gesundheit doppelt so schnell sinken",
@@ -454,14 +454,14 @@
       "hunt_sanity": "40%",
       "hunt_sanity_low": "40%",
       "hunt_sanity_high": "40%",
-      "evidence": ["Spirit Box", "Writing", "DOTs"],
-      "nightmare_evidence": "Spirit Box",
+      "evidence": ["Geisterbox", "Geisterbuch", "D.O.T.S Projektor"],
+      "nightmare_evidence": "Geisterbox",
       "behavior": [
         "<Tells>",
         "Schweres Atmen durch die Geisterbox, wenn der Geist weniger als 1 m entfernt ist  <span class=\"sound\" onClick=\"playSound('https://zero-network.net/phasmophobia/static/assets/deogen_breathing.wav')\">🔊</span>",
         "mann Kann sich nicht vor einem Deogen verstecken",
-        "<Behaviors>",
-        "Erhöhte Chance für DOTs/Schreiben",
+        "<Verhalten>",
+        "Erhöhte Chance für D.O.T.S Projektor/Schreiben",
         "<Hunt Speed>",
         "3,0 m/s in großer Entfernung, sinkt auf 0,4 m/s in der Nähe des Spielers",
         "<Evidence>",
@@ -477,30 +477,30 @@
       "hunt_sanity": "75%",
       "hunt_sanity_low": "35%",
       "hunt_sanity_high": "75%",
-      "evidence": ["Ghost Orbs", "Writing", "DOTs"],
+      "evidence": ["Geisterorb", "Geisterbuch", "D.O.T.S Projektor"],
       "nightmare_evidence": null,
       "behavior": [
-        "<Behaviors>",
+        "<Verhalten>",
         "Der Geist altert mit der Zeit (alle 1–2 Minuten), während sich der Spieler in der Nähe befindet",
         "In jüngeren Jahren aktiver",
-        "Erhöhte Chance für DOTs/Schreiben",
+        "Erhöhte Chance für D.O.T.S Projektor/Schreiben",
         "<Hunt Sanity>",
         "Als Jüngster jagt er zu 75 %, als Ältester zu 15 %",
         "<Hunt Speed>",
         "2,75 m/s beim jüngsten, 1,0 m/s beim ältesten <b>beschleunigt nicht in Sichtlinie</b>",
         "<Evidence>",
-        "Das Schreiben + DOTs im Albtraummodus bestätigt Thaye"
+        "Das Schreiben + D.O.T.S Projektor im Albtraummodus bestätigt Thaye"
       ]
     }
   ],
   "version": "v0.9.0.8",
   "evidence": [
-    "EMF 5",
-    "DOTs",
-    "Ultraviolet",
-    "Freezing",
-    "Ghost Orbs",
-    "Writing",
-    "Spirit Box"
+    "EMF Level 5",
+    "D.O.T.S Projektor",
+    "Ultraviolett",
+    "Gefriertemperaturen",
+    "Geisterorb",
+    "Geisterbuch",
+    "Geisterbox"
   ]
 }
