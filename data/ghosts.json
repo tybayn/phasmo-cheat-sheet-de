@@ -13,7 +13,7 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Incensing the ghost will prevent a hunt for 180s instead of the normal 90s"
+        "Wenn man den Geist erzürnt, wird eine Jagd nach 180ern statt der normalen 90er verhindert"
       ]
     },
     {
@@ -29,10 +29,10 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Ghost will never step in salt of any tier",
-        "Will not be slowed down by tier 3 salt during a hunt",
+        "Der Geist wird niemals in das Salz eines Tiers treten",
+        "Wird während einer Jagd nicht durch Salz der Stufe 3 verlangsamt",
         "<Verhalten>",
-        "Can teleport to random players, leaving EMF 2 or EMF Level 5"
+        "Kann zu zufälligen Spielern teleportiert werden, wobei EMF 2 oder EMF Level 5 gezeigt werden"
       ]
     },
     {
@@ -48,11 +48,11 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Does not appear in ghost photo",
-        "During an event or during D.O.T.S Projektor state, taking a photo will cause the ghost to disappear",
-        "Less visible during hunts (See 'Guides' tab)",
+        "Erscheint nicht in den Geister Fotos",
+        "Während eines Hunts oder während des DOT-Zustands führt das Aufnehmen eines Fotos dazu, dass der Geist verschwindet",
+        "Während der Jagd weniger sichtbar (siehe Registerkarte „Anleitungen“)",
         "<Verhalten>",
-        "Can roam to a random player, leaving EMF 2"
+        "Kann zu einem zufälligen Spieler wandern und EMF 2 hinterlassen"
       ]
     },
     {
@@ -68,11 +68,11 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Can throw multiple objects at once, decreasing player sanity 2% per item thrown",
-        "Will throw an item every 0.5s during a hunt",
+        "Kann mehrere Gegenstände gleichzeitig werfen, wodurch die geistige Gesundheit des Spielers pro geworfenem Gegenstand um 2 % sinkt",
+        "Wirft während einer Jagd alle 0,5 Sekunden einen Gegenstand",
         "<Verhalten>",
-        "Higher chance to throw & interact with objects",
-        "Can throw objects faster and further"
+        "Höhere Chance, Objekte zu werfen und mit ihnen zu interagieren",
+        "Kann Gegenstände schneller und weiter werfen"
       ]
     },
     {
@@ -90,12 +90,12 @@
         "<Tells>",
         "Banshee scream through paramic  <span class=\"sound\" onClick=\"playSound('https://zero-network.net/phasmophobia/static/assets/banshee_scream.wav')\">🔊</span>",
         "<Verhalten>",
-        "Will only go after its target during a hunt (unless target is outside)",
-        "Will roam toward its target, without leaving EMF 2",
-        "Will attempt to roam toward their target while in D.O.T.S Projektor state",
-        "Prefers singing ghost events",
+        "Verfolgt sein Ziel nur während einen Hunt)",
+        "Wird auf sein Ziel zusteuern, ohne EMF 2 zu verlassen",
+        "Wird versuchen, sich im DOT-Zustand auf sein Ziel zuzubewegen",
+        "Singt am liebsten bei Geister Events",
         "<Hunt Sanity>",
-        "Hunts when target's sanity is 50% or lower (even if target is outside)"
+        "Jagt, wenn die geistige Gesundheit des Ziels 50 % oder weniger beträgt (auch wenn sich das Ziel außerhalb befindet)"
       ]
     },
     {
@@ -111,11 +111,11 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Ability will drop nearby players' sanity by 25% with EMF 2 at the breaker",
+        "Die Fähigkeit verringert die geistige Gesundheit von Spielern in der Nähe um 25 %, wenn EMF 2 am Breaker ist",
         "<Verhalten>",
-        "Can not turn off fuse box",
+        "Sicherungskasten lässt sich nicht ausschalten",
         "<Hunt Speed>",
-        "2.5m/s when fuse box is on and ghost is further than 3m from a seen player, 1.7m/s otherwise"
+        "2,5 m/s, wenn der Sicherungskasten eingeschaltet ist und der Geist weiter als 3 m von einem gesehenen Spieler entfernt ist, ansonsten 1,7 m/s"
       ]
     },
     {
@@ -131,12 +131,12 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Ability to immediately turn off a light that a player has turned on",
-        "Cannot turn on lights (keyboard and TV excluded)",
+        "Es hatt die Möglichkeit, ein Licht, das ein Spieler eingeschaltet hat, sofort auszuschalten",
+        "Das Licht kann nicht eingeschaltet werden (Tastatur und Fernseher ausgenommen)",
         "<Verhalten>",
-        "More likely to turn off and bust lights",
+        "Es ist wahrscheinlicher, dass das Licht ausgeht und kaputtgeht",
         "<Hunt Sanity>",
-        "60% when lights are off in the ghost's current room, 40% when on"
+        "60 % wenn das Licht im aktuellen Raum des Geistes ausgeschaltet ist, 40 % wenn es eingeschaltet ist"
       ]
     },
     {
@@ -152,7 +152,7 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Hunt Speed>",
-        "3.0m/s immediately once the player has been sensed (equipment, voice, or line of sight) and until ghost has reached the players last known location where it will gradually slow down to 1m/s"
+        "3,0 m/s, sobald der Spieler wahrgenommen wurde (Ausrüstung, Stimme oder Sichtlinie) und bis der Geist den letzten bekannten Standort des Spielers erreicht hat, wo er allmählich auf 1 m/s verlangsamt wird"
       ]
     },
     {
@@ -168,12 +168,12 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Does not do interactions that result in EMF 2, 3, or 5 with someone in the room (except Geisterbuch)",
-        "Will not hunt with someone in the room",
+        "Führt keine Interaktionen mit jemandem im Raum durch, die zu EMF 2, 3 oder 5 führen (außer bei Geisterbuch).",
+        "Wird nicht jagen, wenn sich jemand im Raum aufhält",
         "<Verhalten>",
-        "More ghost events at lower sanity",
-        "Less likely to appear as full ghost model",
-        "Has a chance to appear as a shadow if summoned from music box or summoning circle"
+        "Mehr Events bei geringerer geistiger Gesundheit",
+        "Es ist weniger wahrscheinlich, dass es als vollständiges Geistermodell erscheint",
+        "Hat eine Chance, als Schatten zu erscheinen, wenn er aus einer Spieluhr oder einem Beschwörungskreis beschworen wird"
       ]
     },
     {
@@ -189,12 +189,12 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Incensing the ghost will prevent a hunt for 60s instead of the normal 90s",
+        "Das Anfeuern des Geistes verhindert eine Jagd für 60er statt der normalen 90er",
         "20s minimum hunt cool-down (normal is 25s)",
         "<Verhalten>",
-        "Crucifix range increased by 50% per tier (4.5m, 6m, 7.5m respectively)",
+        "Die Reichweite des Kruzifixes wurde pro Stufe um 50 % erhöht (4,5 m, 6 m bzw. 7,5 m).",
         "<Hunt Sanity>",
-        "Ability to hunt at any sanity, hunts normally at 70%"
+        "Fähigkeit, bei jeder Vernunft zu jagen, jagt normalerweise bei 70 %"
       ]
     },
     {
@@ -210,10 +210,10 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Can shut a door and drop sanity of nearby players by 15% <b><i>if</i></b> a door is in the room",
-        "Only ghost that can close an exit door outside of a hunt or ghost event",
+        "Kann eine Tür schließen und die geistige Gesundheit von Spielern in der Nähe um 15 % senken <b><i>if</i></b> wenn eine Türe im Raum ist",
+        "Nur ein Geist, der eine Ausgangstür außerhalb einer Jagd- oder Geisterevents schließen kann",
         "<Verhalten>",
-        "Incense traps ghost in its room and prevents wandering for 60 seconds"
+        "Mit Smudge-sticks fängt man die Geister in seinem Raum ein und verhindert 60 Sekunden lang, dass sie umherwandern"
       ]
     },
     {
@@ -229,11 +229,11 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Drains 20% on ghost events, instead of 10%",
-        "Will <b><i>not</i></b> do 'ghost mist' event",
-        "More visible during hunts (See 'Guides' tab)",
+        "Entzieht bei Geisterevents 20 % statt 10 %.",
+        "Wird <b><i>nicht</i></b> das „Geisternebel“-Event durchführen",
+        "Während der Jagd besser sichtbar (siehe Registerkarte „Guides“)",
         "<Verhalten>",
-        "More active around multiple people"
+        "Aktiver wenn spieler in der nähe sind"
       ]
     },
     {
@@ -249,11 +249,11 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Hearing/electronic distance is less than 2.5m during hunts",
+        "Der Hör-/Elektronikabstand beträgt bei der Jagd weniger als 2,5 m",
         "<Verhalten>",
-        "More active when talked to",
+        "Aktiver, wenn man mit ihm spricht",
         "<Hunt Sanity>",
-        "Can hunt up to 80% sanity when talking near it, hunts normally at 50%"
+        "Kann bis zu 80 % des Verstandes jagen, wenn man in seiner Nähe spricht, jagt normalerweise mit 50 %"
       ]
     },
     {
@@ -269,14 +269,14 @@
       "nightmare_evidence": "Gefriertemperaturen",
       "behavior": [
         "<Tells>",
-        "Ghost can have visible Gefriertemperaturen breath in any room during hunts with the breaker off",
-        "Cannot turn breaker on",
+        "Geister können während der Jagd bei ausgeschaltetem Breaker in jedem Raum einen sichtbaren, eiskalten Atem verspüren",
+        "Der Breaker kann nicht eingeschaltet werden",
         "<Verhalten>",
-        "High chance to turn off breaker",
+        "Hohe chance den breaker auszuschalten",
         "<Hunt Speed>",
-        "Faster in colder temperatures, <b>does not speed up in line-of-sight</b>",
+        "Schneller bei kälteren Temperaturen, <b>beschleunigt nicht in Sichtlinie</b>",
         "<Evidence>",
-        "Guaranteed Gefriertemperaturen on Nightmare / Insanity mode"
+        "Garantiertes Gefrier-Temeratur im Albtraum-/Wahnsinnsmodus "
       ]
     },
     {
@@ -292,12 +292,12 @@
       "nightmare_evidence": "D.O.T.S Projektor",
       "behavior": [
         "<Tells>",
-        "D.O.T.S Projektor only appear on camera and will rarely show if player is in the same room",
+        "D.O.T.S Projektor erscheinen nur auf der Kamera und werden selten angezeigt, wenn sich der Spieler im selben Raum befindet",
         "<Verhalten>",
-        "Can not change favorite rooms",
-        "Does not roam long distances",
+        "Lieblingsräume können nicht geändert werden",
+        "Läuft nicht über weite Strecken",
         "<Evidence>",
-        "Guaranteed D.O.T.S Projektor on Nightmare / Insanity mode"
+        "Garantierte D.O.T.S Projektor im Albtraum-/Wahnsinnsmodus"
       ]
     },
     {
@@ -313,9 +313,9 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Footsteps and vocals cannot be heard more than 12m away during hunts (normal is 20m)",
+        "Schritte und Gesang sind bei der Jagd nicht weiter als 12 m entfernt zu hören (normal sind 20 m)",
         "<Verhalten>",
-        "Lots of paranormal sounds through paramic"
+        "Viele paranormale Geräusche durch Paramic"
       ]
     },
     {
@@ -331,12 +331,12 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Will hunt at any sanity after extinguishing every 3rd flame if no other flames or crucifix will prevent it",
+        "Wird nach dem Löschen jeder dritten Flamme Jagd auf jeden Verstand machen, wenn keine anderen Flammen oder Kruzifixe dies verhindern",
         "<Verhalten>",
-        "Flames act like crucifixes, will blow out a flame if it tries to hunt (within 4m)",
-        "More likely to extinguish a flame, the more players that are dead",
+        "Flammen wirken wie Kruzifixe und blasen eine Flamme aus, wenn sie versuchen zu jagen (innerhalb von 4 m)",
+        "Je mehr Spieler tot sind, desto wahrscheinlicher ist es, dass eine Flamme gelöscht wird",
         "<Hunt Sanity>",
-        "Can hunt at any sanity using its ability, hunts normally at 60%"
+        "Kann mit seiner Fähigkeit bei jedem Verstand jagen, jagt normalerweise mit 60 %"
       ]
     },
     {
@@ -352,11 +352,11 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Often do interactions at the same time",
+        "Führt oft gleichzeitig Interaktionen durch ",
         "<Verhalten>",
-        "Decoy only does interactions/EMF, no evidence or sensors",
+        "Decoy führt nur Interaktionen/EMF durch, keine Beweise oder Sensoren",
         "<Hunt Speed>",
-        "Either 1.53m/s or 1.87m/s depending on which 'twin' hunted"
+        "Entweder 1,53 m/s oder 1,87 m/s, je nachdem, welcher „Zwilling“ jagte"
       ]
     },
     {
@@ -372,13 +372,13 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "During a hunt, flickers electronics at 15m range instead of 10m",
+        "Während einer Jagd flackert die Elektronik auf 15 m statt auf 10 m",
         "<Hunt Sanity>",
-        "Can hunt at 65% sanity near active player equipment",
+        "Kann mit 65 % geistiger Gesundheit in der Nähe der aktiven Spielerausrüstung jagen",
         "<Hunt Speed>",
-        "2.5m/s near active player equipment, 1.7m/s otherwise",
+        "2,5 m/s in der Nähe der aktiven Spielerausrüstung, ansonsten 1,7 m/s",
         "<Evidence>",
-        "EMF Level 5 + Geisterorb on Nightmare mode confirms Raiju"
+        "EMF Level 5 + Geisterorb im Albtraummodus bestätigt Raiju"
       ]
     },
     {
@@ -394,12 +394,12 @@
       "nightmare_evidence": "Ultraviolett",
       "behavior": [
         "<Tells>",
-        "Special 6 fingered fingerprints",
-        "Has a 6.66% chance to change ghost models when flickering during hunts (guaranteed once per hunt, returns to original model)",
-        "Does not always leave Ultraviolett evidence",
-        "Can make Ultraviolett evidence disappear earlier than 2 minutes",
+        "Spezielle 6-Finger-Fingerabdrücke",
+        "Hat eine Chance von 6,66 %, das Geistermodell zu ändern, wenn es während der Jagd flackert (garantiert einmal pro Jagd, kehrt zum Originalmodell zurück)",
+        "Hinterlässt nicht immer Ultraviolettte Spuren",
+        "Kann Ultraviolettte Spuren früher als 2 Minuten verschwinden lassen",
         "<Evidence>",
-        "Guaranteed Ultraviolett on Nightmare / Insanity mode"
+        "Garantiertes Ultraviolettt im Albtraum-/Wahnsinnsmodus"
       ]
     },
     {
@@ -415,13 +415,13 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Always shows orbs as additional fake evidence (4th evidence) even in 0 evidence",
-        "Copies the behavior and traits of other ghosts",
-        "Changes ghost behavior every 30 seconds to 2 minutes",
+        "Zeigt immer Orbs als zusätzlichen gefälschten Beweis (4. Beweis) an, auch bei 0 Beweisen",
+        "Kopiert das Verhalten und die Eigenschaften anderer Geister",
+        "Ändert das Geisterverhalten alle 30 Sekunden bis 2 Minuten",
         "<Hunt Sanity>",
-        "Copies behavior of currently mimicked ghost",
+        "Kopiert das Verhalten des aktuell imitierten Geistes",
         "<Hunt Speed>",
-        "Copies speed of currently mimicked ghost"
+        "Kopiert die Geschwindigkeit des aktuell imitierten Geistes"
       ]
     },
     {
@@ -437,12 +437,12 @@
       "nightmare_evidence": "Geisterbox",
       "behavior": [
         "<Tells>",
-        "Places curse on player when heard through paramic or Geisterbox, curse drops sanity 2x as fast",
-        "Incense blindness duration increased by 50% per tier (7.5s, 9s, 10.5s respectively)",
+        "Verflucht den Spieler, wenn er durch Paramic oder Geisterbox gehört wird. Der Fluch lässt die geistige Gesundheit doppelt so schnell sinken",
+        "Die Dauer der Weihrauchblindheit wurde pro Stufe um 50 % erhöht (7,5 Sek., 9 Sek. bzw. 10,5 Sek.)",
         "<Hunt Speed>",
-        "Faster when average sanity is lower, can reach a speed of 3.71 m/s when in line of sight",
+        "Schneller, wenn die durchschnittliche geistige Gesundheit geringer ist, kann in Sichtlinie eine Geschwindigkeit von 3,71 m/s erreichen",
         "<Evidence>",
-        "Guaranteed Geisterbox on Nightmare / Insanity mode"
+        "Garantierte Geisterbox im Albtraum-/Wahnsinnsmodus"
       ]
     },
     {
@@ -458,14 +458,14 @@
       "nightmare_evidence": "Geisterbox",
       "behavior": [
         "<Tells>",
-        "Heavy breathing through Geisterbox when within 1m of the ghost  <span class=\"sound\" onClick=\"playSound('https://zero-network.net/phasmophobia/static/assets/deogen_breathing.wav')\">🔊</span>",
-        "Cannot hide from a Deogen",
+        "Schweres Atmen durch die Geisterbox, wenn der Geist weniger als 1 m entfernt ist  <span class=\"sound\" onClick=\"playSound('https://zero-network.net/phasmophobia/static/assets/deogen_breathing.wav')\">🔊</span>",
+        "mann Kann sich nicht vor einem Deogen verstecken",
         "<Verhalten>",
-        "Increased chance for D.O.T.S Projektor / Geisterbuch",
+        "Erhöhte Chance für D.O.T.S Projektor/Schreiben",
         "<Hunt Speed>",
-        "3.0m/s when far away, drops to 0.4m/s when close to the player",
+        "3,0 m/s in großer Entfernung, sinkt auf 0,4 m/s in der Nähe des Spielers",
         "<Evidence>",
-        "Guaranteed Geisterbox on Nightmare / Insanity mode"
+        "Garantierte Geisterbox im Albtraum-/Wahnsinnsmodus"
       ]
     },
     {
@@ -481,15 +481,15 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Verhalten>",
-        "Ghost ages over time (every 1-2 minutes) while player is nearby",
-        "More active when younger",
-        "Increased chance for D.O.T.S Projektor / Geisterbuch",
+        "Der Geist altert mit der Zeit (alle 1–2 Minuten), während sich der Spieler in der Nähe befindet",
+        "In jüngeren Jahren aktiver",
+        "Erhöhte Chance für D.O.T.S Projektor/Schreiben",
         "<Hunt Sanity>",
-        "Hunts at 75% at its youngest, 15% at its oldest",
+        "Als Jüngster jagt er zu 75 %, als Ältester zu 15 %",
         "<Hunt Speed>",
-        "2.75m/s at its youngest, 1.0m/s at its oldest <b>does not speed up in line-of-sight</b>",
+        "2,75 m/s beim jüngsten, 1,0 m/s beim ältesten <b>beschleunigt nicht in Sichtlinie</b>",
         "<Evidence>",
-        "Geisterbuch + D.O.T.S Projektor on Nightmare mode confirms Thaye"
+        "Das Schreiben + D.O.T.S Projektor im Albtraummodus bestätigt Thaye"
       ]
     }
   ],
