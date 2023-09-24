@@ -1,12 +1,12 @@
 function getCookie(e){let t=e+"=",i=decodeURIComponent(document.cookie).split(";");for(let n=0;n<i.length;n++){let o=i[n];for(;" "==o.charAt(0);)o=o.substring(1);if(0==o.indexOf(t))return o.substring(t.length,o.length)}return""}
 function setCookie(e,t,i){let n=new Date;n.setTime(n.getTime()+864e5*i);let o="expires="+n.toUTCString();document.cookie=e+"="+t+";"+o+";path=/"}
 
-const all_evidence = ["DOTs","EMF 5","Ultraviolet","Freezing","Ghost Orbs","Writing","Spirit Box"]
-const all_ghosts = ["Spirit","Wraith","Phantom","Poltergeist","Banshee","Jinn","Mare","Revenant","Shade","Demon","Yurei","Oni","Yokai","Hantu","Goryo","Myling","Onryo","The Twins","Raiju","Obake","The Mimic","Moroi","Deogen","Thaye"]
-const all_speed = ["Slow","Normal","Fast"]
-const all_sanity = ["Late","Average","Early","VeryEarly"]
+const all_evidence = ["D.O.T.S Projektor","EMF Level 5","Ultraviolett","Gefriertemperaturen","Geisterorb","Geisterbuch","Geisterbox"]
+const all_ghosts = ["Spirit","Gespenst","Phantom","Poltergeist","Banshee","Dschinn","Mare","Revenant","Shade","Dämon","Yurei","Oni","Yokai","Hantu","Goryo","Myling","Onryo","Die Zwillinge","Raiju","Obake","Der Mimik","Moroi","Deogen","Thaye"]
+const all_speed = ["Langsam","Normal","Schnell"]
+const all_sanity = ["Spät","Average","Früh","SehrFrüh"]
 
-var state = {"evidence":{},"speed":{"Slow":0,"Normal":0,"Fast":0},"sanity":{"Late":0,"Average":0,"Early":0,"VeryEarly":0},"ghosts":{}}
+var state = {"evidence":{},"speed":{"Langsam":0,"Normal":0,"Schnell":0},"sanity":{"Spät":0,"Average":0,"Früh":0,"SehrFrüh":0},"ghosts":{}}
 var user_settings = {"num_evidences":3,"ghost_modifier":2,"volume":50,"offset":0,"sound_type":0,"speed_logic_type":0,"bpm":0}
 
 let znid = getCookie("znid")
@@ -198,11 +198,11 @@ function remove(elem,ignore_link=false){
 
 function filter(ignore_link=false){
     state["evidence"] = {}
-    state["speed"] = {"Slow":0,"Normal":0,"Fast":0}
+    state["speed"] = {"Langsam":0,"Normal":0,"Schnell":0}
     for (var i = 0; i < all_evidence.length; i++){
         state["evidence"][all_evidence[i]] = 0
     }
-    state["sanity"] = {"Late":0,"Average":0,"Early":0,"VeryEarly":0}
+    state["sanity"] = {"Spät":0,"Average":0,"Früh":0,"SehrFrüh":0}
 
     // Get values of checkboxes
     var base_speed = 1.7;
@@ -211,7 +211,7 @@ function filter(ignore_link=false){
     var not_evi_array = [];
     var spe_array = [];
     var san_array = [];
-    var san_lookup = {"Late":0,"Average":40,"Early":50,"VeryEarly":75}
+    var san_lookup = {"Spät":0,"Average":40,"Früh":50,"SehrFrüh":75}
     var monkey_evi = ""
     if (document.querySelectorAll('[name="evidence"] .monkey-disabled').length > 0)
         monkey_evi = document.querySelectorAll('[name="evidence"] .monkey-disabled')[0].parentElement.value;
@@ -289,11 +289,11 @@ function filter(ignore_link=false){
             parseInt(ghosts[i].getElementsByClassName("ghost_hunt_low")[0].textContent),
             parseInt(ghosts[i].getElementsByClassName("ghost_hunt_high")[0].textContent)
         ]
-        if (name == "The Mimic"){
-            evidence.push("Ghost Orbs")
+        if (name == "Der Mimik"){
+            evidence.push("Geisterorb")
             mimic_evi = evidence
-            nm_evidence = "Ghost Orbs"
-            mimic_nm_evi = "Ghost Orbs"
+            nm_evidence = "Geisterorb"
+            mimic_nm_evi = "Geisterorb"
         }
 
         //Check for monkey paw filter
@@ -326,7 +326,7 @@ function filter(ignore_link=false){
         else if (num_evidences == "2"){
 
 
-            if (evi_array.length == 3 && name != "The Mimic"){
+            if (evi_array.length == 3 && name != "Der Mimik"){
                 keep = false
             }
             else if (evi_array.length > 0){
@@ -355,7 +355,7 @@ function filter(ignore_link=false){
         // Insanity
         else if (num_evidences == "1"){
 
-            if (evi_array.length == 2 && name != "The Mimic"){
+            if (evi_array.length == 2 && name != "Der Mimik"){
                 keep = false
             }
             else if (evi_array.length > 0){
@@ -384,11 +384,11 @@ function filter(ignore_link=false){
         // Apocalypse
         else if (num_evidences == "0"){
 
-            if (evi_array.length > 0 && name != "The Mimic"){
+            if (evi_array.length > 0 && name != "Der Mimik"){
                 keep = false
             }
 
-            if (not_evi_array.length > 0 && name == "The Mimic"){
+            if (not_evi_array.length > 0 && name == "Der Mimik"){
                 keep = false
             }
         }
@@ -428,19 +428,19 @@ function filter(ignore_link=false){
         if (spe_array.length > 0){
             var skeep = false,nkeep = false,fkeep = false;
 
-            var shas = (min_speed < base_speed || name == "The Mimic")
-            var nhas = (speed_type == "or" && (min_speed === base_speed || max_speed === base_speed || name == "The Mimic")) || (speed_type == "range" && min_speed <= base_speed && base_speed <= max_speed)
-            var fhas = (max_speed > base_speed || name == "The Mimic")
+            var shas = (min_speed < base_speed || name == "Der Mimik")
+            var nhas = (speed_type == "or" && (min_speed === base_speed || max_speed === base_speed || name == "Der Mimik")) || (speed_type == "range" && min_speed <= base_speed && base_speed <= max_speed)
+            var fhas = (max_speed > base_speed || name == "Der Mimik")
 
             spe_array.forEach(function (item,index){
 
-                if (item == "Slow"){
+                if (item == "Langsam"){
                     skeep = true
                 }
                 else if (item == "Normal"){
                     nkeep = true
                 }
-                else if (item == "Fast"){
+                else if (item == "Schnell"){
                     fkeep = true
                 }
             });
@@ -462,30 +462,30 @@ function filter(ignore_link=false){
 
         // Check if speed is being kept
         if (keep){
-            if(min_speed < base_speed || name == "The Mimic"){
-                keep_speed.add('Slow')
+            if(min_speed < base_speed || name == "Der Mimik"){
+                keep_speed.add('Langsam')
             }
-            if ((speed_type == "range" && min_speed <= base_speed && base_speed <= max_speed) || name == "The Mimic"){
+            if ((speed_type == "range" && min_speed <= base_speed && base_speed <= max_speed) || name == "Der Mimik"){
                 keep_speed.add('Normal')
             }
             else if(min_speed === base_speed || max_speed === base_speed){
                 keep_speed.add('Normal')
             }
-            if(max_speed > base_speed || name == "The Mimic"){
-                keep_speed.add('Fast')
+            if(max_speed > base_speed || name == "Der Mimik"){
+                keep_speed.add('Schnell')
             }
 
-            if(sanity[0] > san_lookup['Late'] || sanity[1] > san_lookup['Late']){
-                keep_sanity.add('Late')
+            if(sanity[0] > san_lookup['Spät'] || sanity[1] > san_lookup['Spät']){
+                keep_sanity.add('Spät')
             }
             if(sanity[0] > san_lookup['Average'] || sanity[1] > san_lookup['Average']){
                 keep_sanity.add('Average')
             }
-            if(sanity[0] > san_lookup['Early'] || sanity[1] > san_lookup['Early']){
-                keep_sanity.add('Early')
+            if(sanity[0] > san_lookup['Früh'] || sanity[1] > san_lookup['Früh']){
+                keep_sanity.add('Früh')
             }
-            if(sanity[0] > san_lookup['VeryEarly'] || sanity[1] > san_lookup['VeryEarly']){
-                keep_sanity.add('VeryEarly')
+            if(sanity[0] > san_lookup['SehrFrüh'] || sanity[1] > san_lookup['SehrFrüh']){
+                keep_sanity.add('SehrFrüh')
             }
         }
 
@@ -618,7 +618,7 @@ function filter(ignore_link=false){
     }
 
     else if (num_evidences == "0"){
-        all_evidence.filter(evi => evi != 'Ghost Orbs').forEach(function(item){
+        all_evidence.filter(evi => evi != 'Geisterorb').forEach(function(item){
             var checkbox = document.getElementById(item);
             $(checkbox).addClass("block")
             $(checkbox).find("#checkbox").removeClass(["good","bad"])
@@ -675,51 +675,51 @@ function showVoiceInfo(){
 }
 
 function showSettings(){
-    if (document.getElementById("settings_box").style.left == "-32px"){
+    if (document.getElementById("settings_box").style.left == "23px"){
         document.getElementById("settings_box").style.boxShadow = "5px 0px 10px 0px #000"
         document.getElementById("settings_tab").style.boxShadow = "-6px 5px 5px -2px #000"
         document.getElementById("event_box").style.zIndex= "1"
         document.getElementById("wiki_box").style.zIndex= "1"
         document.getElementById("maps_box").style.zIndex= "1"
         document.getElementById("settings_box").style.zIndex = "2"
-        document.getElementById("settings_box").style.left = "196px"
+        document.getElementById("settings_box").style.left = "251px"
     }
     else {
-        document.getElementById("settings_box").style.left = "-32px"
+        document.getElementById("settings_box").style.left = "23px"
         document.getElementById("settings_box").style.boxShadow = "none"
         document.getElementById("settings_tab").style.boxShadow = "none"
     }
 }
 
 function showEvent(){
-    if (document.getElementById("event_box").style.left == "-182px"){
+    if (document.getElementById("event_box").style.left == "-127px"){
         document.getElementById("event_box").style.boxShadow = "5px 0px 10px 0px #000"
         document.getElementById("event_tab").style.boxShadow = "-6px 5px 5px -2px #000"
         document.getElementById("settings_box").style.zIndex = "1"
         document.getElementById("wiki_box").style.zIndex= "1"
         document.getElementById("maps_box").style.zIndex= "1"
         document.getElementById("event_box").style.zIndex= "2"
-        document.getElementById("event_box").style.left = "196px"
+        document.getElementById("event_box").style.left = "251px"
     }
     else {
-        document.getElementById("event_box").style.left = "-182px"
+        document.getElementById("event_box").style.left = "-127px"
         document.getElementById("event_box").style.boxShadow = "none"
         document.getElementById("event_tab").style.boxShadow = "none"
     }
 }
 
 function showWiki(){
-    if (document.getElementById("wiki_box").style.left == "-182px"){
+    if (document.getElementById("wiki_box").style.left == "-127px"){
         document.getElementById("wiki_box").style.boxShadow = "5px 0px 10px 0px #000"
         document.getElementById("wiki_tab").style.boxShadow = "-6px 5px 5px -2px #000"
         document.getElementById("settings_box").style.zIndex = "1"
         document.getElementById("event_box").style.zIndex= "1"
         document.getElementById("maps_box").style.zIndex= "1"
         document.getElementById("wiki_box").style.zIndex= "2"
-        document.getElementById("wiki_box").style.left = "196px"
+        document.getElementById("wiki_box").style.left = "251px"
     }
     else {
-        document.getElementById("wiki_box").style.left = "-182px"
+        document.getElementById("wiki_box").style.left = "-127px"
         document.getElementById("wiki_box").style.boxShadow = "none"
         document.getElementById("wiki_tab").style.boxShadow = "none"
     }
@@ -727,19 +727,19 @@ function showWiki(){
 
 
 function showMaps(){
-    if (document.getElementById("maps_box").style.left == "-388px"){
+    if (document.getElementById("maps_box").style.left == "-333px"){
         document.getElementById("maps_box").style.boxShadow = "5px 0px 10px 0px #000"
         document.getElementById("maps_box").style.boxShadow = "-6px 5px 5px -2px #000"
         document.getElementById("settings_box").style.zIndex = "1"
         document.getElementById("event_box").style.zIndex= "1"
         document.getElementById("wiki_box").style.zIndex= "1"
         document.getElementById("maps_box").style.zIndex= "2"
-        document.getElementById("maps_box").style.left = "196px"
-        document.getElementById("maps_box").style.width = "calc(100% - 256px)"
+        document.getElementById("maps_box").style.left = "251px"
+        document.getElementById("maps_box").style.width = "calc(100% - 311px)"
     }
     else {
         document.getElementById("maps_box").style.width = "556px"
-        document.getElementById("maps_box").style.left = "-388px"
+        document.getElementById("maps_box").style.left = "-333px"
         document.getElementById("maps_box").style.boxShadow = "none"
         document.getElementById("maps_box").style.boxShadow = "none"
     }

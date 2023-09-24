@@ -134,7 +134,7 @@ function parse_speech(vtext){
         console.log("Recognized evidence command")
         console.log(`Heard '${vtext}'`)
         vtext = vtext.replace('evidence', "").trim()
-        var smallest_evidence = "emf 5"
+        var smallest_evidence = "EMF Level 5"
         var smallest_val = 100
         var vvalue = 1
         if(vtext.startsWith("not ") || vtext.startsWith("knot ")){
@@ -176,7 +176,7 @@ function parse_speech(vtext){
         console.log("Recognized evidence command")
         console.log(`Heard '${vtext}'`)
         vtext = vtext.replace('monkey paw', "").trim()
-        var smallest_evidence = "emf 5"
+        var smallest_evidence = "EMF Level 5"
         var smallest_val = 100
         var vvalue = 1
 
@@ -252,7 +252,7 @@ function parse_speech(vtext){
         console.log(`Heard '${vtext}'`)
         vtext = vtext.replace('hunt sanity', "").replace('sanity', "").trim()
 
-        var smallest_sanity = "Late"
+        var smallest_sanity = "Spät"
         var smallest_val = 100
         var vvalue = 1
         if(vtext.startsWith("not ") || vtext.startsWith("knot ")){
@@ -379,7 +379,7 @@ if (("webkitSpeechRecognition" in window || "speechRecognition" in window) && !n
   
     speechRecognition.continuous = false;
     speechRecognition.interimResults = false;
-    speechRecognition.lang = 'en-US';
+    speechRecognition.lang = 'de';
   
     speechRecognition.onend = () => {
         if(!stop_listen){
