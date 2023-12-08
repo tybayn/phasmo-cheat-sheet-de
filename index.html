@@ -148,6 +148,9 @@
         <ul>
           <li>"speed &lt;speed&gt;" -> Mark specified speed</li>
           <li>"speed clear &lt;speed&gt;" -> Reset state of specified speed</li>
+          <li>"speed [has] line of sight" -> Mark having standard line-of-sight speed up</li>
+          <li>"speed not line of sight" -> Mark no standard line-of-sight speed up</li>
+          <li>"speed clear line of sight" -> Reset line-of-sight filter</li>
         </ul>
         <hr />
         <strong>Hunt Sanity:</strong>
@@ -176,6 +179,7 @@
             "ghost remove &lt;ghost&gt;" -> Remove the specified ghost card from
             the screen
           </li>
+          <li>"ghost show|info &lt;ghost&gt;" -> Scroll the specified ghost card into view</li>
         </ul>
         <hr />
         <strong>Timer:</strong>
@@ -196,6 +200,8 @@
             "ghost speed &lt;percent&gt;" -> Set ghost speed modifier to 50%,
             75%, 100%, 125%, or 150%
           </li>
+          <li>"show map [&lt;map name&gt;]" -> Opens the map tab and displays map</li>
+          <li>"close map" or "hide map" -> Closes the map tab</li>
           <li>
             "reset journal" or "reset cheat sheet" -> Reset the cheat sheet
             (will save if linked with Discord)
@@ -213,7 +219,7 @@
     </div>
   </div>
 
-  <div id="settings_box" style="left: 23px">
+  <div id="settings_box" style="left: -1000px">
     <div id="settings_tab" onclick="showSettings()">
       Einstellungen
       <div id="settings_status"></div>
@@ -246,7 +252,12 @@
         <div class="modifier_volume_label">75%</div>
         <div class="modifier_volume_label">100%</div>
       </div>
-      <div class="modifier_note">(Ändern der Lautstärke der Fussschritte)</div>
+      <div class="modifier_note">
+        <input type="checkbox" id="mute_timer_countdown" name="mute_timer_countdown" class="settings_check" onclick="mute('countdown');saveSettings();"><label for="mute_timer_countdown">Mute Timer Countdown</label>
+      </div>
+      <div class="modifier_note less_pad">
+          <input type="checkbox" id="mute_timer_toggle" name="mute_timer_toggle" class="settings_check" onclick="mute('toggle');saveSettings();"><label for="mute_timer_toggle">Mute Timer Toggle</label>
+      </div>
       <hr />
       <div class="modifier_volume yfont white">Speed Offset</div>
       <div id="speed_offset">
@@ -411,7 +422,7 @@
     <div id="session">-</div>
   </div>
 
-  <div id="event_box" style="left: -127px">
+  <div id="event_box" style="left: -1000px">
     <div id="event_tab" onclick="showEvent()">Aktuelles Event</div>
     <span class="icon" onclick="showEvent()"></span>
     <div class="settings_title yfont white">Aktuelle Events!</div>
@@ -422,14 +433,14 @@
     </div>
   </div>
 
-  <div id="wiki_box" style="left: -127px">
-    <div id="wiki_tab" onclick="showWiki();setFlicker();">Handbuch</div>
+  <div id="wiki_box" style="left: -1000px">
+    <div id="wiki_tab" onclick="showWiki();setFlicker();">Handbuch<div id="guide_tab_footstep" style="display: none;"></div></div>
     <span class="icon" onclick="showWiki();setFlicker();"></span>
     <div class="settings_title yfont white">Handbuch</div>
     <div id="wiki-body" class="info_block"></div>
   </div>
 
-  <div id="maps_box" style="left: -333px">
+  <div id="maps_box" style="left: -1000px">
     <div id="maps_tab" onclick="showMaps()">Karten</div>
     <span class="icon" onclick="showMaps()"></span>
 
@@ -451,88 +462,22 @@
       (<a href="https://imgur.com/a/iEI0tJo" target="_blank">Bilder</a>)
     </div>
     <div class="maps_buttons">
-      <button
-        class="maps_button selected_map"
-        onclick="changeMap(this,'tanglewood.png')"
-      >
-        <div class="map_size s">S</div>
-        6 Tanglewood Drive
-      </button>
-      <button class="maps_button" onclick="changeMap(this,'edgefield.png')">
-        <div class="map_size s">S</div>
-        42 Edgefield Road
-      </button>
-      <button class="maps_button" onclick="changeMap(this,'ridgeview.png')">
-        <div class="map_size s">S</div>
-        10 Ridgeview Court
-      </button>
-      <button class="maps_button" onclick="changeMap(this,'grafton.png')">
-        <div class="map_size s">S</div>
-        Grafton Farmhouse
-      </button>
-      <button class="maps_button" onclick="changeMap(this,'willow.png')">
-        <div class="map_size s">S</div>
-        13 Willow Street
-      </button>
-      <button class="maps_button" onclick="changeMap(this,'brownstone.png')">
-        <div class="map_size l">L</div>
-        Brownstone High School
-      </button>
-      <button class="maps_button" onclick="changeMap(this,'bleasdale.png')">
-        <div class="map_size s">S</div>
-        Bleasdale Farmhouse
-      </button>
-      <button class="maps_button" onclick="changeMap(this,'sunnymeadows.png')">
-        <div class="map_size l">L</div>
-        Sunny Meadows
-      </button>
-      <button
-        class="maps_button"
-        onclick="changeMap(this,'sunnymeadows_courtyard.png')"
-      >
-        <div class="map_size s">S</div>
-        SM Restricted - Courtyard
-      </button>
-      <button
-        class="maps_button"
-        onclick="changeMap(this,'sunnymeadows_male.png')"
-      >
-        <div class="map_size s">S</div>
-        SM Restricted - Male Wing
-      </button>
-      <button
-        class="maps_button"
-        onclick="changeMap(this,'sunnymeadows_female.png')"
-      >
-        <div class="map_size s">S</div>
-        SM Restricted - Female Wing
-      </button>
-      <button
-        class="maps_button"
-        onclick="changeMap(this,'sunnymeadows_hospital.png')"
-      >
-        <div class="map_size s">S</div>
-        SM Restricted - Hospital
-      </button>
-      <button
-        class="maps_button"
-        onclick="changeMap(this,'sunnymeadows_restricted.png')"
-      >
-        <div class="map_size s">S</div>
-        SM Restricted - Restricted
-      </button>
-      <button class="maps_button" onclick="changeMap(this,'prison.png')">
-        <div class="map_size m">M</div>
-        Prison
-      </button>
-      <button class="maps_button" onclick="changeMap(this,'maplelodge.png')">
-        <div class="map_size m">M</div>
-        Maple Lodge Campsite
-      </button>
-      <button class="maps_button" onclick="changeMap(this,'woodwind.png')">
-        <div class="map_size s">S</div>
-        Camp Woodwind
-      </button>
+      <button class="maps_button selected_map" id="tanglewood" onclick="changeMap(this,'tanglewood.png')"><div class="map_size s">S</div>6 Tanglewood Drive</button>
+      <button class="maps_button" id="edgefield" onclick="changeMap(this,'edgefield.png')"><div class="map_size s">S</div>42 Edgefield Road</button>
+      <button class="maps_button" id="ridgeview" onclick="changeMap(this,'ridgeview.png')"><div class="map_size s">S</div>10 Ridgeview Court</button>
+      <button class="maps_button" id="grafton" onclick="changeMap(this,'grafton.png')"><div class="map_size s">S</div>Grafton Farmhouse</button>
+      <button class="maps_button" id="willow" onclick="changeMap(this,'willow.png')"><div class="map_size s">S</div>13 Willow Street</button>
+      <button class="maps_button" id="brownstone" onclick="changeMap(this,'brownstone.png')"><div class="map_size l">L</div>Brownstone High School</button>
+      <button class="maps_button" id="bleasdale" onclick="changeMap(this,'bleasdale.png')"><div class="map_size s">S</div>Bleasdale Farmhouse</button>
+      <button class="maps_button" id="sunnymeadows" onclick="changeMap(this,'sunnymeadows.png')"><div class="map_size l">L</div>Sunny Meadows</button>
+      <button class="maps_button" id="sunnymeadows_courtyard" onclick="changeMap(this,'sunnymeadows_courtyard.png')"><div class="map_size s">S</div>SM Restricted - Courtyard</button>
+      <button class="maps_button" id="sunnymeadows_male" onclick="changeMap(this,'sunnymeadows_male.png')"><div class="map_size s">S</div>SM Restricted - Male Wing</button>
+      <button class="maps_button" id="sunnymeadows_female" onclick="changeMap(this,'sunnymeadows_female.png')"><div class="map_size s">S</div>SM Restricted - Female Wing</button>
+      <button class="maps_button" id="sunnymeadows_hospital" onclick="changeMap(this,'sunnymeadows_hospital.png')"><div class="map_size s">S</div>SM Restricted - Hospital</button>
+      <button class="maps_button" id="sunnymeadows_restricted" onclick="changeMap(this,'sunnymeadows_restricted.png')"><div class="map_size s">S</div>SM Restricted - Restricted</button>
+      <button class="maps_button" id="prison" onclick="changeMap(this,'prison.png')"><div class="map_size m">M</div>Prison</button>
+      <button class="maps_button" id="maplelodge" onclick="changeMap(this,'maplelodge.png')"><div class="map_size m">M</div>Maple Lodge Campsite</button>
+      <button class="maps_button" id="woodwind" onclick="changeMap(this,'woodwind.png')"><div class="map_size s">S</div>Camp Woodwind</button>
     </div>
   </div>
 
@@ -556,72 +501,76 @@
       <div id="tools-content" class="tools-content" style="display: none">
         <div class="timer_title yfont white">Timers</div>
         <div class="timers">
-          <div
-            class="modifier_smudge_timer yfont white"
-            onclick="toggle_timer()"
-          >
-            Räucherstäbchen Timer
-          </div>
-          <div class="line_labels" onclick="toggle_timer();send_timer();">
-            <div class="spirit_line_label">Spirit</div>
-            <div class="demon_line_label">Dämon</div>
-          </div>
-          <div id="progress" onclick="toggle_timer();send_timer();">
-            <img src="imgs/play.png" id="play_button" class="play_button" />
-            <div id="progressBar">
-              <div id="progressBarInner" class="bar"></div>
-              <div class="demon_line"></div>
-              <div class="ghost_line"></div>
-              <div class="spirit_line"></div>
+          <div class="timer_block">
+            <div
+              class="modifier_smudge_timer yfont white"
+              onclick="toggle_timer()"
+            >
+              Räucherstäbchen Timer
             </div>
-          </div>
-          <div id="time_left" onclick="toggle_timer();send_timer();">
-            <span id="minute">03</span>:<span id="second">00</span>
-          </div>
-          <div class="modifier_note_2" onclick="toggle_timer();send_timer();">
-            (Drücke 'T' zum starten/stoppen)
+            <div class="line_labels" onclick="toggle_timer();send_timer();">
+              <div class="spirit_line_label">Spirit</div>
+              <div class="demon_line_label">Dämon</div>
+            </div>
+            <div id="progress" onclick="toggle_timer();send_timer();">
+              <img src="imgs/play.png" id="play_button" class="play_button" />
+              <div id="progressBar">
+                <div id="progressBarInner" class="bar"></div>
+                <div class="demon_line"></div>
+                <div class="ghost_line"></div>
+                <div class="spirit_line"></div>
+              </div>
+            </div>
+            <div id="time_left" onclick="toggle_timer();send_timer();">
+              <span id="minute">03</span>:<span id="second">00</span>
+            </div>
+            <div class="modifier_note_2" onclick="toggle_timer();send_timer();">
+              (Drücke 'T' zum starten/stoppen)
+            </div>
           </div>
           <hr />
-          <div
-            class="modifier_smudge_timer yfont white"
-            onclick="toggle_cooldown_timer()"
-          >
-            Abklinkungszeit
-          </div>
-          <div
-            class="line_labels"
-            onclick="toggle_cooldown_timer();send_cooldown_timer();"
-          >
-            <div class="cooldown_demon_line_label">Dämon</div>
-          </div>
-          <div
-            id="cooldownProgress"
-            onclick="toggle_cooldown_timer();send_cooldown_timer();"
-          >
-            <img
-              src="imgs/play.png"
-              id="play_cooldown_button"
-              class="play_button"
-            />
-            <div id="cooldownProgressBar">
-              <div id="cooldownProgressBarInner" class="bar"></div>
-              <div class="ghost_line"></div>
-              <div class="demon_line"></div>
-            </div>
-          </div>
-          <div
-            id="time_left_cooldown"
-            onclick="toggle_cooldown_timer();send_cooldown_timer();"
-          >
-            <span id="minute_cooldown">00</span>:<span id="second_cooldown"
-              >25</span
+          <div class="timer_block">
+            <div
+              class="modifier_smudge_timer yfont white"
+              onclick="toggle_cooldown_timer()"
             >
-          </div>
-          <div
-            class="modifier_note_2"
-            onclick="toggle_cooldown_timer();send_cooldown_timer();"
-          >
-            (Drücke 'H' zum starten/stopapen)
+              Abklinkungszeit
+            </div>
+            <div
+              class="line_labels"
+              onclick="toggle_cooldown_timer();send_cooldown_timer();"
+            >
+              <div class="cooldown_demon_line_label">Dämon</div>
+            </div>
+            <div
+              id="cooldownProgress"
+              onclick="toggle_cooldown_timer();send_cooldown_timer();"
+            >
+              <img
+                src="imgs/play.png"
+                id="play_cooldown_button"
+                class="play_button"
+              />
+              <div id="cooldownProgressBar">
+                <div id="cooldownProgressBarInner" class="bar"></div>
+                <div class="ghost_line"></div>
+                <div class="demon_line"></div>
+              </div>
+            </div>
+            <div
+              id="time_left_cooldown"
+              onclick="toggle_cooldown_timer();send_cooldown_timer();"
+            >
+              <span id="minute_cooldown">00</span>:<span id="second_cooldown"
+                >25</span
+              >
+            </div>
+            <div
+              class="modifier_note_2"
+              onclick="toggle_cooldown_timer();send_cooldown_timer();"
+            >
+              (Drücke 'H' zum starten/stopapen)
+            </div>
           </div>
         </div>
         <div class="modifier_title yfont white">Werkzeuge</div>
@@ -730,6 +679,11 @@
             <div id="checkbox" class="neutral"><span class="icon"></span></div>
             <div class="label">Schnell</div>
           </button>
+          <hr>
+          <button id="LOS" class="tricheck white" name="los" onclick="tristate(this)" value="LOS">
+              <div id="checkbox" class="neutral"><span class="icon"></span></div>
+              <div class="label label-font-s">Std.LOS Schnelligkeit Hoch</div>
+          </button>
         </div>
         <div class="hunt_sanity_title yfont white">Hunt Sanity</div>
         <div class="hunt_sanity">
@@ -795,29 +749,56 @@
 
     <div id="cards" class="cards"><div class="dot-flashing"></div></div>
   </div>
+  <div id="domovoi" style="display: none;">
+    <div id="domovoi-text" style="display: none;">Hello! I am Domo!</div>
+    <img id="domovoi-img" src="imgs/domovoi.png" onmouseenter="domovoi_show_last()" onmouseleave="domovoi_hide_last()" ondblclick="domovoi_print_logs()">
+  </div>
+  <div id="eye" onclick="revive()"><img src="imgs/eye.png"></div>
 
+
+    <script>
+        mquery = window.matchMedia("screen and (pointer: coarse) and (max-device-width: 600px)")
+        if(mquery.matches){
+            document.getElementById("settings_box").style.left = "calc(-60% - 40px)";
+            document.getElementById("event_box").style.left = "calc(-60% - 40px)";
+            document.getElementById("wiki_box").style.left = "calc(-60% - 40px)";
+            document.getElementById("maps_box").style.left = "calc(-60% - 40px)";
+        }
+        else{
+            document.getElementById("settings_box").style.left = "23px";
+            document.getElementById("event_box").style.left = "-127px";
+            document.getElementById("wiki_box").style.left = "-127px";
+            document.getElementById("maps_box").style.left = "-333px";
+        }
+    </script>
     <script src="scripts/metronome.js"></script>
     <script src="scripts/timer.js"></script>
     <script src="wiki/wiki.js"></script>
     <script src="scripts/filter.js"></script>
-    <script src="events/events.js"></script>
-    <script src="scripts/wslink.js"></script>
+        <script src="scripts/wslink.js"></script>
     <script src="scripts/zn.js"></script>
+    <script src="events/events.js"></script>
     <script src="scripts/voice_de.js"></script>
     <script src="scripts/voice_recognition.js"></script>
     <script src="scripts/sparkles.js"></script>
     <script>
         $(window).on('load', function() {
-            loadAllAndConnect()
-            $(function(){$("#wiki-body").load("wiki/wiki.html")});
-            if(getCookie("voice_recognition_on")){
-                start_voice()
-            }
-            setInterval(function(){
-                if(!document.hidden){
-                    try{heartbeat()} catch(Error){console.error("Heartbeat failed!")}
-                }
-                }, 300000)
+          let load_wiki = new Promise((resolve, reject) => {
+                $("#wiki-body").load("wiki/wiki.html")
+                resolve("Ghost data loaded")
+            })
+            Promise.all([load_wiki])
+          .then(x => {
+              loadAllAndConnect()
+              if(getCookie("voice_recognition_on")){
+                  start_voice()
+              }
+              setInterval(function(){
+                  if(!document.hidden){
+                      try{heartbeat()} catch(Error){console.error("Heartbeat failed!")}
+                  }
+              }, 300000)
+          })
         });
     </script>
 

@@ -6,13 +6,16 @@ const all_ghosts = ["Spirit","Gespenst","Phantom","Poltergeist","Banshee","Dschi
 const all_speed = ["Langsam","Normal","Schnell"]
 const all_sanity = ["Spät","Average","Früh","SehrFrüh"]
 
-var state = {"evidence":{},"speed":{"Langsam":0,"Normal":0,"Schnell":0},"sanity":{"Spät":0,"Average":0,"Früh":0,"SehrFrüh":0},"ghosts":{}}
-var user_settings = {"num_evidences":3,"ghost_modifier":2,"volume":50,"offset":0,"sound_type":0,"speed_logic_type":0,"bpm":0}
+var state = {"evidence":{},"speed":{"Langsam":0,"Normal":0,"Schnell":0},"los":-1,"sanity":{"Spät":0,"Average":0,"Früh":0,"SehrFrüh":0},"ghosts":{}}
+var user_settings = {"num_evidences":3,"ghost_modifier":2,"volume":50,"mute_timer_toggle":0,"mute_timer_countdown":0,"offset":0,"sound_type":0,"speed_logic_type":0,"bpm":0,"domo_side":0}
 
 let znid = getCookie("znid")
 
 let hasLink = false;
 let hasDLLink = false;
+let markedDead = false;
+let polled = false;
+let filter_locked = false;
 
 function waitForElementById(id){
     let wait_for_element = () => {
@@ -120,19 +123,32 @@ function dualstate(elem,ignore_link=false,radio=false){
 function tristate(elem,ignore_link=false){
     var checkbox = $(elem).find("#checkbox");
     var label = $(elem).find(".label");
+    var id  = $(elem).attr("id")
 
-    if (checkbox.hasClass("disabled")){
+    if (checkbox.hasClass("disabled") || checkbox.hasClass("block")){
         return;
     }
 
     if (checkbox.hasClass("neutral")){
         checkbox.removeClass("neutral")
-        checkbox.addClass("good")
+        if(id == "LOS" && all_not_los())
+        {
+            checkbox.addClass("bad")
+            label.addClass("strike")
+        }
+        else
+            checkbox.addClass("good")
     }
     else if (checkbox.hasClass("good")){
         checkbox.removeClass("good")
-        checkbox.addClass("bad")
-        label.addClass("strike")
+        if(id == "LOS" && all_los()){
+            checkbox.addClass("neutral")
+        }
+        else{
+            checkbox.addClass("bad")
+            label.addClass("strike")
+        }
+        
     }
     else if (checkbox.hasClass("bad")){
         checkbox.removeClass("bad")
@@ -143,18 +159,50 @@ function tristate(elem,ignore_link=false){
     if(!ignore_link){filter(ignore_link)}
 }
 
-function select(elem,ignore_link=false){
-    if (!$(elem).hasClass("faded")){
+function select(elem,ignore_link=false,internal=false){
+    if ($(elem).hasClass("faded")){
+        fade(elem,ignore_link)
+    }
+
+    var on = $(elem).hasClass("selected")
+    var switch_type = $(elem).hasClass("died")
+
+    for (const [key, value] of Object.entries(state["ghosts"])){ 
+        if(value == 2 || value == -2){
+            state['ghosts'][key] = 1
+            document.getElementById(key).className = "ghost_card"
+        }
+    }
+
+    if (on){
+        $(elem).removeClass(["selected"]);
+        if (!ignore_link || internal) markedDead = false
+        state["ghosts"][$(elem).find(".ghost_name")[0].innerText] = 1;
+    }
+    else{
+        $(elem).removeClass(["died","guessed","permhidden"])
+        $(elem).addClass("selected");
+        if (!ignore_link || internal) markedDead = false
+        state["ghosts"][$(elem).find(".ghost_name")[0].innerText] = 2;
+    }
+    setCookie("state",JSON.stringify(state),1)
+    if(!ignore_link && !switch_type){filter(ignore_link)}
+
+    if(polled && !ignore_link){resetResetButton()}
+}
+
+function guess(elem,ignore_link=false,internal=false){
+    if ($(elem).hasClass("faded")){
         fade(elem,ignore_link)
     }
 
     var on = false
-    if (!ignore_link){
+    if (!ignore_link || internal){
 
-        on = $(elem).hasClass("selected")
+        on = $(elem).hasClass("guessed")
 
         for (const [key, value] of Object.entries(state["ghosts"])){ 
-            if(value == 2){
+            if(value == 3){
                 state['ghosts'][key] = 1
                 document.getElementById(key).className = "ghost_card"
             }
@@ -162,38 +210,88 @@ function select(elem,ignore_link=false){
     }
 
     if (on){
-        $(elem).removeClass("selected");
+        $(elem).removeClass("guessed");
         state["ghosts"][$(elem).find(".ghost_name")[0].innerText] = 1;
     }
     else{
-        $(elem).addClass("selected");
-        state["ghosts"][$(elem).find(".ghost_name")[0].innerText] = 2;
+        $(elem).removeClass(["selected","died","permhidden"])
+        $(elem).addClass("guessed");
+        state["ghosts"][$(elem).find(".ghost_name")[0].innerText] = 3;
     }
     setCookie("state",JSON.stringify(state),1)
     if(!ignore_link){filter(ignore_link)}
+
+}
+
+function died(elem,ignore_link=false,internal=false){
+    if ($(elem).hasClass("faded")){
+        fade(elem,ignore_link)
+    }
+
+    var on = $(elem).hasClass("died")
+    var switch_type = $(elem).hasClass("selected")
+
+    for (const [key, value] of Object.entries(state["ghosts"])){ 
+        if(value == 2 || value == -2){
+            state['ghosts'][key] = 1
+            document.getElementById(key).className = "ghost_card"
+        }
+    }
+
+    if (on){
+        $(elem).removeClass(["selected","died"]);
+        if (!ignore_link || internal) markedDead = false
+        state["ghosts"][$(elem).find(".ghost_name")[0].innerText] = 1;
+    }
+    else{
+        $(elem).removeClass(["selected","guessed","permhidden"])
+        $(elem).addClass("died");
+        if (!ignore_link || internal) markedDead = true
+        state["ghosts"][$(elem).find(".ghost_name")[0].innerText] = -2;
+    }
+    setCookie("state",JSON.stringify(state),1)
+    if(!ignore_link && !switch_type){filter(ignore_link)}
+
+    if(polled && !ignore_link){resetResetButton()}
 }
 
 function fade(elem,ignore_link=false){
-    if(!ignore_link){
-        if (state["ghosts"][$(elem).find(".ghost_name")[0].innerText] != 0){
-            state["ghosts"][$(elem).find(".ghost_name")[0].innerText] = 0;
-        }
-        else{
-            state["ghosts"][$(elem).find(".ghost_name")[0].innerText] = 1;
-        }
+
+    $(elem).removeClass(["selected","guessed","died"])
+
+    if (state["ghosts"][$(elem).find(".ghost_name")[0].innerText] != 0){
+        state["ghosts"][$(elem).find(".ghost_name")[0].innerText] = 0;
+        $(elem).addClass("faded");
+        $(elem).find(".ghost_name").addClass("strike");
     }
-    $(elem).toggleClass("faded");
-    $(elem).removeClass("selected");
-    $(elem).find(".ghost_name").toggleClass("strike");
+    else{
+        state["ghosts"][$(elem).find(".ghost_name")[0].innerText] = 1;
+        $(elem).removeClass("faded");
+        $(elem).find(".ghost_name").removeClass("strike");
+    }
+
     setCookie("state",JSON.stringify(state),1)
-    if (hasLink && !ignore_link){send_state()}
+    if (!ignore_link){filter(ignore_link)}
 }
 
 function remove(elem,ignore_link=false){
     state["ghosts"][$(elem).find(".ghost_name")[0].innerText] = -1;
+    $(elem).find(".ghost_name").removeClass("strike");
+    $(elem).removeClass(["selected","guessed","died","faded"]);
     $(elem).addClass("permhidden");
     setCookie("state",JSON.stringify(state),1)
-    if (hasLink && !ignore_link){send_state()}
+    if (!ignore_link){filter(ignore_link)}
+}
+
+function revive(){
+    for (const [key, value] of Object.entries(state["ghosts"])){ 
+        if(value == -1){
+            state['ghosts'][key] = 0
+            document.getElementById(key).className = "ghost_card faded"
+            $(document.getElementById(key)).find(".ghost_name").addClass("strike");
+        }
+    }
+    if (hasLink){send_state()}
 }
 
 function filter(ignore_link=false){
@@ -203,11 +301,12 @@ function filter(ignore_link=false){
         state["evidence"][all_evidence[i]] = 0
     }
     state["sanity"] = {"Spät":0,"Average":0,"Früh":0,"SehrFrüh":0}
+    state["los"] = -1
 
     // Get values of checkboxes
     var base_speed = 1.7;
+    var ghost_array = [];
     var evi_array = [];
-    
     var not_evi_array = [];
     var spe_array = [];
     var san_array = [];
@@ -221,6 +320,8 @@ function filter(ignore_link=false){
     var sanity_checkboxes = document.querySelectorAll('[name="hunt-sanity"] .good');
     var num_evidences = document.getElementById("num_evidence").value
     var speed_logic_type = document.getElementById("speed_logic_type").checked ? 1 : 0;
+    var speed_has_los = $("#LOS").find("#checkbox").hasClass("good") ? 1 : $("#LOS").find("#checkbox").hasClass("bad") ? 0 : -1;
+    state['los'] = speed_has_los
 
     for (var i = 0; i < good_checkboxes.length; i++) {
         evi_array.push(good_checkboxes[i].parentElement.value);
@@ -251,40 +352,49 @@ function filter(ignore_link=false){
     for (var i = 0; i < all_evidence.length; i++){
         var checkbox = document.getElementById(all_evidence[i]);
         $(checkbox).removeClass("block")
-        $(checkbox).find("#checkbox").removeClass(["block","disabled"])
+        $(checkbox).find("#checkbox").removeClass(["block","disabled","faded"])
         $(checkbox).find(".label").removeClass("disabled-text")
     }
-    // Filter other evidences
+    // Filter other speeds
     for (var i = 0; i < all_speed.length; i++){
         var checkbox = document.getElementById(all_speed[i]);
         $(checkbox).removeClass("block")
-        $(checkbox).find("#checkbox").removeClass(["block","disabled"])
+        $(checkbox).find("#checkbox").removeClass(["block","disabled","faded"])
         $(checkbox).find(".label").removeClass("disabled-text")
     }
-    // Filter other evidences
+    // Filter other sanities
     for (var i = 0; i < all_sanity.length; i++){
         var checkbox = document.getElementById(all_sanity[i]);
         $(checkbox).removeClass("block")
-        $(checkbox).find("#checkbox").removeClass(["block","disabled"])
+        $(checkbox).find("#checkbox").removeClass(["block","disabled","faded"])
         $(checkbox).find(".label").removeClass("disabled-text")
     }
 
     // Get all ghosts
     var ghosts = document.getElementsByClassName("ghost_card")
     var keep_evidence = new Set();
+    var fade_evidence = new Set();
+    var not_fade_evidence = new Set();
     var keep_speed = new Set();
+    var fade_speed = new Set();
+    var not_fade_speed = new Set();
     var keep_sanity = new Set();
+    var fade_sanity = new Set();
+    var not_fade_sanity = new Set();
     var mimic_evi = []
     var mimic_nm_evi = ""
 
     for (var i = 0; i < ghosts.length; i++){
         var keep = true;
+        var loskeep = true;
+        var marked_not = $(ghosts[i]).hasClass("faded") || $(ghosts[i]).hasClass("permhidden")
         var name = ghosts[i].getElementsByClassName("ghost_name")[0].textContent;
         var evi_objects = ghosts[i].getElementsByClassName("ghost_evidence_item")
         var evidence = []
         for (var j = 0; j < evi_objects.length; j++){evidence.push(evi_objects[j].textContent)}
         var nm_evidence = ghosts[i].getElementsByClassName("ghost_nightmare_evidence")[0].textContent;
         var speed = ghosts[i].getElementsByClassName("ghost_speed")[0].textContent;
+        var has_los = parseInt(ghosts[i].getElementsByClassName("ghost_has_los")[0].textContent)
         var sanity = [
             parseInt(ghosts[i].getElementsByClassName("ghost_hunt_low")[0].textContent),
             parseInt(ghosts[i].getElementsByClassName("ghost_hunt_high")[0].textContent)
@@ -299,6 +409,11 @@ function filter(ignore_link=false){
         //Check for monkey paw filter
         if (evidence.includes(monkey_evi)){
             keep = false
+        }
+
+        //Check for los filter
+        if (name != "Der Mimik" && speed_has_los != -1 && speed_has_los != has_los){
+            loskeep = false
         }
         
         // Check for evidences
@@ -464,49 +579,93 @@ function filter(ignore_link=false){
         if (keep){
             if(min_speed < base_speed || name == "Der Mimik"){
                 keep_speed.add('Langsam')
+                if (marked_not)
+                    fade_speed.add('Langsam')
+                else
+                    not_fade_speed.add('Langsam')
             }
             if ((speed_type == "range" && min_speed <= base_speed && base_speed <= max_speed) || name == "Der Mimik"){
                 keep_speed.add('Normal')
+                if (marked_not)
+                    fade_speed.add('Normal')
+                else
+                    not_fade_speed.add('Normal')
             }
             else if(min_speed === base_speed || max_speed === base_speed){
                 keep_speed.add('Normal')
+                if (marked_not)
+                    fade_speed.add('Normal')
+                else
+                    not_fade_speed.add('Normal')
             }
             if(max_speed > base_speed || name == "Der Mimik"){
                 keep_speed.add('Schnell')
+                if (marked_not)
+                    fade_speed.add('Schnell')
+                else
+                    not_fade_speed.add('Schnell')
             }
 
             if(sanity[0] > san_lookup['Spät'] || sanity[1] > san_lookup['Spät']){
                 keep_sanity.add('Spät')
+                if (marked_not)
+                    fade_sanity.add('Spät')
+                else
+                    not_fade_sanity.add('Spät')
             }
             if(sanity[0] > san_lookup['Average'] || sanity[1] > san_lookup['Average']){
                 keep_sanity.add('Average')
+                if (marked_not)
+                    fade_sanity.add('Average')
+                else
+                    not_fade_sanity.add('Average')
             }
             if(sanity[0] > san_lookup['Früh'] || sanity[1] > san_lookup['Früh']){
                 keep_sanity.add('Früh')
+                if (marked_not)
+                    fade_sanity.add('Früh')
+                else
+                    not_fade_sanity.add('Früh')
             }
             if(sanity[0] > san_lookup['SehrFrüh'] || sanity[1] > san_lookup['SehrFrüh']){
                 keep_sanity.add('SehrFrüh')
+                if (marked_not)
+                    fade_sanity.add('SehrFrüh')
+                else
+                    not_fade_sanity.add('SehrFrüh')
             }
         }
 
-        ghosts[i].className = ghosts[i].className.replaceAll(" hidden","");
-        if (!keep){
-            ghosts[i].className += " hidden";
+        $(ghosts[i]).removeClass(["hidden","losfiltered"])
+        if (!keep || !loskeep){
+            $(ghosts[i]).removeClass(["selected","died","guessed"])
+            $(ghosts[i]).addClass("hidden")
+            if (!loskeep && keep){
+                $(ghosts[i]).addClass("losfiltered")
+            }
+            state['ghosts'][name] = $(ghosts[i]).hasClass("faded") ? 0 : 1
         }
         else{
+            ghost_array.push(name)
             for (var e = 0; e < evidence.length; e++){
                 keep_evidence.add(evidence[e])
+                if (marked_not){
+                    fade_evidence.add(evidence[e])
+                }
+                else{
+                    not_fade_evidence.add(evidence[e])
+                }
             }
         }
     }
 
     if (num_evidences == "3"){
-        if (evi_array.length > 0){
+        if (evi_array.length >= 0){
             all_evidence.filter(evi => !keep_evidence.has(evi)).forEach(function(item){
                 if (!not_evi_array.includes(item)){
                     var checkbox = document.getElementById(item);
                     $(checkbox).addClass("block")
-                    $(checkbox).find("#checkbox").removeClass(["good","bad"])
+                    $(checkbox).find("#checkbox").removeClass(["good","bad","faded"])
                     $(checkbox).find("#checkbox").addClass(["neutral","block","disabled"])
                     $(checkbox).find(".label").addClass("disabled-text")
                     $(checkbox).find(".label").removeClass("strike")
@@ -522,7 +681,7 @@ function filter(ignore_link=false){
                 if (!not_evi_array.includes(item)){
                     var checkbox = document.getElementById(item);
                     $(checkbox).addClass("block")
-                    $(checkbox).find("#checkbox").removeClass(["good","bad"])
+                    $(checkbox).find("#checkbox").removeClass(["good","bad","faded"])
                     $(checkbox).find("#checkbox").addClass(["neutral","block","disabled"])
                     $(checkbox).find(".label").addClass("disabled-text")
                     $(checkbox).find(".label").removeClass("strike")
@@ -545,7 +704,7 @@ function filter(ignore_link=false){
                 if (!not_evi_array.includes(item)){
                     var checkbox = document.getElementById(item);
                     $(checkbox).addClass("block")
-                    $(checkbox).find("#checkbox").removeClass(["good","bad"])
+                    $(checkbox).find("#checkbox").removeClass(["good","bad","faded"])
                     $(checkbox).find("#checkbox").addClass(["neutral","block","disabled"])
                     $(checkbox).find(".label").addClass("disabled-text")
                     $(checkbox).find(".label").removeClass("strike")
@@ -557,7 +716,7 @@ function filter(ignore_link=false){
                 if (!not_evi_array.includes(item)){
                     var checkbox = document.getElementById(item);
                     $(checkbox).addClass("block")
-                    $(checkbox).find("#checkbox").removeClass(["good","bad"])
+                    $(checkbox).find("#checkbox").removeClass(["good","bad","faded"])
                     $(checkbox).find("#checkbox").addClass(["neutral","block","disabled"])
                     $(checkbox).find(".label").addClass("disabled-text")
                     $(checkbox).find(".label").removeClass("strike")
@@ -573,7 +732,7 @@ function filter(ignore_link=false){
                 if (!not_evi_array.includes(item)){
                     var checkbox = document.getElementById(item);
                     $(checkbox).addClass("block")
-                    $(checkbox).find("#checkbox").removeClass(["good","bad"])
+                    $(checkbox).find("#checkbox").removeClass(["good","bad","faded"])
                     $(checkbox).find("#checkbox").addClass(["neutral","block","disabled"])
                     $(checkbox).find(".label").addClass("disabled-text")
                     $(checkbox).find(".label").removeClass("strike")
@@ -596,7 +755,7 @@ function filter(ignore_link=false){
                 if (!not_evi_array.includes(item)){
                     var checkbox = document.getElementById(item);
                     $(checkbox).addClass("block")
-                    $(checkbox).find("#checkbox").removeClass(["good","bad"])
+                    $(checkbox).find("#checkbox").removeClass(["good","bad","faded"])
                     $(checkbox).find("#checkbox").addClass(["neutral","block","disabled"])
                     $(checkbox).find(".label").addClass("disabled-text")
                     $(checkbox).find(".label").removeClass("strike")
@@ -608,7 +767,7 @@ function filter(ignore_link=false){
                 if (!not_evi_array.includes(item)){
                     var checkbox = document.getElementById(item);
                     $(checkbox).addClass("block")
-                    $(checkbox).find("#checkbox").removeClass(["good","bad"])
+                    $(checkbox).find("#checkbox").removeClass(["good","bad","faded"])
                     $(checkbox).find("#checkbox").addClass(["neutral","block","disabled"])
                     $(checkbox).find(".label").addClass("disabled-text")
                     $(checkbox).find(".label").removeClass("strike")
@@ -621,19 +780,82 @@ function filter(ignore_link=false){
         all_evidence.filter(evi => evi != 'Geisterorb').forEach(function(item){
             var checkbox = document.getElementById(item);
             $(checkbox).addClass("block")
-            $(checkbox).find("#checkbox").removeClass(["good","bad"])
+            $(checkbox).find("#checkbox").removeClass(["good","bad","faded"])
             $(checkbox).find("#checkbox").addClass(["neutral","block","disabled"])
             $(checkbox).find(".label").addClass("disabled-text")
             $(checkbox).find(".label").removeClass("strike")
         })
     }
 
-    var monkey_checkbox = document.getElementById(monkey_evi);
-    $(monkey_checkbox).addClass("block")
-    $(monkey_checkbox).find("#checkbox").removeClass(["good","bad"])
-    $(monkey_checkbox).find("#checkbox").addClass(["neutral","block","disabled"])
-    $(monkey_checkbox).find(".label").addClass("disabled-text")
-    $(monkey_checkbox).find(".label").removeClass("strike")
+    // If one ghost, remove fade, remove permhidden
+    if(ghost_array.length == 1){
+        if($(`#${ghost_array[0]}`).hasClass("faded")){
+            fade(document.getElementById(ghost_array[0]),ignore_link)
+            return
+        }
+        if($(`#${ghost_array[0]}`).hasClass("permhidden")){
+            $(`#${ghost_array[0]}`).removeClass("permhidden")
+            filter(ignore_link)
+            return
+        }
+    }
+
+    // Loop through and fade evidence that needs to be faded
+    fade_evidence.forEach(function(item){
+        if(
+            fade_evidence.has(item) && 
+            !not_fade_evidence.has(item) &&
+            keep_evidence.has(item) &&
+            !evi_array.includes(item) &&
+            !not_evi_array.includes(item)
+        ){
+            var checkbox = document.getElementById(item);
+            $(checkbox).find("#checkbox").removeClass(["good","bad","faded"])
+            $(checkbox).find("#checkbox").addClass(["neutral","faded"])
+            $(checkbox).find(".label").addClass("disabled-text")
+            $(checkbox).find(".label").removeClass("strike")
+        }
+    })
+
+    fade_speed.forEach(function(item){
+        if(
+            fade_speed.has(item) && 
+            !not_fade_speed.has(item) && 
+            keep_speed.has(item) &&
+            !spe_array.includes(item)
+        ){
+            var checkbox = document.getElementById(item);
+            $(checkbox).find("#checkbox").removeClass(["good","bad","faded"])
+            $(checkbox).find("#checkbox").addClass(["neutral","faded"])
+            $(checkbox).find(".label").addClass("disabled-text")
+            $(checkbox).find(".label").removeClass("strike")
+        }
+    })
+
+    fade_sanity.forEach(function(item){
+        if(
+            fade_sanity.has(item) && 
+            !not_fade_sanity.has(item) && 
+            keep_sanity.has(item) &&
+            !san_array.includes(item)
+        ){
+            var checkbox = document.getElementById(item);
+            $(checkbox).find("#checkbox").removeClass(["good","bad","faded"])
+            $(checkbox).find("#checkbox").addClass(["neutral","faded"])
+            $(checkbox).find(".label").addClass("disabled-text")
+            $(checkbox).find(".label").removeClass("strike")
+        }
+    })
+
+    // Monkey Checkbox checks
+    if(monkey_evi){
+        var monkey_checkbox = document.getElementById(monkey_evi);
+        $(monkey_checkbox).addClass("block")
+        $(monkey_checkbox).find("#checkbox").removeClass(["good","bad","faded"])
+        $(monkey_checkbox).find("#checkbox").addClass(["neutral","disabled"])
+        $(monkey_checkbox).find(".label").addClass("disabled-text")
+        $(monkey_checkbox).find(".label").removeClass("strike")
+    }
 
     if (evi_array.length > 0 || not_evi_array.length > 0){
         all_speed.filter(spe => !keep_speed.has(spe)).forEach(function(item){
@@ -652,9 +874,109 @@ function filter(ignore_link=false){
             $(checkbox).find(".label").addClass("disabled-text")
         })
     }
-    
+
+    autoSelect()
     setCookie("state",JSON.stringify(state),1)
     if (hasLink && !ignore_link){send_state()}
+    if (hasDLLink){send_evidence_link(); send_ghosts_link();}
+}
+
+function all_los(){
+    var ghosts = document.getElementsByClassName("ghost_card")
+    for (var i = 0; i < ghosts.length; i++){
+        var has_los = parseInt(ghosts[i].getElementsByClassName("ghost_has_los")[0].textContent)
+        if(
+            !has_los && (!$(ghosts[i]).hasClass("hidden") || ($(ghosts[i]).hasClass("hidden") && $(ghosts[i]).hasClass("losfiltered")))
+        ){
+            return false
+        }
+    }
+    
+    return true
+}
+
+function all_not_los(){
+    var ghosts = document.getElementsByClassName("ghost_card")
+    for (var i = 0; i < ghosts.length; i++){
+        var has_los = parseInt(ghosts[i].getElementsByClassName("ghost_has_los")[0].textContent)
+        if(
+            has_los && (!$(ghosts[i]).hasClass("hidden") || ($(ghosts[i]).hasClass("hidden") && $(ghosts[i]).hasClass("losfiltered")))
+        ){
+            return false
+        }
+    }
+    
+    return true
+}
+
+function autoSelect(){
+
+    if(hasDLLink){
+        var cur_selected = []
+        var has_selected = false
+        var selected = "";
+        var died = "";
+        var guessed = "";
+        var ghosts = document.getElementsByClassName("ghost_card")
+        for (var i = 0; i < ghosts.length; i++){
+            if($(ghosts[i]).hasClass("selected")){
+                has_selected = true
+                selected = ghosts[i].id;
+            }
+            else if($(ghosts[i]).hasClass("died")){
+                has_selected = true
+                died = ghosts[i].id;
+            }
+            else if($(ghosts[i]).hasClass("guessed")){
+                has_selected = true
+                guessed = ghosts[i].id;
+            }
+            else if(
+                !$(ghosts[i]).hasClass("faded") && 
+                !$(ghosts[i]).hasClass("hidden") && 
+                !$(ghosts[i]).hasClass("permhidden")
+            ){
+                cur_selected.push(i)
+            }
+        }
+
+        if (!has_selected && cur_selected.length == 1){
+            send_ghost_link(ghosts[cur_selected[0]].id,2)
+        }
+        else{
+            if (selected != ""){
+                send_ghost_link(selected,2)
+            }
+            else if(died != ""){
+                send_ghost_link(died,-1)
+            }
+            else if (guessed != ""){
+                send_ghost_link(guessed,1)
+            }
+            else{
+                send_ghost_link("",0)
+            }
+        }
+
+        setCookie("state",JSON.stringify(state),1)
+    }
+    resetResetButton()
+}
+
+function hasSelected(){
+    return true
+}
+
+function checkResetButton(){
+    return
+}
+
+function resetResetButton(){
+    $("#reset").removeClass("reset_pulse")
+    $("#reset").addClass("standard_reset")
+    $("#reset").html(polled ? "Waiting for others..." : "Zurücksetzen")
+    $("#reset").attr("ondblclick",null)
+    $("#reset").attr("onclick","reset()")
 }
 
 function showInfo(){
@@ -675,73 +997,113 @@ function showVoiceInfo(){
 }
 
 function showSettings(){
-    if (document.getElementById("settings_box").style.left == "23px"){
+    mquery = window.matchMedia("screen and (pointer: coarse) and (max-device-width: 600px)")
+    if (document.getElementById("settings_box").style.left == (mquery.matches ? "calc(-60% - 40px)" : "23px")){
         document.getElementById("settings_box").style.boxShadow = "5px 0px 10px 0px #000"
         document.getElementById("settings_tab").style.boxShadow = "-6px 5px 5px -2px #000"
         document.getElementById("event_box").style.zIndex= "1"
         document.getElementById("wiki_box").style.zIndex= "1"
         document.getElementById("maps_box").style.zIndex= "1"
-        document.getElementById("settings_box").style.zIndex = "2"
-        document.getElementById("settings_box").style.left = "251px"
+        document.getElementById("settings_box").style.zIndex = (mquery.matches ? "10" : "2")
+        document.getElementById("settings_box").style.left = (mquery.matches ? "0px" : "245px")
     }
     else {
-        document.getElementById("settings_box").style.left = "23px"
+        document.getElementById("settings_box").style.left = (mquery.matches ? "calc(-60% - 40px)" : "23px")
         document.getElementById("settings_box").style.boxShadow = "none"
         document.getElementById("settings_tab").style.boxShadow = "none"
+        if(mquery.matches){
+            $("#cards").scrollTop($("#cards").scrollTop() - 1);
+            setTimeout(function(){
+                $("#cards").scrollTop($("#cards").scrollTop() + 1);
+            },500);
+        }
     }
 }
 
 function showEvent(){
-    if (document.getElementById("event_box").style.left == "-127px"){
+    mquery = window.matchMedia("screen and (pointer: coarse) and (max-device-width: 600px)")
+    if (document.getElementById("event_box").style.left == (mquery.matches ? "calc(-60% - 40px)" : "-127px")){
         document.getElementById("event_box").style.boxShadow = "5px 0px 10px 0px #000"
         document.getElementById("event_tab").style.boxShadow = "-6px 5px 5px -2px #000"
         document.getElementById("settings_box").style.zIndex = "1"
         document.getElementById("wiki_box").style.zIndex= "1"
         document.getElementById("maps_box").style.zIndex= "1"
-        document.getElementById("event_box").style.zIndex= "2"
-        document.getElementById("event_box").style.left = "251px"
+        document.getElementById("event_box").style.zIndex= (mquery.matches ? "10" : "2")
+        document.getElementById("event_box").style.left = (mquery.matches ? "0px" : "245px")
     }
     else {
-        document.getElementById("event_box").style.left = "-127px"
+        document.getElementById("event_box").style.left = (mquery.matches ? "calc(-60% - 40px)" : "-127px")
         document.getElementById("event_box").style.boxShadow = "none"
         document.getElementById("event_tab").style.boxShadow = "none"
+        if(mquery.matches){
+            $("#cards").scrollTop($("#cards").scrollTop() - 1);
+            setTimeout(function(){
+                $("#cards").scrollTop($("#cards").scrollTop() + 1);
+            },500);
+        }
     }
 }
 
 function showWiki(){
-    if (document.getElementById("wiki_box").style.left == "-127px"){
+    mquery = window.matchMedia("screen and (pointer: coarse) and (max-device-width: 600px)")
+    if (document.getElementById("wiki_box").style.left == (mquery.matches ? "calc(-60% - 40px)" : "-127px")){
         document.getElementById("wiki_box").style.boxShadow = "5px 0px 10px 0px #000"
         document.getElementById("wiki_tab").style.boxShadow = "-6px 5px 5px -2px #000"
         document.getElementById("settings_box").style.zIndex = "1"
         document.getElementById("event_box").style.zIndex= "1"
         document.getElementById("maps_box").style.zIndex= "1"
-        document.getElementById("wiki_box").style.zIndex= "2"
-        document.getElementById("wiki_box").style.left = "251px"
+        document.getElementById("wiki_box").style.zIndex= (mquery.matches ? "10" : "2")
+        document.getElementById("wiki_box").style.left = (mquery.matches ? "0px" : "245px")
     }
     else {
-        document.getElementById("wiki_box").style.left = "-127px"
+        document.getElementById("wiki_box").style.left = (mquery.matches ? "calc(-60% - 40px)" : "-127px")
         document.getElementById("wiki_box").style.boxShadow = "none"
         document.getElementById("wiki_tab").style.boxShadow = "none"
+        if(mquery.matches){
+            $("#cards").scrollTop($("#cards").scrollTop() - 1);
+            setTimeout(function(){
+                $("#cards").scrollTop($("#cards").scrollTop() + 1);
+            },500);
+        }
     }
 }
 
 
-function showMaps(){
-    if (document.getElementById("maps_box").style.left == "-333px"){
+function showMaps(forceOpen = false, forceClose = false){
+    mquery = window.matchMedia("screen and (pointer: coarse) and (max-device-width: 600px)")
+    if(mquery.matches){
+        return
+    }
+
+    if (document.getElementById("maps_box").style.left == "-333px" && !forceClose){
         document.getElementById("maps_box").style.boxShadow = "5px 0px 10px 0px #000"
         document.getElementById("maps_box").style.boxShadow = "-6px 5px 5px -2px #000"
         document.getElementById("settings_box").style.zIndex = "1"
         document.getElementById("event_box").style.zIndex= "1"
         document.getElementById("wiki_box").style.zIndex= "1"
         document.getElementById("maps_box").style.zIndex= "2"
-        document.getElementById("maps_box").style.left = "251px"
-        document.getElementById("maps_box").style.width = "calc(100% - 311px)"
+        document.getElementById("maps_box").style.left = "245px"
+        document.getElementById("maps_box").style.width = "calc(100% - 300px)"
     }
-    else {
+    else if(!forceOpen) {
         document.getElementById("maps_box").style.width = "556px"
         document.getElementById("maps_box").style.left = "-333px"
         document.getElementById("maps_box").style.boxShadow = "none"
         document.getElementById("maps_box").style.boxShadow = "none"
+    }
+}
+
+function showNews(){
+    if (document.getElementById("news_box").style.right == "-366px"){
+        document.getElementById("news_box").style.boxShadow = "-5px 0px 10px 0px #000"
+        document.getElementById("news_tab").style.boxShadow = "-5px 6px 5px -2px #000"
+        document.getElementById("news_box").style.right = "0px"
+        mark_feed_read()
+    }
+    else {
+        document.getElementById("news_box").style.right = "-366px"
+        document.getElementById("news_box").style.boxShadow = "none"
+        document.getElementById("news_box").style.boxShadow = "none"
     }
 }
 
@@ -756,6 +1118,8 @@ function flashMode(){
 
 function saveSettings(reset = false){
     user_settings['volume'] = parseInt(document.getElementById("modifier_volume").value)
+    user_settings['mute_timer_toggle'] = document.getElementById("mute_timer_toggle").checked ? 1 : 0;
+    user_settings['mute_timer_countdown'] = document.getElementById("mute_timer_countdown").checked ? 1 : 0;
     user_settings['offset'] = parseInt(document.getElementById("offset_value").innerText.replace(/\d+(?:-\d+)+/g,""))
     user_settings['ghost_modifier'] = parseInt(document.getElementById("ghost_modifier_speed").value)
     user_settings['num_evidences'] = parseInt(document.getElementById("num_evidence").value)
@@ -763,6 +1127,7 @@ function saveSettings(reset = false){
     user_settings['speed_logic_type'] = document.getElementById("speed_logic_type").checked ? 1 : 0;
     user_settings['bpm_type'] = document.getElementById("bpm_type").checked ? 1 : 0;
     user_settings['bpm'] = reset ? 0 : parseInt(document.getElementById('input_bpm').innerHTML.split("<br>")[0])
+    user_settings['domo_side'] = $("#domovoi").hasClass("domovoi-flip") ? 1 : 0;
     setCookie("settings",JSON.stringify(user_settings),30)
 }
 
@@ -770,21 +1135,36 @@ function loadSettings(){
     try{
         user_settings = JSON.parse(getCookie("settings"))
     } catch (error) {
-        user_settings = {"num_evidences":3,"ghost_modifier":2,"volume":50,"offset":0,"sound_type":0,"speed_logic_type":0,"bpm_type":0,"bpm":0}
+        user_settings = {"num_evidences":3,"ghost_modifier":2,"volume":50,"mute_timer_toggle":0,"mute_timer_countdown":0,"offset":0,"sound_type":0,"speed_logic_type":0,"bpm_type":0,"bpm":0,"domo_side":0}
     }
     document.getElementById("modifier_volume").value = user_settings['volume'] ?? 50
+    document.getElementById("mute_timer_toggle").checked = user_settings['mute_timer_toggle'] ?? 0 == 1
+    document.getElementById("mute_timer_countdown").checked = user_settings['mute_timer_countdown'] ?? 0 == 1
     document.getElementById("offset_value").innerText = ` ${user_settings['offset'] ?? 0}% `
     document.getElementById("ghost_modifier_speed").value = user_settings['ghost_modifier'] ?? 2
     document.getElementById("num_evidence").value = user_settings['num_evidences'] ?? 3
     document.getElementById("modifier_sound_type").checked = user_settings['sound_type'] ?? 0 == 1
     document.getElementById("speed_logic_type").checked = user_settings['speed_logic_type'] ?? 0 == 1
     document.getElementById("bpm_type").checked = user_settings['bpm_type'] ?? 0 == 1
+    if (user_settings['domo_side'] == 1){
+        $("#domovoi").addClass("domovoi-flip")
+        $("#domovoi-img").addClass("domovoi-img-flip")
+    }
 
     if ((user_settings['bpm'] ?? 0) > 0){
         document.getElementById('input_bpm').innerHTML = `${user_settings['bpm']}<br>bpm`
         var cms = document.getElementById("bpm_type").checked ? get_ms(user_settings['bpm']) : get_ms_exact(user_settings['bpm'])
         document.getElementById('input_speed').innerHTML = `${cms}<br>m/s`;
-        mark_ghosts(cms)
+        try{
+            mark_ghosts(cms)
+        } catch(Error){
+            // Om nom nom
+        }
+        try{
+            mark_ghost_details(cms)
+        } catch(Error){
+            // Om nom nom
+        }
     }
 
     setCookie("settings",JSON.stringify(user_settings),30)
@@ -797,8 +1177,10 @@ function loadSettings(){
 }
 
 function resetSettings(){
-    user_settings = {"num_evidences":3,"ghost_modifier":2,"volume":50,"offset":0,"sound_type":0,"speed_logic_type":0,"bpm_type":0,"bpm":0}
+    user_settings = {"num_evidences":3,"ghost_modifier":2,"volume":50,"mute_timer_toggle":0,"mute_timer_countdown":0,"offset":0,"sound_type":0,"speed_logic_type":0,"bpm_type":0,"bpm":0}
     document.getElementById("modifier_volume").value = user_settings['volume']
+    document.getElementById("mute_timer_toggle").checked = user_settings['mute_timer_toggle'] == 1
+    document.getElementById("mute_timer_countdown").checked = user_settings['mute_timer_countdown'] == 1
     document.getElementById("offset_value").innerText = ` ${user_settings['offset']}% `
     document.getElementById("ghost_modifier_speed").value = user_settings['ghost_modifier']
     document.getElementById("num_evidence").value = user_settings['num_evidences']
@@ -845,19 +1227,27 @@ function setSpeedLogicType(){
 }
 
 function reset(skip_continue_session=false){
-    if(!skip_continue_session){continue_session()}
-    state['settings'] = JSON.stringify(user_settings)
-    saveSettings(true)
 
-    fetch("https://zero-network.net/zn/"+znid+"/end",{method:"POST",body:JSON.stringify(state),signal: AbortSignal.timeout(2000)})
-    .then((response) => {
-        setCookie("znid",znid,-1)
-        setCookie("state",JSON.stringify(state),-1)
-        location.reload()
-    })
-    .catch((response) => {
-        setCookie("znid",znid,-1)
-        setCookie("state",JSON.stringify(state),-1)
-        location.reload()
-    });
+    var ready = true
+    if(!skip_continue_session){
+        ready = continue_session()
+    }
+
+    if(ready){
+        send_reset_link()
+        state['settings'] = JSON.stringify(user_settings)
+        saveSettings(true)
+
+        fetch("https://zero-network.net/zn/"+znid+"/end",{method:"POST",body:JSON.stringify(state),signal: AbortSignal.timeout(2000)})
+        .then((response) => {
+            setCookie("znid",znid,-1)
+            setCookie("state",JSON.stringify(state),-1)
+            location.reload()
+        })
+        .catch((response) => {
+            setCookie("znid",znid,-1)
+            setCookie("state",JSON.stringify(state),-1)
+            location.reload()
+        });
+    }
 }
