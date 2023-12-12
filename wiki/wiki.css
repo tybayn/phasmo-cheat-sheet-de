@@ -105,6 +105,8 @@
 
     .wiki_details table td, .wiki_details table th{
         padding: 3px 2px;
+        word-break: break-word;
+        min-width: 60px;
     }
 
     .wiki_details table tbody td {
@@ -302,6 +304,8 @@
 
     .wiki_details table td, .wiki_details table th{
         padding: 3px 2px;
+        word-break: break-word;
+        min-width: 60px;
     }
 
     .wiki_details table tbody td {

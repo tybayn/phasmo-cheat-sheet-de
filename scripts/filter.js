@@ -1128,8 +1128,8 @@ function showLanguage(){
 
 function flashMode(){
     var cur_evidence = parseInt(document.getElementById("num_evidence").value)
-    var mode_text = ["Apocalypse","Insanity","Nightmare","Professional"][cur_evidence]
-    document.getElementById("game_mode").innerHTML = `${mode_text}<span>(${cur_evidence} evidence)</span>`
+    var mode_text = ["Apokalypse","Wahnsinn","Alptraum","Profi"][cur_evidence]
+    document.getElementById("game_mode").innerHTML = `${mode_text}<span>(${cur_evidence} Beweis)</span>`
     $("#game_mode").fadeIn(500,function () {
         $("#game_mode").delay(500).fadeOut(500);
       });

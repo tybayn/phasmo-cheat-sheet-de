@@ -871,14 +871,15 @@ hr {
     rotate: 320deg;
   }
 
-    .modifier_note{
-        color: #ffffffa0;
-        font-size: 10px;
-        padding-top: 10px;
-        margin: 0px 10px;
-        display: flex;
-        align-items: center;
-    }
+  .modifier_note{
+    color: #ffffffa0;
+    font-size: 11px;
+    padding-top: 10px;
+    margin: 0px 10px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
 
   .modifier_note_2 {
     color: #ffffffa0;
@@ -970,7 +971,7 @@ hr {
     grid-row: 3;
     font-size: 26px;
     z-index: 2;
-    margin-top: 8px;
+    margin-top: 10px;
   }
 
   .speed {
@@ -992,9 +993,9 @@ hr {
   .hunt_sanity_title {
     grid-column: 1;
     grid-row: 5;
-    font-size: 26px;
+    font-size: 20px;
     z-index: 2;
-    margin-top: 8px;
+    margin-top: 15px;
   }
 
   .hunt_sanity {
@@ -1380,7 +1381,7 @@ hr {
   }
 
   .modifier_volume {
-    font-size: 18px;
+    font-size: 14px;
     letter-spacing: 1px;
     padding: 10px 10px 0px 10px;
     position: relative;

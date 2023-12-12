@@ -110,7 +110,7 @@ function parse_speech(vtext){
         domovoi_msg += "marked ghost speed as "
 
         vtext = vtext.replace('three','3')
-        vtext = vtext.replace('two','2').replace('to','2')
+        vtext = vtext.replace('two','2')
         vtext = vtext.replace('one','1')
         vtext = vtext.replace('zero','0')
 
