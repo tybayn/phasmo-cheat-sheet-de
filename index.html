@@ -377,8 +377,8 @@
         Desktop Link
         <a
           class="download"
-          href="assets/ZN-Desktop-Link(v1.1).exe"
-          download="ZN-Desktop-Link(v1.1).exe"
+          href="assets/ZN-Desktop-Link-Installer-v2.1.4.msi"
+          download="ZN-Desktop-Link-Installer-v2.1.4.msi"
           ><img class="download_icon" src="imgs/download.png"
         /></a>
       </div>
@@ -480,6 +480,22 @@
       <button class="maps_button" id="woodwind" onclick="changeMap(this,'woodwind.png')"><div class="map_size s">S</div>Camp Woodwind</button>
     </div>
   </div>
+
+  <div id="lang_blackout" style="display: none;"></div>
+    <div id="language_box" style="right:-176px;">
+        <div id="language_tab" onclick="showLanguage();">
+            <img src="imgs/langauge.png" width="24px" id="feed_icon_img"/>
+        </div>
+        <span class="icon" onclick="showLanguage()"></span>
+        <div class="settings_title yfont white">
+            <select name="language" id="language" class="language" onchange="loadLanguage();">
+                <option value="en" selected>English 🇺🇸 / 🇬🇧 / 🇦🇺</option>
+                <option value="fr">French 🇫🇷</option>
+                <option value="ru">Russian 🇷🇺</option>
+                <option value="tr">Turkish 🇹🇷</option>
+            </select>
+        </div>
+    </div>
 
   <div class="data">
     <div class="menu">

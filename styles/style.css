@@ -308,6 +308,50 @@ hr {
     border-radius: 0px 0px 5px 5px;
   }
 
+  #lang_blackout{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    left: 0;
+    top: 0;
+    z-index: 10;
+}
+
+#language_box{
+    position: fixed;
+    top: 5px;
+    z-index: 1;
+    width: 160px;
+    height: 24px;
+    background-color: #313248;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    align-items: flex-start;
+    color: #fff;
+    padding: 5px 8px 5px 8px;
+    font-size: 14px;
+    transition: right 0.5s ease;
+}
+
+#language_tab{
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    text-align: center;
+    top: 0px;
+    left: -35px;
+    background-color: #313248;
+    padding: 5px;
+    cursor: pointer;
+    border-style: solid;
+    border-color: #ccc;
+    border-width: 1px 0px 1px 1px;
+    border-radius: 5px 0px 0px 5px;
+}
+
   .settings_title {
     font-size: 26px;
     margin: 2px 0px 10px 0px;
@@ -318,7 +362,8 @@ hr {
   #event_box .icon,
   #wiki_box .icon,
   #maps_box .icon,
-  #news_box .icon {
+  #news_box .icon,
+  #language_box .icon {
     position: absolute;
     top: 5px;
     right: 4px;
@@ -335,7 +380,8 @@ hr {
   #event_box .icon:before,
   #wiki_box .icon:before,
   #maps_box .icon:before,
-  #news_box .icon:before {
+  #news_box .icon:before,
+  #language_box .icon:before {
     content: "";
     position: absolute;
     width: 3px;
@@ -350,7 +396,8 @@ hr {
   #event_box .icon:after,
   #wiki_box .icon:after,
   #maps_box .icon:after,
-  #news_box .icon:after {
+  #news_box .icon:after,
+  #language_box .icon:after {
     content: "";
     position: absolute;
     width: 15px;
@@ -1586,9 +1633,9 @@ hr {
   }
   .ghost_card {
     display: grid;
-    width: 530px;
+    width: 490px;
     border-radius: 5px;
-    grid-template-columns: 265px 265px;
+    grid-template-columns: 245px 245px;
     grid-template-rows: 45px 35px 45px;
     color: white;
     background-color: #313248;
@@ -1613,7 +1660,7 @@ hr {
   .ghost_evidence {
     grid-column: 1;
     grid-row: 2;
-    font-size: 10px;
+    font-size: 9px;
     text-align: center;
     display: flex;
     justify-content: space-around;
@@ -1623,7 +1670,7 @@ hr {
   .ghost_evidence_item {
     height: fit-content;
     width: min-content;
-    min-width: 75px;
+    min-width: 65px;
     padding: 2px 3px;
     margin: -2px;
     display: flex;
