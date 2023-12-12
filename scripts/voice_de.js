@@ -3,15 +3,15 @@ const ZNLANG = {
     },
     "ghosts":{
         "spirit":[],
-        "wraith":[],
+        "gespenst":[],
         "phantom":[],
         "poltergeist":[],
         "banshee":[],
-        "jinn":[],
+        "dschinn":[],
         "mare":[],
         "revenant":[],
         "shade":[],
-        "demon":[],
+        "dämon":[],
         "yurei":[],
         "oni":[],
         "yokai":[],
@@ -19,32 +19,32 @@ const ZNLANG = {
         "goryo":[],
         "myling":[],
         "onryo":[],
-        "the twins":["twins"],
+        "die zwillinge":["zwillinge"],
         "raiju":[],
         "obake":[],
-        "the mimic":["mimic"],
+        "der mimik":["mimik"],
         "moroi":[],
         "deogen":[],
         "thaye":[]
     },
     "evidence":{
-        "emf 5":[],
-        "dots":[],
-        "ultraviolet":[],
-        "freezing":[],
-        "ghost orbs":[],
-        "writing":[],
-        "spirit box":[]
+        "emf level 5":[],
+        "d.o.t.s projektor":[],
+        "ultraviolett":[],
+        "gefriertemperaturen":[],
+        "geisterorb":[],
+        "geisterbuch":[],
+        "geisterbox":[]
     },
     "speed":{
-        "slow":[],
+        "langsam":[],
         "normal":[],
-        "fast":[]
+        "schnell":[]
     },
     "sanity":{
-        "late":[],
+        "spät":[],
         "average":["normal"],
-        "early":[],
-        "very early":[]
+        "früh":[],
+        "sehr früh":[]
     }
 }

@@ -24,8 +24,8 @@ behavior_titles = {
     "<div class='dtitle'><i>Verhalten</i><div class='ddash'></div></div>",
   "<Hunt Sanity>":
     "<div class='dtitle'><i>Hunt Sanity</i><div class='ddash'></div></div>",
-  "<Hunt Speed>":
-    "<div class='dtitle'><i>Hunt speed</i><div class='ddash'></div></div>",
+  "<Geschwindigkeit>":
+    "<div class='dtitle'><i>Geschwindigkeit</i><div class='ddash'></div></div>",
   "<Beweis>":
     "<div class='dtitle'><i>Beweis</i><div class='ddash'></div></div>",
 };
@@ -131,14 +131,16 @@ class Ghost {
                 }</div>
                 <div class="ghost_hunt_high">${data.hunt_sanity_high}</div>
                 <div class="ghost_hunt_low">${data.hunt_sanity_low}</div>
+                <div class="ghost_has_los">${data.has_los}</div>
                 
                 <div class="ghost_behavior">
                    ${this.behavior(data.behavior)}
                 </div>
                 <div class="ghost_clear">
-                    <span class="check" onclick="select(this.parentElement.parentElement)"></span>
-                    <span class="space"></span>
-                    <span class="icon" onclick="fade(this.parentElement.parentElement)" ondblclick="remove(this.parentElement.parentElement)"></span>
+                    <img class="card_icon card_icon_select" src="imgs/select.png" onclick="select(this.parentElement.parentElement)">
+                    <img class="card_icon card_icon_guess" style="display:none;" src="imgs/guess.png" onclick="guess(this.parentElement.parentElement)">
+                    <img class="card_icon card_icon_not" src="imgs/not.png" onclick="fade(this.parentElement.parentElement)" ondblclick="remove(this.parentElement.parentElement)">
+                    <img class="card_icon card_icon_died" style="display:none;" src="imgs/died.png" onclick="died(this.parentElement.parentElement)">
                 </div>
             </div>
         `;
