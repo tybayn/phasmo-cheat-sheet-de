@@ -56,14 +56,14 @@ function domovoi_heard(message){
     $("#domovoi-img").attr("src","imgs/domovoi-heard.png")
     setTimeout(function() {
         $("#domovoi-text").hide()
-        $("#domovoi-img").attr("src",markedDead ? "imgs/domovoi-died.png" : "imgs/domovoi.png")
+        $("#domovoi-img").attr("src",markierteDead ? "imgs/domovoi-died.png" : "imgs/domovoi.png")
     },2000)
 }
 
 function domovoi_not_heard(){
     $("#domovoi-img").attr("src",user_settings['domo_side'] == 1 ? "imgs/domovoi-guess-flip.png" : "imgs/domovoi-guess.png")
     setTimeout(function() {
-        $("#domovoi-img").attr("src",markedDead ? "imgs/domovoi-died.png" : "imgs/domovoi.png")
+        $("#domovoi-img").attr("src",markierteDead ? "imgs/domovoi-died.png" : "imgs/domovoi.png")
     },3000)
 }
 
@@ -100,19 +100,19 @@ function parse_speech(vtext){
 
     running_log[cur_idx]["Cleaned"] = vtext
 
-    if(vtext.startsWith('ghost speed')){
+    if(vtext.startsWith('geistergeschwindigkeit')){
         document.getElementById("voice_recognition_status").className = null
         document.getElementById("voice_recognition_status").style.backgroundImage = "url(imgs/mic-recognized.png)"
-        console.log("Recognized ghost speed command")
-        running_log[cur_idx]["Type"] = "ghost speed"
+        console.log("Recognized geistergeschwindigkeit command")
+        running_log[cur_idx]["Type"] = "geistergeschwindigkeit"
         console.log(`Heard '${vtext}'`)
-        vtext = vtext.replace('ghost speed', "").trim()
-        domovoi_msg += "marked ghost speed as "
+        vtext = vtext.replace('geistergeschwindigkeit', "").trim()
+        domovoi_msg += "markierte geistergeschwindigkeit als "
 
-        vtext = vtext.replace('three','3')
-        vtext = vtext.replace('two','2')
-        vtext = vtext.replace('one','1')
-        vtext = vtext.replace('zero','0')
+        vtext = vtext.replace('drei','3')
+        vtext = vtext.replace('zwei','2')
+        vtext = vtext.replace('eins','1')
+        vtext = vtext.replace('null','0')
 
         var smallest_num = '150'
         var smallest_val = 100
@@ -142,30 +142,30 @@ function parse_speech(vtext){
         running_log[cur_idx]["Domo"] = domovoi_msg
         reset_voice_status()
     }
-    else if(vtext.startsWith('ghost')){
+    else if(vtext.startsWith('geist')){
         document.getElementById("voice_recognition_status").className = null
         document.getElementById("voice_recognition_status").style.backgroundImage = "url(imgs/mic-recognized.png)"
-        console.log("Recognized ghost command")
-        running_log[cur_idx]["Type"] = "ghost"
+        console.log("Recognized geist command")
+        running_log[cur_idx]["Type"] = "geist"
         console.log(`Heard '${vtext}'`)
-        vtext = vtext.replace('ghost', "").trim()
-        domovoi_msg += "marked "
+        vtext = vtext.replace('geist', "").trim()
+        domovoi_msg += "markierte "
 
         var smallest_ghost = "Spirit"
         var smallest_val = 100
         var vvalue = 0
-        if(vtext.startsWith("not ") || vtext.startsWith("knot ")){
-            vtext = vtext.replace('not ', "").replace('knot ', "").trim()
+        if(vtext.startsWith("nicht ")){
+            vtext = vtext.replace('nicht ', "").trim()
             vvalue = 0
-            domovoi_msg += "not "
+            domovoi_msg += "nicht "
         }
-        else if(vtext.startsWith("undo ") || vtext.startsWith("undue ") || vtext.startsWith("on do ") || vtext.startsWith("on due ") || vtext.startsWith("clear")){
-            vtext = vtext.replace('undo ', "").replace('undue ', "").replace("on do ","").replace("on due ","").replace("clear ","").trim()
+        else if(vtext.startsWith("rückgängig machen ") || vtext.startsWith("löschen")){
+            vtext = vtext.replace('rückgängig machen ', "").replace("löschen ","").trim()
             vvalue = 0
-            domovoi_msg = "cleared "
+            domovoi_msg = "gelöscht "
         }
-        else if(vtext.startsWith("guess ")){
-            vtext = vtext.replace('guess ', "").trim()
+        else if(vtext.startsWith("erraten ")){
+            vtext = vtext.replace('erraten ', "").trim()
             vvalue = 3
             domovoi_msg = "guessed "
         }
@@ -247,20 +247,20 @@ function parse_speech(vtext){
         running_log[cur_idx]["Type"] = "evidence"
         console.log(`Heard '${vtext}'`)
         vtext = vtext.replace('evidence', "").trim()
-        domovoi_msg += "marked evidence as "
+        domovoi_msg += "markierte evidence als "
 
         var smallest_evidence = "emf 5"
         var smallest_val = 100
         var vvalue = 1
-        if(vtext.startsWith("not ") || vtext.startsWith("knot ")){
-            vtext = vtext.replace('not ', "").replace('knot ', "").trim()
+        if(vtext.startsWith("nicht ")){
+            vtext = vtext.replace('nicht ', "").trim()
             vvalue = -1
-            domovoi_msg += "not "
+            domovoi_msg += "nicht "
         }
-        else if(vtext.startsWith("undo ") || vtext.startsWith("undue ") || vtext.startsWith("on do ") || vtext.startsWith("on due ") || vtext.startsWith("clear")){
-            vtext = vtext.replace('undo ', "").replace('undue ', "").replace("on do ","").replace("on due ","").replace("clear ","").trim()
+        else if(vtext.startsWith("rückgängig machen ") || vtext.startsWith("löschen")){
+            vtext = vtext.replace('rückgängig machen ', "").replace("löschen ","").trim()
             vvalue = 0
-            domovoi_msg = "cleared "
+            domovoi_msg = "gelöscht "
         }
 
         // Common replacements for evidence names
@@ -307,7 +307,7 @@ function parse_speech(vtext){
         running_log[cur_idx]["Type"] = "monkey paw"
         console.log(`Heard '${vtext}'`)
         vtext = vtext.replace('monkey paw', "").trim()
-        domovoi_msg += "marked "
+        domovoi_msg += "markierte "
 
         var smallest_evidence = "emf 5"
         var smallest_val = 100
@@ -332,7 +332,7 @@ function parse_speech(vtext){
         }
         console.log(`${prevtext} >> ${vtext} >> ${smallest_evidence}`)
         running_log[cur_idx]["Debug"] = `${prevtext} >> ${vtext} >> ${smallest_evidence}`
-        domovoi_msg += `${smallest_evidence} as monkey paw evidence`
+        domovoi_msg += `${smallest_evidence} als monkey paw evidence`
 
         monkeyPawFilter($(document.getElementById(smallest_evidence)).parent().find(".monkey-paw-select"))
 
@@ -349,35 +349,35 @@ function parse_speech(vtext){
         running_log[cur_idx]["Type"] = "speed"
         console.log(`Heard '${vtext}'`)
         vtext = vtext.replace('speed', "").replace('feed', "").trim()
-        domovoi_msg += "marked speed "
+        domovoi_msg += "markierte speed "
 
         var smallest_speed = "normal"
         var smallest_val = 100
         var vvalue = 1
-        if(vtext.startsWith("not ") || vtext.startsWith("knot ")){
-            vtext = vtext.replace('knot ', "").replace('not ', "").trim()
+        if(vtext.startsWith("nicht ")){
+            vtext = vtext.replace('nicht ', "").trim()
             vvalue = 0
-            domovoi_msg += "not "
+            domovoi_msg += "nicht "
         }
-        else if(vtext.startsWith("undo ") || vtext.startsWith("undue ") || vtext.startsWith("on do ") || vtext.startsWith("on due ") || vtext.startsWith("clear")){
-            vtext = vtext.replace('undo ', "").replace('undue ', "").replace("on do ","").replace("on due ","").replace("clear ","").trim()
+        else if(vtext.startsWith("rückgängig machen ") || vtext.startsWith("löschen")){
+            vtext = vtext.replace('rückgängig machen ', "").replace("löschen ","").trim()
             vvalue = -1
-            domovoi_msg = "cleared "
+            domovoi_msg = "gelöscht "
         }
 
-        vtext = vtext.replace("has ","")
-        if (vtext.startsWith("line of sight")){
-            console.log(`${vtext} >> Line of Sight`)
-            running_log[cur_idx]["Debug"] = `${vtext} >> Line of Sight`
+        vtext = vtext.replace("hat ","")
+        if (vtext.startsWith("sichtlinie")){
+            console.log(`${vtext} >> sichtlinie`)
+            running_log[cur_idx]["Debug"] = `${vtext} >> sichtlinie`
 
             if((vvalue==0 && all_los()) || (vvalue==1 && all_not_los())){
-                domovoi_msg = `${vvalue == 0 ? 'All' : 'No'} current ghosts have LOS!`
+                domovoi_msg = `${vvalue == 0 ? 'Alle aktuellen Geister haben Sichtlinie!' : 'Derzeit haben keine Geister Sichtlinie'}`
             }
             else{
                 while (!$(document.getElementById("LOS").querySelector("#checkbox")).hasClass(["neutral","bad","good"][vvalue+1])){
                     tristate(document.getElementById("LOS"));
                 }
-                domovoi_msg = `${vvalue == -1 ? 'cleared' : vvalue == 0 ? 'marked not' : 'marked'} line of sight`
+                domovoi_msg = `${vvalue == -1 ? 'gelöscht' : vvalue == 0 ? 'markierte nicht' : 'markierte'} sichtlinie`
             }
         }
         else{
@@ -428,20 +428,20 @@ function parse_speech(vtext){
         running_log[cur_idx]["Type"] = "sanity"
         console.log(`Heard '${vtext}'`)
         vtext = vtext.replace('hunt sanity', "").replace('sanity', "").trim()
-        domovoi_msg += "marked hunt sanity "
+        domovoi_msg += "markierte hunt sanity "
 
         var smallest_sanity = "Late"
         var smallest_val = 100
         var vvalue = 1
-        if(vtext.startsWith("not ") || vtext.startsWith("knot ")){
-            vtext = vtext.replace('not ', "").replace('knot ', "").trim()
+        if(vtext.startsWith("nicht ")){
+            vtext = vtext.replace('nicht ', "").trim()
             vvalue = 0
-            domovoi_msg += "not "
+            domovoi_msg += "nicht "
         }
-        else if(vtext.startsWith("undo ") || vtext.startsWith("undue ") || vtext.startsWith("on do ") || vtext.startsWith("on due ") || vtext.startsWith("clear")){
-            vtext = vtext.replace('undo ', "").replace('undue ', "").replace("on do ","").replace("on due ","").replace("clear ","").trim()
+        else if(vtext.startsWith("rückgängig machen ") || vtext.startsWith("löschen")){
+            vtext = vtext.replace('rückgängig machen ', "").replace("löschen ","").trim()
             vvalue = 0
-            domovoi_msg = "cleared "
+            domovoi_msg = "gelöscht "
         }
 
         // Common replacements for sanity
@@ -534,10 +534,10 @@ function parse_speech(vtext){
         vtext = vtext.replace('number of evidence', "").replace('difficulty', "").trim()
         domovoi_msg += "set # of evidence to "
 
-        vtext = vtext.replace('three','3')
-        vtext = vtext.replace('two','2').replace('to','2')
-        vtext = vtext.replace('one','1')
-        vtext = vtext.replace('zero','0')
+        vtext = vtext.replace('drei','3')
+        vtext = vtext.replace('zwei','2').replace('to','2')
+        vtext = vtext.replace('eins','1')
+        vtext = vtext.replace('null','0')
 
         var smallest_num = 3
         var smallest_val = 100
@@ -672,8 +672,8 @@ function parse_speech(vtext){
         stop_voice()
     }
     else if(
-        vtext.startsWith("hello domo") || vtext.startsWith("hello domovoi")|| vtext.startsWith("hello zero") ||
-        vtext.startsWith("hi domo") || vtext.startsWith("hi domovoi")|| vtext.startsWith("hi zero")
+        vtext.startsWith("hello domo") || vtext.startsWith("hello domovoi")||
+        vtext.startsWith("hi domo") || vtext.startsWith("hi domovoi")
     ){
         if(Object.keys(discord_user).length > 0){
             domovoi_heard(`hello ${discord_user['username']}!`)
@@ -685,8 +685,8 @@ function parse_speech(vtext){
         reset_voice_status()
     }
     else if(
-        vtext.startsWith("move domo") || vtext.startsWith("move domovoi")|| vtext.startsWith("move zero") ||
-        vtext.startsWith("domo move") || vtext.startsWith("domovoi move")|| vtext.startsWith("zero move")
+        vtext.startsWith("move domo") || vtext.startsWith("move domovoi")||
+        vtext.startsWith("domo move") || vtext.startsWith("domovoi move")
     ){
         if (user_settings['domo_side'] == 0){
             $("#domovoi").addClass("domovoi-flip")
@@ -776,7 +776,7 @@ if (("webkitSpeechRecognition" in window || "speechRecognition" in window) && !n
     document.getElementById("stop_voice").disabled = true
     document.getElementById("start_voice").style.display = "none"
     document.getElementById("stop_voice").style.display = "none"
-    document.getElementById("voice_recognition_note").innerHTML = "Browser not supported"
+    document.getElementById("voice_recognition_note").innerHTML = "Browser wird nicht unterstützt"
     console.log("Speech Recognition Not Available");
   }
 
