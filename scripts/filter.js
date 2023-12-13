@@ -5,6 +5,7 @@ const all_evidence = ["D.O.T.S Projektor","EMF Level 5","Ultraviolett","Gefriert
 const all_ghosts = ["Spirit","Gespenst","Phantom","Poltergeist","Banshee","Dschinn","Mare","Revenant","Shade","Dämon","Yurei","Oni","Yokai","Hantu","Goryo","Myling","Onryo","Die Zwillinge","Raiju","Obake","Der Mimik","Moroi","Deogen","Thaye"]
 const all_speed = ["Langsam","Normal","Schnell"]
 const all_sanity = ["Spät","Average","Früh","SehrFrüh"]
+let bpm_list = []
 
 var state = {"evidence":{},"speed":{"Langsam":0,"Normal":0,"Schnell":0},"los":-1,"sanity":{"Spät":0,"Average":0,"Früh":0,"SehrFrüh":0},"ghosts":{}}
 var user_settings = {"num_evidences":3,"ghost_modifier":2,"volume":50,"mute_timer_toggle":0,"mute_timer_countdown":0,"offset":0,"sound_type":0,"speed_logic_type":0,"bpm":0,"domo_side":0}
