@@ -56,14 +56,14 @@ function domovoi_heard(message){
     $("#domovoi-img").attr("src","imgs/domovoi-heard.png")
     setTimeout(function() {
         $("#domovoi-text").hide()
-        $("#domovoi-img").attr("src",markierteDead ? "imgs/domovoi-died.png" : "imgs/domovoi.png")
+        $("#domovoi-img").attr("src",markedDead ? "imgs/domovoi-died.png" : "imgs/domovoi.png")
     },2000)
 }
 
 function domovoi_not_heard(){
     $("#domovoi-img").attr("src",user_settings['domo_side'] == 1 ? "imgs/domovoi-guess-flip.png" : "imgs/domovoi-guess.png")
     setTimeout(function() {
-        $("#domovoi-img").attr("src",markierteDead ? "imgs/domovoi-died.png" : "imgs/domovoi.png")
+        $("#domovoi-img").attr("src",markedDead ? "imgs/domovoi-died.png" : "imgs/domovoi.png")
     },3000)
 }
 
@@ -159,35 +159,40 @@ function parse_speech(vtext){
             vvalue = 0
             domovoi_msg += "nicht "
         }
-        else if(vtext.startsWith("rückgängig machen ") || vtext.startsWith("löschen")){
-            vtext = vtext.replace('rückgängig machen ', "").replace("löschen ","").trim()
+        else if(vtext.startsWith("klar ") || vtext.startsWith("löschen")){
+            vtext = vtext.replace('klar ', "").replace("löschen ","").trim()
             vvalue = 0
             domovoi_msg = "gelöscht "
         }
         else if(vtext.startsWith("erraten ")){
             vtext = vtext.replace('erraten ', "").trim()
             vvalue = 3
-            domovoi_msg = "guessed "
+            domovoi_msg = "erratener "
         }
-        else if(vtext.startsWith("select ") || vtext.startsWith("deselect ")){
-            vtext = vtext.replace('deselect ', "").replace('select ', "").trim()
+        else if(vtext.startsWith("wählen ")){
+            vtext = vtext.replace('wählen ', "").trim()
             vvalue = 2
-            domovoi_msg = "selected "
+            domovoi_msg = "ausgewählter "
         }
-        else if(vtext.startsWith("hide ") || vtext.startsWith("remove ")){
-            vtext = vtext.replace('hide ', "").replace('remove ', "").trim()
+        else if(vtext.startsWith("abwählen ")){
+            vtext = vtext.replace('abwählen ', "").trim()
+            vvalue = 2
+            domovoi_msg = "abgewählter "
+        }
+        else if(vtext.startsWith("verbergen ") || vtext.startsWith("entfernen ")){
+            vtext = vtext.replace('verbergen ', "").replace('entfernen ', "").trim()
             vvalue = -1
-            domovoi_msg = "removed "
+            domovoi_msg = "entfernt "
         }
-        else if(vtext.startsWith("dead ") || vtext.startsWith("killed by ") || vtext.startsWith("killed ")){
-            vtext = vtext.replace('dead ', "").replace('killed by ', "").replace('killed ', "").trim()
+        else if(vtext.endsWith(" getötet")){
+            vtext = vtext.replace('von einem ', "").replace(' getötet', "").trim()
             vvalue = -2
-            domovoi_msg = "killed by "
+            domovoi_msg = "von einem "
         }
-        else if(vtext.startsWith("show ") || vtext.startsWith("data ") || vtext.startsWith("info ")){
-            vtext = vtext.replace('show ', "").replace('data ', "").replace('info ', "").trim()
+        else if(vtext.startsWith("erschau ")){
+            vtext = vtext.replace('erschau ', "").trim()
             vvalue = -10
-            domovoi_msg = "showing info for "
+            domovoi_msg = "info für "
         }
 
         // Common fixes to ghosts
@@ -208,6 +213,13 @@ function parse_speech(vtext){
         console.log(`${prevtext} >> ${vtext} >> ${smallest_ghost}`)
         running_log[cur_idx]["Debug"] = `${prevtext} >> ${vtext} >> ${smallest_ghost}`
         domovoi_msg += smallest_ghost
+
+        if (vvalue == -2){
+            domovoi_msg += " getötet"
+        }
+        else if(vvalue == -10){
+            domovoi_msg += " anzeigen"
+        }
 
         if (vvalue == 0){
             fade(document.getElementById(smallest_ghost));
@@ -240,14 +252,14 @@ function parse_speech(vtext){
         running_log[cur_idx]["Domo"] = domovoi_msg
         reset_voice_status()
     }
-    else if(vtext.startsWith('evidence')){
+    else if(vtext.startsWith('beweis')){
         document.getElementById("voice_recognition_status").className = null
         document.getElementById("voice_recognition_status").style.backgroundImage = "url(imgs/mic-recognized.png)"
         console.log("Recognized evidence command")
-        running_log[cur_idx]["Type"] = "evidence"
+        running_log[cur_idx]["Type"] = "beweis"
         console.log(`Heard '${vtext}'`)
-        vtext = vtext.replace('evidence', "").trim()
-        domovoi_msg += "markierte evidence als "
+        vtext = vtext.replace('beweis', "").trim()
+        domovoi_msg += "beweis als "
 
         var smallest_evidence = "emf 5"
         var smallest_val = 100
@@ -257,21 +269,19 @@ function parse_speech(vtext){
             vvalue = -1
             domovoi_msg += "nicht "
         }
-        else if(vtext.startsWith("rückgängig machen ") || vtext.startsWith("löschen")){
-            vtext = vtext.replace('rückgängig machen ', "").replace("löschen ","").trim()
+        else if(vtext.startsWith("klar ") || vtext.startsWith("löschen")){
+            vtext = vtext.replace('klar ', "").replace("löschen ","").trim()
             vvalue = 0
-            domovoi_msg = "gelöscht "
+            domovoi_msg = "gelöschte "
         }
 
         // Common replacements for evidence names
         var prevtext = vtext;
-        vtext = vtext.replace("ghost ","").trim()
         for (const [key, value] of Object.entries(ZNLANG['evidence'])) {
             for (var i = 0; i < value.length; i++) {
                 if(vtext.startsWith(value[i])){vtext = key}
             }
         }
-
 
         for(var i = 0; i < all_evidence.length; i++){
             var leven_val = levenshtein_distance(all_evidence[i].toLowerCase(),vtext)
@@ -284,13 +294,17 @@ function parse_speech(vtext){
         running_log[cur_idx]["Debug"] = `${prevtext} >> ${vtext} >> ${smallest_evidence}`
         domovoi_msg += smallest_evidence
 
+        if (vvalue == -1){
+            domovoi_msg += " markiert"
+        }
+
         if(!$(document.getElementById(smallest_evidence).querySelector("#checkbox")).hasClass("block")){
             while (vvalue != {"good":1,"bad":-1,"neutral":0}[document.getElementById(smallest_evidence).querySelector("#checkbox").classList[0]]){
                 tristate(document.getElementById(smallest_evidence));
             }
         }
         else{
-            domovoi_msg = `Evidence ${smallest_evidence} is locked!`
+            domovoi_msg = `Beweise ${smallest_evidence} sind gesperrt!`
         }
         
 
@@ -300,28 +314,26 @@ function parse_speech(vtext){
         reset_voice_status()
 
     }
-    else if(vtext.startsWith('monkey paw')){
+    else if(vtext.startsWith('affenpfote')){
         document.getElementById("voice_recognition_status").className = null
         document.getElementById("voice_recognition_status").style.backgroundImage = "url(imgs/mic-recognized.png)"
-        console.log("Recognized monkey paw command")
-        running_log[cur_idx]["Type"] = "monkey paw"
+        console.log("Recognized affenpfote command")
+        running_log[cur_idx]["Type"] = "affenpfote"
         console.log(`Heard '${vtext}'`)
-        vtext = vtext.replace('monkey paw', "").trim()
+        vtext = vtext.replace('affenpfote', "").trim()
         domovoi_msg += "markierte "
 
-        var smallest_evidence = "emf 5"
+        var smallest_evidence = "emf level 5"
         var smallest_val = 100
         var vvalue = 1
 
         // Common replacements for evidence names
         var prevtext = vtext;
-        vtext = vtext.replace("ghost ","").trim()
         for (const [key, value] of Object.entries(ZNLANG['evidence'])) {
             for (var i = 0; i < value.length; i++) {
                 if(vtext.startsWith(value[i])){vtext = key}
             }
         }
-
 
         for(var i = 0; i < all_evidence.length; i++){
             var leven_val = levenshtein_distance(all_evidence[i].toLowerCase(),vtext)
@@ -332,7 +344,7 @@ function parse_speech(vtext){
         }
         console.log(`${prevtext} >> ${vtext} >> ${smallest_evidence}`)
         running_log[cur_idx]["Debug"] = `${prevtext} >> ${vtext} >> ${smallest_evidence}`
-        domovoi_msg += `${smallest_evidence} als monkey paw evidence`
+        domovoi_msg += `${smallest_evidence} als affenpfotenbeweis`
 
         monkeyPawFilter($(document.getElementById(smallest_evidence)).parent().find(".monkey-paw-select"))
 
@@ -342,14 +354,14 @@ function parse_speech(vtext){
         reset_voice_status()
 
     }
-    else if(vtext.startsWith('speed') || vtext.startsWith('feed')){
+    else if(vtext.startsWith('geschwindigkeit')){
         document.getElementById("voice_recognition_status").className = null
         document.getElementById("voice_recognition_status").style.backgroundImage = "url(imgs/mic-recognized.png)"
-        console.log("Recognized speed command")
-        running_log[cur_idx]["Type"] = "speed"
+        console.log("Recognized geschwindigkeit command")
+        running_log[cur_idx]["Type"] = "geschwindigkeit"
         console.log(`Heard '${vtext}'`)
-        vtext = vtext.replace('speed', "").replace('feed', "").trim()
-        domovoi_msg += "markierte speed "
+        vtext = vtext.replace('geschwindigkeit', "").trim()
+        domovoi_msg += "markierte geschwindigkeit als "
 
         var smallest_speed = "normal"
         var smallest_val = 100
@@ -359,13 +371,12 @@ function parse_speech(vtext){
             vvalue = 0
             domovoi_msg += "nicht "
         }
-        else if(vtext.startsWith("rückgängig machen ") || vtext.startsWith("löschen")){
-            vtext = vtext.replace('rückgängig machen ', "").replace("löschen ","").trim()
+        else if(vtext.startsWith("klar ") || vtext.startsWith("löschen")){
+            vtext = vtext.replace('klar ', "").replace("löschen ","").trim()
             vvalue = -1
             domovoi_msg = "gelöscht "
         }
 
-        vtext = vtext.replace("hat ","")
         if (vtext.startsWith("sichtlinie")){
             console.log(`${vtext} >> sichtlinie`)
             running_log[cur_idx]["Debug"] = `${vtext} >> sichtlinie`
@@ -411,7 +422,7 @@ function parse_speech(vtext){
                 }
             }
             else{
-                domovoi_msg = `Speed ${smallest_speed} is locked!`
+                domovoi_msg = `Geschwindigkeit ${smallest_speed} sind gesperrt!`
             }
         }
         
@@ -421,14 +432,14 @@ function parse_speech(vtext){
         reset_voice_status()
 
     }
-    else if(vtext.startsWith('hunt sanity') || vtext.startsWith('sanity')){
+    else if(vtext.startsWith('jagd auf geistige gesundheit') || vtext.startsWith('sanity')){
         document.getElementById("voice_recognition_status").className = null
         document.getElementById("voice_recognition_status").style.backgroundImage = "url(imgs/mic-recognized.png)"
         console.log("Recognized sanity command")
         running_log[cur_idx]["Type"] = "sanity"
         console.log(`Heard '${vtext}'`)
-        vtext = vtext.replace('hunt sanity', "").replace('sanity', "").trim()
-        domovoi_msg += "markierte hunt sanity "
+        vtext = vtext.replace('jagd auf geistige gesundheitunt', "").replace('sanity', "").trim()
+        domovoi_msg += "markierte sanity als "
 
         var smallest_sanity = "Late"
         var smallest_val = 100
@@ -438,8 +449,8 @@ function parse_speech(vtext){
             vvalue = 0
             domovoi_msg += "nicht "
         }
-        else if(vtext.startsWith("rückgängig machen ") || vtext.startsWith("löschen")){
-            vtext = vtext.replace('rückgängig machen ', "").replace("löschen ","").trim()
+        else if(vtext.startsWith("klar ") || vtext.startsWith("löschen")){
+            vtext = vtext.replace('klar ', "").replace("löschen ","").trim()
             vvalue = 0
             domovoi_msg = "gelöscht "
         }
@@ -469,7 +480,7 @@ function parse_speech(vtext){
             }
         }
         else{
-            domovoi_msg = `Sanity ${smallest_sanity} is locked!`
+            domovoi_msg = `Sanity ${smallest_sanity} sind gesperrt!`
         }
 
         resetResetButton()
@@ -486,13 +497,13 @@ function parse_speech(vtext){
         vtext = vtext.replace('timer', "").trim()
         
 
-        if(vtext == "start"){
-            domovoi_msg += "started smudge timer"
+        if(vtext == "starten"){
+            domovoi_msg += "gestarteter räucherstäbchen timer"
             toggle_timer(true,false)
             send_timer(true,false)
         } 
         else{
-            domovoi_msg += "stopped smudge timer"
+            domovoi_msg += "angehaltener räucherstäbchen timer"
             toggle_timer(false,true)
             send_timer(false,true)
         }
@@ -502,21 +513,21 @@ function parse_speech(vtext){
         running_log[cur_idx]["Domo"] = domovoi_msg
         reset_voice_status()
     }
-    else if(vtext.startsWith('cooldown') || vtext.startsWith('cool down')){
+    else if(vtext.startsWith('abklinkungszeit')){
         document.getElementById("voice_recognition_status").className = null
         document.getElementById("voice_recognition_status").style.backgroundImage = "url(imgs/mic-recognized.png)"
-        console.log("Recognized cooldown command")
-        running_log[cur_idx]["Type"] = "cooldown"
+        console.log("Recognized abklinkungszeit command")
+        running_log[cur_idx]["Type"] = "abklinkungszeit"
         console.log(`Heard '${vtext}'`)
-        vtext = vtext.replace('cooldown', "").replace('cool down', "").trim()
+        vtext = vtext.replace('abklinkungszeit', "").trim()
         
-        if(vtext == "start"){
-            domovoi_msg += "started cooldown timer"
+        if(vtext == "starten"){
+            domovoi_msg += "gestarteter abklinkungszeit timer"
             toggle_cooldown_timer(true,false)
             send_cooldown_timer(true,false)
         } 
         else{
-            domovoi_msg += "stopped cooldowntimer"
+            domovoi_msg += "angehaltener abklinkungszeit timer"
             toggle_cooldown_timer(false,true)
             send_cooldown_timer(false,true)
         }
@@ -525,17 +536,17 @@ function parse_speech(vtext){
         running_log[cur_idx]["Domo"] = domovoi_msg
         reset_voice_status()
     }
-    else if(vtext.startsWith('number of evidence') || vtext.startsWith('difficulty')){
+    else if(vtext.startsWith('anzahl der nachweise') || vtext.startsWith('schwierigkeit')){
         document.getElementById("voice_recognition_status").className = null
         document.getElementById("voice_recognition_status").style.backgroundImage = "url(imgs/mic-recognized.png)"
         console.log("Recognized evidence set command")
         running_log[cur_idx]["Type"] = "evidence set"
         console.log(`Heard '${vtext}'`)
-        vtext = vtext.replace('number of evidence', "").replace('difficulty', "").trim()
-        domovoi_msg += "set # of evidence to "
+        vtext = vtext.replace('anzahl der nachweise', "").replace('schwierigkeit', "").trim()
+        domovoi_msg += "anzahl der Beweise auf "
 
         vtext = vtext.replace('drei','3')
-        vtext = vtext.replace('zwei','2').replace('to','2')
+        vtext = vtext.replace('zwei','2')
         vtext = vtext.replace('eins','1')
         vtext = vtext.replace('null','0')
 
@@ -552,6 +563,7 @@ function parse_speech(vtext){
             }
         }
         domovoi_msg += smallest_num
+        domovoi_msg += " setzen"
 
         document.getElementById("num_evidence").value = smallest_num ?? 3
         if(prev_value != smallest_num){
@@ -564,13 +576,13 @@ function parse_speech(vtext){
         running_log[cur_idx]["Domo"] = domovoi_msg
         reset_voice_status()
     }
-    else if(vtext.startsWith('show tools') || vtext.startsWith('show filters')){
+    else if(vtext.startsWith('werkzeuge anzeigen') || vtext.startsWith('filter anzeigen')){
         document.getElementById("voice_recognition_status").className = null
         document.getElementById("voice_recognition_status").style.backgroundImage = "url(imgs/mic-recognized.png)"
         console.log("Recognized filter/tool command")
-        running_log[cur_idx]["Type"] = "filter/tool"
+        running_log[cur_idx]["Type"] = "filter/werkzeuge"
         console.log(`Heard '${vtext}'`)
-        domovoi_msg += "toggled menu"
+        domovoi_msg += "umgeschaltetes menü"
 
         toggleFilterTools()
 
@@ -578,14 +590,14 @@ function parse_speech(vtext){
         running_log[cur_idx]["Domo"] = domovoi_msg
         reset_voice_status()
     }
-    else if(vtext.startsWith('show maps') || vtext.startsWith('show map')){
+    else if((vtext.startsWith('karten ') || vtext.startsWith('karte ')) && vtext.endsWith(" anzeigen")){
         document.getElementById("voice_recognition_status").className = null
         document.getElementById("voice_recognition_status").style.backgroundImage = "url(imgs/mic-recognized.png)"
-        console.log("Recognized map command")
-        running_log[cur_idx]["Type"] = "maps"
+        console.log("Recognized karten command")
+        running_log[cur_idx]["Type"] = "karten"
         console.log(`Heard '${vtext}'`)
-        vtext = vtext.replace('show maps', "").replace('show map', "").trim()
-        domovoi_msg = "showing map"
+        vtext = vtext.replace('karten ', "").replace('karte ', "").replace(' anzeigen', "").trim()
+        domovoi_msg = "Karte anzeigen"
 
         var smallest_map = "tanglewood"
         var smallest_val = 100
@@ -621,13 +633,13 @@ function parse_speech(vtext){
         running_log[cur_idx]["Domo"] = domovoi_msg
         reset_voice_status()
     }
-    else if(vtext.startsWith('close maps') || vtext.startsWith('close map') || vtext.startsWith('hide maps') || vtext.startsWith('hide map')){
+    else if(vtext.startsWith('karten schließen') || vtext.startsWith('karte schließen') || vtext.startsWith('karten ausblenden') || vtext.startsWith('karte ausblenden')){
         document.getElementById("voice_recognition_status").className = null
         document.getElementById("voice_recognition_status").style.backgroundImage = "url(imgs/mic-recognized.png)"
-        console.log("Recognized map command")
-        running_log[cur_idx]["Type"] = "maps"
+        console.log("Recognized karten command")
+        running_log[cur_idx]["Type"] = "karten"
         console.log(`Heard '${vtext}'`)
-        domovoi_msg = "closing map"
+        domovoi_msg = "karte schließen"
 
         showMaps(false, true)
 
@@ -635,53 +647,26 @@ function parse_speech(vtext){
         running_log[cur_idx]["Domo"] = domovoi_msg
         reset_voice_status()
     }
-    else if(vtext.startsWith('reset cheat sheet') || vtext.startsWith('reset journal')){
+    else if(vtext.startsWith('cheat sheet zurücksetzen') || vtext.startsWith('sprite sheet zurücksetzen') || vtext.startsWith('journal zurücksetzen')){
         document.getElementById("voice_recognition_status").className = null
         document.getElementById("voice_recognition_status").style.backgroundImage = "url(imgs/mic-recognized.png)"
-        console.log("Recognized reset command")
-        console.log(`Heard '${vtext}'`)
-        if(Object.keys(discord_user).length > 0){
-            if(!hasSelected()){
-                $("#reset").removeClass("standard_reset")
-                $("#reset").addClass("reset_pulse")
-                $("#reset").html("No ghost selected!<div class='reset_note'>(say 'force reset' to save & reset)</div>")
-                $("#reset").prop("onclick",null)
-                $("#reset").prop("ondblclick","reset()")
-                reset_voice_status()
-            }
-            else{
-                reset()
-            }
-        }
-        else{
-            reset()
-        }
-    }
-    else if(vtext.startsWith('force reset')){
-        document.getElementById("voice_recognition_status").className = null
-        document.getElementById("voice_recognition_status").style.backgroundImage = "url(imgs/mic-recognized.png)"
-        console.log("Recognized reset command")
+        console.log("Recognized zurücksetzen command")
         console.log(`Heard '${vtext}'`)
         reset()
+
     }
-    else if(vtext.startsWith('stop listening')){
+    else if(vtext.startsWith('aufhören zuzuhören')){
         document.getElementById("voice_recognition_status").className = null
         document.getElementById("voice_recognition_status").style.backgroundImage = "url(imgs/mic-recognized.png)"
-        console.log("Recognized stop listening command")
+        console.log("Recognized aufhören zuzuhören command")
         console.log(`Heard '${vtext}'`)
         stop_voice()
     }
     else if(
-        vtext.startsWith("hello domo") || vtext.startsWith("hello domovoi")||
-        vtext.startsWith("hi domo") || vtext.startsWith("hi domovoi")
+        vtext.startsWith("hallo domo") || vtext.startsWith("hallo domovoi") || 
+        vtext.startsWith("guten tag domo") || vtext.startsWith("guten tag domovoi") 
     ){
-        if(Object.keys(discord_user).length > 0){
-            domovoi_heard(`hello ${discord_user['username']}!`)
-        }
-        else{
-            domovoi_heard("hello!")
-        }
-        
+        domovoi_heard("Guten Tag!")
         reset_voice_status()
     }
     else if(
