@@ -1,4 +1,4 @@
-<div class="wiki_title Accordian" onclick="accordian(this)">Zusätzliche Ghost-Daten</div>
+<div class="wiki_title Accordian" onclick="accordian(this)">Zusätzliche Geist-Daten</div>
 <div class="wiki_details" style="height: 0px;">
     <h3>Obake-Fingerabdrücke</h3>
     <div class="text">Obake hat eine Chance von 25 %, <i>keine</i> UV-Spuren zu hinterlassen und hat die Fähigkeit, UV-Spuren schneller verschwinden zu lassen.</div>
@@ -405,10 +405,9 @@
   <div class="text">
     <b>"Ich wünsche mir geistige Gesundheit"</b>
     <ul>
-      <li>Pro: Averages everyone's sanity to 50%</li>
+      <li>Pro: Die durchschnittliche geistige Gesundheit eines jeden beträgt 50%.</li>
       <li>
-        Con: Sets ghost's favorite room to a random room and increases current
-        sanity drain by 50%
+        Con: Setzt den Lieblingsraum des Geistes auf einen zufälligen Raum und erhöht den aktuellen Sanitätsverlust um 50%.
       </li>
     </ul>
   </div>
@@ -416,13 +415,11 @@
     <b>"Ich wünsche mir, dass der Geist gefangen ist"</b>
     <ul>
       <li>
-        Pro: Ghost locked in its room for 1 min where it cannot hunt, roam, or
-        do abilities Der Geist ist in seinem Raum gesperrt für 1 min. Es kann
+        Pro: Der Geist ist in seinem Raum gesperrt für 1 min. Es kann
         nicht jagen, wandern oder andere Fähigkeiten nutzen
       </li>
       <li>
-        Con: Locks doors in the players room and hunt starts after the 1 min
-        period (25% doors will unlock after grace period) Sperrt die Tür in dem
+        Con: Sperrt die Tür in dem
         Raum in dem sich der Spieler befindet und die Jagd beginnt nach 1 min
         (25% der Türen werden entsperrt nach dieser Periode)
       </li>
@@ -438,10 +435,9 @@
   <div class="text">
     <b>"Ich wünsche mir Sicherheit"</b>
     <ul>
-      <li>Pro: Unblocks the nearest blocked hiding spot</li>
+      <li>Pro: Entsperrt das nächstgelegene blockierte Versteck</li>
       <li>
-        Con: Breaks the light in that room and ghost is able to sense or hear
-        the player from any distance
+        Con: Unterbricht das Licht in diesem Raum und der Geist kann den Spieler sehen oder hören den Spieler aus beliebiger Entfernung
       </li>
     </ul>
   </div>
@@ -459,20 +455,18 @@
     <b>"Ich wünsche mir Wissen"</b>
     <ul>
       <li>
-        Pro: Removes 1 incorrect evidence from the journal and crosses out
-        associated ghosts
+        Pro: Entfernt 1 falsches Beweismittel aus dem Tagebuch und streicht die zugehörige Geister
       </li>
       <li>
-        Con: Starts a hunt and player vision and audio is reduced the rest of
-        that round
+        Con: Startet eine Jagd und die Sicht und der Ton des Spielers sind für den Rest der Runde reduziert. dieser Runde
       </li>
     </ul>
   </div>
   <div class="text">
-    <b>"Ich wünsche für [weather]"</b>
+    <b>"Ich wünsche für [wetter]"</b>
     <ul>
-      <li>Pro: Changes the weather to the one specified</li>
-      <li>Con: Drops sanity by 25%</li>
+      <li>Pro: Ändert das Wetter auf das angegebene Wetter</li>
+      <li>Con: Senkt die geistige Gesundheit um 25%.</li>
     </ul>
   </div>
   <div class="text">
@@ -519,7 +513,6 @@
     <ul>
       <li>Sanity Cost: 20%</li>
       <li>
-        Replies with if the ghosts wants to be alone when using the Geisterbox
         Antwortet, ob der Geist alleine sein will, wenn die Geisterbox benutzt
         wird
       </li>
@@ -605,252 +598,230 @@
   </div>
 </div>
 
-<div class="wiki_title accordian" onclick="accordian(this)">Spirit Box</div>
-<div class="wiki_details" style="height: 0px;">
-    <div class="text">
-        <b>Aggression Questions:</b><br>
-        <p>The following questions can be asked to return a randomly chosen "aggresive" response</p>
-        <ul>
-            <li>"What do you want?"</li>
-            <li>"Why are you here?"</li>
-            <li>"Are you angry?"</li>
-            <li>"Do you want us to leave?"</li>
-            <li>"Are you friendly?"</li>
-            <li>"Are you dangerous?"</li>
+<div class = "wiki_title accordian" onclick = "accordian(this)">Geisterbox</div> 
+<div class = "wiki_details" style = "height: 0px;"> 
+    <div class = "text"> 
+        <b> Aggressionsfragen: </b> <br> 
+        <p> Die folgenden Fragen können gestellt werden, um eine zufällig ausgewählte "aggressive" Antwort </p> zurückzugeben 
+        <ul> 
+            <li> "Was willst du?" </li> 
+            <li> "Warum bist du hier?" </li> 
+            <li> "Bist du wütend?" </li> 
+            <li> "Soll wir gehen?" </li> 
+            <li> "Bist du freundlich?" </li> 
+            <li> "Bist du gefährlich?" </li> 
+        </ul> 
+        Antworten: 
+        <ul> 
+            <li> "Kill", "Tod", "sterben", "Hass", "verletzt", "Angriff" </li> 
         </ul>
-        Responses:
-        <ul>
-            <li>"Kill", "Death", "Die", "Hate", "Hurt", "Attack"</li>
-        </ul>
-    </div>
-    <div class="text">
-        <b>Location Questions:</b><br>
-        <p>The following questions can be asked to indicate how close you are to ghost and if the ghost is in the same room</p>
-        <ul>
-            <li>"Where are you?"</li>
-            <li>"Are you close?"</li>
-            <li>"Give us a sign."</li>
-            <li>"Are you here?"</li>
-            <li>"Is anybody here?"</li>
-            <li>"What is your location?"</li>
-        </ul>
-        Responses:
-        <ul>
-            <li>Within 3 meters:<br>"(I'm) here", "I'm close", "(I'm) behind you"</li>
-            <li>In same room, but further than 3 meters:<br>"Next to you", "Away", "Far"</li>
-        </ul>
-    </div>
-    <div class="text">
-        <b>Age Questions:</b><br>
-        <p>The following questions can be asked to return an age (not correlated to ghost model)</p>
-        <ul>
-            <li>"How old are you?"</li>
-            <li>"How young are you?"</li>
-            <li>"What is your age?"</li>
-            <li>"Are you old?"</li>
-        </ul>
-        Responses:
-        <ul>
-            <li>"Old", "Young"</li>
-        </ul>
-    </div>
+   </div>
+   <div class="text">
+       <b> Standortfragen: </b> <br> 
+        <p> Die folgenden Fragen können gestellt werden, um anzuzeigen, wie nahe Sie an Ghost sind und ob sich der Geist im selben Raum befindet </p> 
+        <ul> 
+            <li> "Wo bist du?" </li> 
+            <li> "Bist du in der Nähe?" </li> 
+            <li> "Gib uns ein Zeichen." </li> 
+            <li> "Bist du hier?" </li> 
+            <li> "Ist hier jemand?" </li> 
+            <li> "Was ist Ihr Standort?" </li> 
+        </ul> 
+        Antworten: 
+        <ul> 
+            <li> Innerhalb von 3 Metern: <br> "(Ich bin) hier", "Ich bin nah", "(ich bin) hinter dir" </li> 
+            <li> im selben Raum, aber weiter als 3 Meter: <br> "neben dir", "weg", "weit" </li> 
+        </ul> 
+    </div> 
+    <div class = "text"> 
+        <b> Altersfragen: </b> <br> 
+        <p> Die folgenden Fragen können gestellt werden, um ein Alter zurückzugeben (nicht mit dem Ghost -Modell korreliert) </p> 
+        <ul> 
+            <li> "Wie alt bist du?" </li> 
+            <li> "Wie jung bist du?" </li> 
+            <li> "Was ist dein Alter?" </li> 
+            <li> "Bist du alt?" </li> 
+        </ul> 
+        Antworten: 
+        <ul> 
+            <li> "alt", "jung" </li> 
+        </ul> 
+    </div> 
 </div>
-
 <!-- Tarot Card Wiki Contributed by svenjaun (2023-09-07) -->
-<div class="wiki_title accordian" onclick="accordian(this)">Tarot Cards</div>
-<div class="wiki_details" style="height: 0px;">
-    <h3>Tarot Cards</h3>
-    <div class="text">Tarot cards can be picked up, and you can draw one card at a time.</div>
-    <div class="text">Each Tarot card deck contains 10 randomly generated cards.</div>
-    <br />
+<div class = "wiki_title accordian" onclick = "accordian(this)">Tarot Karten</div> 
+<div class = "wiki_details" style = "height: 0px;"> 
+    <h3> Tarotkarten </h3> 
+    <div class = "text"> tarotkarten können abgeholt werden, und Sie können jeweils eine Karte zeichnen. </div> 
+    <div class = "text"> Jedes Tarot -Kartendeck enthält 10 zufällig generierte Karten. </div> 
+    <br /> 
     <hr>
-
-    <div class="text">
-        <p><b>The Tower</b></p>
-        <img class="tarot-img" src="https://zero-network.net/phasmophobia/static/imgs/tarot/tower.webp">
-        <p>Causes an interaction and doubles all ghost activity for 20 seconds.</p>
-        <ul class="text">
-            <li>20% Draw Chance</li>
-        </ul>
-    </div>
-
-    <hr>
-
-    <div class="text">
-        <p><b>The Wheel of Fortune</b></p>
-        <img class="tarot-img" src="https://zero-network.net/phasmophobia/static/imgs/tarot/wheeloffortune.webp">
-        <p>The player who draws the card will experience either a gain or loss of sanity, depending on the burn color of the card.</p>
-        <p>
-            <span class="square green"></span>Green burn: 25% Sanity gain
-            <br>
-            <span class="square red"></span>Red burn: 25% Sanity loss
-        </p>
-        <ul class="text">
-            <li>20% Draw Chance</li>
-        </ul>
-    </div>
-
-    <hr>
-
-    <div class="text">
-        <p><b>The Fool</b></p>
-        <img class="tarot-img" src="https://zero-network.net/phasmophobia/static/imgs/tarot/fool.webp">
-        <p>No effect is applied when drawing this card.</p>
-        <p class="smaller-text">Randomly selects another card to appear as, before turning into The Fool as it burns.</p>
-        <ul class="text">
-            <li>17% Draw Chance</li>
-            <li>(100% during hunts)</li>
-        </ul>
-    </div>
-
-    <hr>
-
-    <div class="text">
-        <p><b>The Devil</b></p>
-        <img class="tarot-img" src="https://zero-network.net/phasmophobia/static/imgs/tarot/devil.webp">
-        <p>Triggers a Ghost Event towards the nearest player to the ghost.</p>
-        <ul class="text">
-            <li>10% Draw Chance</li>
-        </ul>
-    </div>
-
-    <hr>
-
-    <div class="text">
-        <p><b>Death</b></p>
-        <img class="tarot-img" src="https://zero-network.net/phasmophobia/static/imgs/tarot/death.webp">
-        <p>Triggers a cursed hunt.</p>
-        <ul class="text">
-            <li>10% Draw Chance</li>
-        </ul>
-    </div>
-
-    <hr>
-
-    <div class="text">
-        <p><b>The Hermit</b></p>
-        <img class="tarot-img" src="https://zero-network.net/phasmophobia/static/imgs/tarot/hermit.webp">
-        <p>Teleports the ghost back to its ghost room and traps it there for 1 minute. </p>
-        <p class="smaller-text">This does not affect hunts and ghost events.</p>
-        <ul class="text">
-            <li>10% Draw Chance</li>
-        </ul>
-    </div>
-
-    <hr>
-
-    <div class="text">
-        <p><b>The Sun</b></p>
-        <img class="tarot-img" src="https://zero-network.net/phasmophobia/static/imgs/tarot/sun.webp">
-        <p>The player who draws the card will have their sanity fully restored to 100%</p>
-        <ul class="text">
-            <li>5% Draw Chance</li>
-        </ul>
-    </div>
-
-    <hr>
-
-    <div class="text">
-        <p><b>The Moon</b></p>
-        <img class="tarot-img" src="https://zero-network.net/phasmophobia/static/imgs/tarot/moon.webp">
-        <p>The player who draws the card will have their sanity instantly set to 0%.</p>
-        <ul class="text">
-            <li>5% Draw Chance</li>
-        </ul>
-    </div>
-
-    <hr>
-
-    <div class="text">
-        <p><b>The High Priestess</b></p>
-        <img class="tarot-img" src="https://zero-network.net/phasmophobia/static/imgs/tarot/highpriestess.webp">
-        <p>Revives a randomly chosen dead player at their corpse. </p>
-        <p class="smaller-text">If no one is currently dead, it will revive the next player who dies. Multiple cards do not stack.<br>(A player cannot die twice in the same hunt)</p>
-        <ul class="text">
-            <li>2% Draw Chance</li>
-        </ul>
-    </div>
-
-    <hr>
-
-    <div class="text">
-        <p><b>The Hanged Man</b></p>
-        <img class="tarot-img" src="https://zero-network.net/phasmophobia/static/imgs/tarot/hangedman.webp">
-        <p>Instantly kills the player.<br></p>
-        <p class="smaller-text">If 'Friendly Ghost' custom difficulty option is turned on, this will always turn into "The Fool".</p>
-        <ul class="text">
-            <li>1% Draw Chance</li>
-        </ul>
-    </div>
-
+    <div class = "text"> 
+       <p> <b> Der Turm </b> </p> 
+       <img class = "tarot-img" src = "https://zero-network.net/phasmophobia/static/imgs/tarot/tower.webp"> 
+       <p> führt zu einer Wechselwirkung und verdoppelt die gesamte Geisteraktivität für 20 Sekunden. </p> 
+       <ul class = "text"> 
+           <li> 20% Draw Chance </li> 
+       </ul> 
+   </div>
+   <hr>
+   <div class="text">
+       <p><b>Das Glücksrad</b></p>
+       <img class="tarot-img" src="https://zero-network.net/phasmophobia/static/imgs/tarot/wheeloffortune.webp">
+       <p>Der Spieler, der die Karte zeichnet, wird je nach Verbrennungsfarbe der Karte entweder einen Gewinn oder einen Verlust der geistigen Gesundheit verzeichnen.</p>
+       <p>
+           <span class="square green"></span>Grünverbrennung: 25% Vernunft Gewinne
+           <br>
+           <span class="square red"></span>Rotverbrennung: 25% geistiger Verlust
+       </p>
+       <ul class="text">
+           <li>20% zeichnen Chance</li>
+       </ul>
+   </div>
+   <hr>
+   <div class = "text"> 
+       <p> <b> Der Narren </b> </p> 
+       <img class = "tarot-img" src = "https://zero-network.net/phasmophobia/static/imgs/tarot/fool.webp"> 
+       <p> Es wird kein Effekt beim Zeichnen dieser Karte angewendet. </p> 
+       <p class = "kleinerer Text"> wählt zufällig eine andere Karte aus, die so erscheint, bevor er sich in den Narren verwandelt, wenn er brennt. </p> 
+       <ul class = "text"> 
+           <li> 17% Chance zum Ziehe</li> 
+           <li> (100% während der Jagd) </li> 
+       </ul> 
+   </div>
+   <hr>
+   <div class = "text"> 
+       <p> <b> Der Teufel </b> </p> 
+       <img class = "tarot-img" src = "https://zero-network.net/phasmophobia/static/imgs/tarot/devil.webp"> 
+       <p> löst ein Geisterereignis zum nächsten Spieler zum Geist aus. </p> 
+       <ul class = "text"> 
+           <li> 10%  Chance zum Ziehen</li> 
+       </ul> 
+   </div>
+   <hr>
+   <div class = "text"> 
+       <p> <b> Tod </b> </p> 
+       <img class = "tarot-img" src = "https://zero-network.net/phasmophobia/static/imgs/tarot/death.webp"> 
+       <p> löst eine verfluchte Jagd aus. </p> 
+       <ul class = "text"> 
+           <li> 10% Draw Chance </li> 
+       </ul> 
+   </div> 
+   <hr> 
+   <div class = "text"> 
+       <p> <b> Der Einsiedler </b> </p> 
+       <img class = "tarot-img" src = "https://zero-network.net/phasmophobia/static/imgs/tarot/hermit.webp"> 
+       <p> teleportiert den Geist zurück in seinen Geisterraum und fängt ihn 1 Minute lang dort ab. </p> 
+       <p class = "kleinerer Text"> Dies wirkt sich nicht auf die Jagd und Geisterereignisse aus. </p> 
+       <ul class = "text"> 
+           <li> 10% Draw Chance </li> 
+       </ul> 
+   </div> 
+   <hr> 
+   <div class = "text"> 
+       <p> <b> Die Sonne </b> </p> 
+       <img class = "tarot-img" src = "https://zero-network.net/phasmophobia/static/imgs/tarot/sun.webp"> 
+       <p> Der Spieler, der die Karte zeichnet 
+       <ul class = "text"> 
+           <li> 5% Chance </li> 
+       </ul> 
+   </div>
+   <hr>
+   <div class = "text"> 
+       <p> <b> Der Mond </b> </p> 
+       <img class = "tarot-img" src = "https://zero-network.net/phasmophobia/static/imgs/tarot/moon.webp"> 
+       <p> Der Spieler, der die Karte zeichnet 
+       <ul class = "text"> 
+           <li> 5% Chance </li> 
+       </ul> 
+   </div>
+   <hr>
+   <div class="text">
+       <p><b>Die Hohepriesterin</b></p>
+       <img class="tarot-img" src="https://zero-network.net/phasmophobia/static/imgs/tarot/highpriestess.webp">
+       <p>Wiederbelebt einen zufällig ausgewählten toten Spieler in ihrer Leiche. </p>
+       <p class="smaller-text">Wenn derzeit niemand tot ist, wird es den nächsten Spieler wiederbeleben, der stirbt. Mehrere Karten stapeln sich nicht. <br> (Ein Spieler kann nicht zweimal auf derselben Jagd sterben)</p>
+       <ul class="text">
+           <li>2% zeichnen Chance</li>
+       </ul>
+   </div>
+   <hr>
+   <div class = "text"> 
+       <p> <b> Der gehängte Mann </b> </p> 
+       <img class = "tarot-img" src = "https://zero-network.net/phasmophobia/static/imgs/tarot/hangedman.webp"> 
+       <p> tötet den Spieler sofort. <br> </p> 
+       <p class = "kleinerer Text"> Wenn die Option "freundlicher Ghost" benutzerdefinierte Schwierigkeitsgrad-Optionen eingeschaltet ist, wird dies immer in "The Fool". </p> 
+       <ul class = "text"> 
+           <li> 1% Chance zeichnen </li> 
+       </ul> 
+   </div>
 </div>
-
-<div class="wiki_title accordian" onclick="accordian(this)">XP Grinding</div>
-<div class="wiki_details" style="height: 0px;">
-    <div class="text">
-        <p><b>Current Strat: x12.97 WoodWind</b></p>
-        <p><b>Strategy:</b></p>
-        <p>
-            The goal of this strategy is to go in long enough to survive a single hunt (2 if you value correctness over number of attempts) and leave. 
-            It requires a decent understanding of ghost behaviour during hunts and the ability to loop a ghost. This strat is done ideally with 2+ players,
-            but it is possible to do in single player.
+<div class = "wiki_title accordian" onclick = "accordian(this)">XP Mahling</div> 
+<div class = "wiki_details" style = "height: 0px;"> 
+    <div class = "text"> 
+        <p> <b> Stromschicht: x12.97 Holzblas </b> </p> 
+        <p> <b> Strategie: </b> </p> 
+        <p> 
+            Das Ziel dieser Strategie ist es, lange genug zu gehen, um eine einzige Jagd zu überleben (2, wenn Sie die Korrektheit der Anzahl der Versuche schätzen) und zu verlassen. 
+            Es erfordert ein ordentliches Verständnis des Geisterverhaltens bei Jagden und die Fähigkeit, einen Geist zu schaufeln. Diese Strat wird ideal mit 2+ Spielern durchgeführt. 
+            Aber es ist möglich, in Einzelspieler zu tun. 
+        </p> 
+        <p> 
+            Sie möchten eine Lastausstattung ausrüsten, die mindestens Weihrauch hat (ich bevorzuge Tier 1, damit der Geist wegläuft und nicht herumhängt), Ignitoren, 
+            Salz (vorzugsweise Tier 2 oder 3) und ein Gerät, das auf Rajiu getestet werden kann (ich gehe normalerweise mit einem EMF -Leser oder einem anderen Gerät, um eine zu vervollständigen 
+            objektiv, wie z. B. ein Paramischer). 
+        </p> 
+        <p> 
+            (Einzelspieler) Starten Sie, schnappen Sie sich das elektronische Gerät, schalten Sie es ein und werfen Sie es direkt in das Tor (dies wird zum Testen für Raiju verwendet). 
+            Dann schnappen Sie sich Salz, einen Ingiter und einen Weihrauch. <br> 
+            <br> 
+            (Multiplayer) Lassen Sie einen Spieler einen Zünder und 2 Weihrauch und den anderen Spieler -Grab -Salz, ein elektronisches Gerät (zum Testen von Raiju und/oder das Erreichen von Zielen) und andere Geräte erhalten 
+            Das könnte verwendet werden, um andere Ziele zu vervollständigen. <br> 
+            <br> 
+            Gehen Sie entweder die Picknicktische direkt im Tor oder zum Lagerfeuer in der Mitte der Baumstämme. Legen Sie Ihr Salz an einem Ort den Geist auf den Boden 
+            wird wahrscheinlich durchgehen (öffnen zum Lagerfeuerkreis oder zwischen den Picknicktischen). Warten Sie dann, bis der Geist jagt. <br> 
+            <br> 
+            Sobald der Geist zu jagen beginnt, beginnen Sie zu identifizieren, was auf Verhalten basiert (Schritte, Flacker-/Blinkrate, in der Nähe der Elektronik, dem Einfrieren von Atem usw.). 
+            Schleifen Sie weiterhin den Geist am Lagerfeuer / Picknicktische und wecken Sie es bei Bedarf. <br> 
+            <br> 
+            Nachdem die Jagd vorbei ist, können Sie entweder einen Timer eingrenzen, wenn es sich um einen Geist oder ein Dämon handelt, der auf dem Abklingplatz der Flecken basiert (dies dauert einiges dauert, aber es ermöglicht die Zeit, mehr Ziele zu vervollständigen). 
+            Oder Sie können den Geist erraten und gehen. Dieser gesamte Vorgang kann in weniger als 2 Minuten durchgeführt werden, wenn es optimiert ist, und belohnt zwischen 2000xp - 5000xp für den richtigen Geist und abgeschlossene Ziele. 
         </p>
-        <p>
-            You will want to equip a loadout that at a minimum has incense (I prefer Tier 1 so the ghost will run away and not hang around), ignitors,
-            salt (preferably tier 2 or 3), and a device that can be left on to test for rajiu (I usually go with an EMF reader or another device that will help complete an 
-            objective, such as a paramic).
-        </p>
-        <p>
-            (Single Player) To start, grab the electronic device, turn it on and throw it just inside the gate (this will be used for testing for Raiju).
-            Then grab salt, an ingiter, and an incense.<br>
-            <br>
-            (Multiplayer) Have one player grab an igniter and 2 incense and the other player grab salt, an electronic device (for testing raiju and/or completing objectives), and any other equipment
-            that could be used to complete other objectives.<br>
-            <br>
-            Head toward either the picnic tables just inside the gate or to the campfire in the middle of the logs. Place your salt on the ground in a location the ghost 
-            will likely walk through (opening to the campfire circle or in between the picnic tables). Then wait for the ghost to hunt.<br>
-            <br>
-            Once the ghost begins to hunt, start to identify what it is based on behaviour (footstep speed, flicker/blink rate, speed up near electronics, freezing breath, etc).
-            Continue to loop the ghost around the campfire / picnic tables and smudge if needed.<br>
-            <br>
-            After the hunt is over, you can either use a timer to narrow down if it is a spirit or demon based on smudge cooldown (this takes quite a bit of time, but allows time to complete more objectives),
-            or you can guess the ghost and leave. This entire process can be done in under 2 minutes if optimized and rewards between 2000xp - 5000xp for correct ghost and completed objectives.
-        </p>
-    </div>
-    <div class="text">
-        <p><b><u>Custom Difficulty Settings:</u></b></p>
-        <b>Player:</b>
-        <ul>
-            <li>Starting Sanity: 0</li>
-            <li>Sanity Pill Restoration (%): 0</li>
-            <li>Sanity drain speed (%): 200</li>
-            <li>Sprinting: Off</li>
-            <li>Player speed (%): 100</li>
-            <li>Flashlights: Off</li>
-            <li>Lose items and consumables: On</li>
-        </ul>
-        <b>Ghost:</b>
-        <ul>
-            <li>Ghost speed (%): 100</li>
-            <li>Roaming frequency: High</li>
-            <li>Changing favourite room: High</li>
-            <li>Interaction amount: Low</li>
-            <li>Event frequency: Low</li>
-            <li>Friendly ghost: Off</li>
-            <li>Grace period (s): 0</li>
-            <li>Hunt duration (s): Medium</li>
-            <li>Evidence Given: 0</li>
-        </ul>
-        <b>Contract:</b>
-        <ul>
-            <li>Setup time (s): 0</li>
-            <li>Weather: Windy</li>
-            <li>Doors starting open: High</li>
-            <li>Number of hiding places: None</li>
-            <li>Sanity monitor: Off</li>
-            <li>Activity monitor: Off</li>
-            <li>Fuse box at start of contract: Broken</li>
-            <li>Fuse box visible on map: Off</li>
-        </ul>
-    </div>
-</div>
+       </div> 
+       <div class = "text"> 
+           <p> <b> <u> benutzerdefinierte Schwierigkeitsgradeinstellungen: </u> </b> </p> 
+           <b> Spieler: </b> 
+           <ul> 
+               <li> Beginn der Vernunft: 0 </li> 
+               <li> Sanity Pill Restoration (%): 0 </li> 
+               <li> Vernunftdrehzahl (%): 200 </li> 
+               <li> Sprint: Aus </li> 
+               <li> Spielergeschwindigkeit (%): 100 </li> 
+               <li> Taschenlampen: Aus </li> 
+               <li> Gegenstände und Verbrauchsmaterialien verlieren: auf </li> 
+           </ul> 
+           <b> Geist: </b> 
+           <ul> 
+               <li> Geistergeschwindigkeit (%): 100 </li> 
+               <li> Roaming -Frequenz: Hoch </li> 
+               <li> Lieblingsraum wechseln: hoch </li> 
+               <li> Interaktionsmenge: niedrig </li> 
+               <li> Ereignisfrequenz: niedrig </li> 
+               <li> Freundlicher Geist: Aus </li> 
+               <li> Grace Periode (en): 0 </li> 
+               <li> Jagddauer (en): Medium </li> 
+               <li> Beweise gegeben: 0 </li> 
+           </ul> 
+           <b> Vertrag: </b> 
+           <ul> 
+               <li> Setup -Zeit (n): 0 </li> 
+               <li> Wetter: windig </li> 
+               <li> Türen, die geöffnet sind: Hoch </li> 
+               <li> Anzahl der Versteckplätze: Keine </li> 
+               <li> Sanity Monitor: Aus </li> 
+               <li> Aktivitätsmonitor: Aus </li> 
+               <li> Sicherungsbox zu Beginn des Vertrags: kaputt </li> 
+               <li> Sicherungskasten auf der Karte sichtbar: Aus </li> 
+           </ul> 
+       </div> 
+   </div>
