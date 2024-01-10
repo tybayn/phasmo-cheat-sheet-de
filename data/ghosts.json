@@ -395,9 +395,7 @@
         "<Hunt Sanity>",
         "Kann mit 65 % geistiger Gesundheit in der Nähe der aktiven Spielerausrüstung jagen",
         "<Geschwindigkeit>",
-        "2,5 m/s in der Nähe der aktiven Spielerausrüstung, ansonsten 1,7 m/s",
-        "<Beweis>",
-        "EMF Level 5 + Geisterorb im Albtraummodus bestätigt Raiju"
+        "2,5 m/s in der Nähe der aktiven Spielerausrüstung, ansonsten 1,7 m/s"
       ]
     },
     {
@@ -511,13 +509,11 @@
         "<Hunt Sanity>",
         "Als Jüngster jagt er zu 75 %, als Ältester zu 15 %",
         "<Geschwindigkeit>",
-        "2,75 m/s beim jüngsten, 1,0 m/s beim ältesten <b>beschleunigt nicht in Sichtlinie</b>",
-        "<Beweis>",
-        "Das Schreiben + D.O.T.S Projektor im Albtraummodus bestätigt Thaye"
+        "2,75 m/s beim jüngsten, 1,0 m/s beim ältesten <b>beschleunigt nicht in Sichtlinie</b>"
       ]
     }
   ],
-  "version": "v0.9.3.1",
+  "version": "v0.9.4.0",
   "evidence": [
     "EMF Level 5",
     "Ultraviolett",
