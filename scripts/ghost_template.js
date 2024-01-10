@@ -168,9 +168,9 @@ class Ghost {
 
   toNumStr(num) {
     if (Number.isInteger(num)) {
-      return num + ".0";
+      return num + ",0";
     } else {
-      return num.toString();
+      return num.toString().replace(".",",");
     }
   }
 }

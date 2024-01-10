@@ -54,10 +54,10 @@
       <table id="hantu_speed_breakdown">
           <thead>
               <tr>
-                  <th>Temp (C)</th>
-                  <th>Temp (F)</th>
-                  <th>Geschwindigkeit</th>
-                  <th>Beispiel</th>
+                  <th class="wiki_min">Temp (C)</th>
+                  <th class="wiki_min">Temp (F)</th>
+                  <th class="wiki_min">Geschwindigkeit</th>
+                  <th class="wiki_min">Beispiel</th>
               </tr>
           </thead>
           <tr>
@@ -108,9 +108,9 @@
       <table id="moroi_speed_breakdown">
           <thead>
               <tr>
-                  <th>Durchschnittliche geistige Gesundheit</th>
-                  <th>Geschwindigkeit</th>
-                  <th>Beispiel</th>
+                  <th class="wiki_min">Durchschnittliche geistige Gesundheit</th>
+                  <th class="wiki_min">Geschwindigkeit</th>
+                  <th class="wiki_min">Beispiel</th>
               </tr>
           </thead>
           <tr>
@@ -170,10 +170,10 @@
       <table id="thaye_speed_breakdown">
           <thead>
               <tr>
-                  <th>Alterungszyklen</th>
-                  <th>Zeit nahe dem Geist</th>
-                  <th style="width: 25%;">Geschwindigkeit</th>
-                  <th style="width: 25%;">Beispiel</th>
+                  <th class="wiki_min">Alterungszyklen</th>
+                  <th class="wiki_min">Zeit nahe dem Geist</th>
+                  <th class="wiki_min" style="width: 25%;">Geschwindigkeit</th>
+                  <th class="wiki_min" style="width: 25%;">Beispiel</th>
               </tr>
           </thead>
           <tr>
@@ -249,6 +249,133 @@
     <div class="wiki_details" style="height: 0px;">
       <div class="text">Während einer Jagd verhalten sich viele Geister unterschiedlich, je nachdem, wie weit sie vom Spieler entfernt sind. Das Folgende zeigt einen grundlegenden Radius des Spielers für viele der Geister und ihre Fähigkeiten. (Sunny Meadows gezeigt)</div>
       <img src="https://zero-network.net/phasmophobia/static/imgs/wiki/hunt_ranges.png">
+    </div>
+    <div class = "wiki_title cordian" onclick = "accordian (this)">Jagddauer</div> 
+     <div class = "wiki_details" style = "height: 0px;"> 
+         <div class = "text"> Die Zeit, in der ein Geisterjagd jagt, hängt von vielen Faktoren ab, einschließlich der Einstellung der Jagddauer und der Größe der Karte. Härtere Schwierigkeiten und größere Karten führen zu längeren Jagdzeiten. </Div> 
+         <table id = "hantu_speed_breakdown"> 
+             <thead> 
+                 <tr> 
+                     <th> Schwierigkeitsgrad <br> <span style = "color: #999"> (Dauer) </span> </th> 
+                     <Th> kleine Karte </th> 
+                     <Th> med. Karte </th> 
+                     <Th> große Karte </th> 
+                     <Th> verfluchte Hunt </th>
+                </tr>
+            </thead>
+            <tr> 
+                <td style = "text-align: left; width: 30%; padding-left: 5px;">- Amateur <br> <span style = "color: #999">- (niedrig) </span> </td> 
+                 <td> 15s </td> 
+                 <td> 30s </td> 
+                 <td> 40s </td> 
+                 <td>+20s </td> 
+             </tr> 
+             <tr> 
+                 <td style = "text-align: left; width: 30%; padding-left: 5px;">- intermediate <br> <span style = "color: #999">- (Mittel) </span> </td> 
+                 <td> 20s </td> 
+                 <td> 40s </td> 
+                 <td> 50s </td> 
+                 <td>+20s </td> 
+             </tr> 
+             <tr> 
+                 <td style = "Text-Align: left; width: 30%; Padding-left: 5px;">- Professional <br>- Nightmare <br>- Wahnsinn <br> <span style = "color: #999"> - (Hoch) </span> </td> 
+                 <td> 30s </td> 
+                 <td> 50s </td> 
+                 <td> 60s </td> 
+                 <td>+20s </td> 
+             </tr> 
+         </table>
+
+        <h4>Verfluchte Hunts</h4> 
+        <div class="text"> Verwenden eines verfluchten Objekts zum Starten einer Jagd führt zu einer verfluchten Jagd, die die Jagd nach 20s unabhängig von der ursprünglichen Länge erweitert. Alle Jagden nach der ersten verfluchten Jagd sind ebenfalls verflucht. </Div>
+        <h4>Tötungen verlängern Hunts</h4>
+        <div class="text">Mit dieser Einstellung wird eine Jagd jedes Mal verlängert, wenn ein Spieler getötet wird, wodurch sich die Dauer nur für diese Jagd erhöht. Die Dauer, die eine Jagd verlängert wird, hängt auch von der Schwierigkeit ab.</div>
+
+        <table id = "hantu_speed_breakdown"> 
+            <thead> 
+                <tr> 
+                    <th> Schwierigkeitsgrad <br> <span style = "color: #999"> (Dauer) </span> </th> 
+                    <th> Kills verlängern Hunt </th> 
+                </tr> 
+            </thead>
+            <tr> 
+                <td style = "text-align: left; width: 35%; padding-left: 5px;">- Amateur <br>- Intermediate <br>- Professional <br> <span style = "color: #999"> - (Aus) </span> </td> 
+                <td>endet Hunt</td> 
+            </tr> 
+            <tr> 
+                <td style = "text-align: left; width: 35%; padding-left: 5px;">- nightmare <br>- Wahnsinn <br> <span style = "color: #999">- (niedrig) </span> </td> 
+                <td>+15s</td> 
+            </tr> 
+            <tr> 
+                <td style = "text-align: left; width: 35%; padding-left: 5px;"> <span style = "color: #999">-(mittel) </span> </td> 
+                <td>+25s</td> 
+            </tr> 
+            <tr> 
+                <td style = "text-align: left; width: 35%; padding-left: 5px;"> <span style = "color: #999">-(hoch) </span> </td> 
+                <td>+35s</td> 
+            </tr> 
+        </table> 
+    </div>
+    <div class="wiki_title accordian" onclick="accordian(this)">Geschwindigkeit und Sichtlinie (LOS)</div>
+    <div class="wiki_details" style="height: 0px;">
+        <div class="text">Die meisten Geister erhöhen allmählich ihre Geschwindigkeit, während sie auf einem Spieler eine Sichtlinie (LOS) bis zu maximal 1,65x ihre Grundgeschwindigkeit haben. Nach dem Brechen von LOS behält der Geist die erhöhte Geschwindigkeit bei, bis er die letzte bekannte Spielerposition erreicht. Wenn es zu diesem Zeitpunkt nicht wiedererlangt, verliert der Geist sehr langsam die erhöhte Geschwindigkeit. </Div>
+        <div class="text">While using the BPM Finder, the cheat sheet will generate a plot of the speeds that you tapped over time. Many different hunting behaviors, including LOS, can be observed from this graph, as shown below.</div>
+        <div class="text">
+            <b> Standard (mit LOS): </b> <br> 
+             Ein Standardgeschwindigkeitsgeister jagt bei 1,7 m/s. Sobald der Geist LOS mit dem Spieler (A) hat, erhöht sich der Ghost über 13 Sekunden lang durchgehender LOS, bis eine maximale Geschwindigkeit von 1,65x Basisgeschwindigkeit erreicht ist (B). <br> 
+             <img src = "https://zero-network.net/phasmophobia/static/imgs/wiki/graph_standard_los.png" style = "max-width: 60%; padding: 10px 0px;"> 
+         </div> 
+         <hr> 
+         <div class = "text"> 
+             <b> Die Zwillinge: </b> <br> 
+             Die Zwillinge bewegen sich bei der Jagd mit unterschiedlichen Geschwindigkeiten. Der Haupt -Zwilling ist 10% langsamer als ein Standardgeister, während der "Roaming" -Dwin 10% schneller ist. <br> <br> 
+             Die BPM -Handlung wird eine Geschichte der vorherigen Jagd behalten, die als gepunktete rote Linie abgebildet wurde. Mit dieser Zeile können Sie sehen, wie die vorherige Hunt mit der aktuellen Jagd vergleichbar ist. Eine andere Basisgeschwindigkeit kann die Zwillinge anzeigen. <br> <br> 
+             Im folgenden Beispiel sehen Sie, dass die vorherige Jagd bei 1,53 m/s lag, während die nächste Jagd bei 1,87 m/s. <br> lag. <br> 
+             <img src = "https://zero-network.net/phasmophobia/static/imgs/wiki/graph_twins.png" style = "max-width: 60%; padding: 10px 0px;">
+        </div>
+        <hr>
+        <div class="text">
+            <b> Raiju: </b> <br> 
+            Ein Raiju bewegt sich immer mit einer festen Geschwindigkeit von 2,5 m/s (bei 100% Geistergeschwindigkeit), während sowohl die oder gehaltenen aktiven elektronischen Spielergeräte in der Nähe von aktiven elektronischen Spielern gehalten werden. Dies führt zu flachen Stellen nahe 2,5 m/s, die ein ansonsten Standard -Jagdmuster unterbrechen. <br> <br> 
+            In dem folgenden Beispiel kam der Raiju in die Reichweite der Elektronik (A) und beschleunigte sofort, bis sie außerhalb der Reichweite (B) war. Der Raiju gewann dann LOS (C) und begann den Standardanstieg, bis er wieder in den elektronischen Bereich kam (D). Sobald es den Elektronikbereich verließ, kehrte die Geschwindigkeit des Raiju zu der seiner LOS -Erhöhungen zurück (e) und erhöhte die LOS -Geschwindigkeit weiter, bis sie seine maximale LOS -Geschwindigkeit (f) erreichte. <br> <br> 
+            Die größte Erklärung des Raiju sind mehrere flache Flecken bei 2,5 m/s (A-B & D-E). <br> 
+            <img src = "https://zero-network.net/phasmophobia/static/imgs/wiki/graph_raiju.png" style = "max-width: 60%; Padding: 10px 0px;"> 
+        </div> 
+        <hr> 
+        <div class = "text"> 
+            <b> Revenant: </b> <br> 
+            Die Revenanten folgen nicht einer Standard -LOS -Erhöhung. Stattdessen haben sie eine Grundgeschwindigkeit von 1,0 m/s, bis sie einen Spieler (A) erkennen, sei es nach Sicht, Schall oder elektronischer Verwendung. Sie beschleunigen sofort bis zu 3,0 m/s, bis sie den Spieler nicht mehr erkennen können und den letzten bekannten Ort des Spielers (B) erreicht haben. Zu diesem Zeitpunkt werden sie allmählich auf 1,0 m/s (c) zurückgehen. <br> 
+            <img src = "https://zero-network.net/phasmophobia/static/imgs/wiki/graph_revenant.png" style = "max-width: 60%; padding: 10px 0px;"> 
+        </div> 
+        <hr> 
+        <div class = "text"> 
+            <b> Hantu: </b> <br> 
+            Der Hantu hat keine LOS -Erhöhung, aber seine Geschwindigkeit basiert auf der Temperatur des Raums, in dem er sich derzeit befindet. Dies führt zu sehr variablen Geschwindigkeiten beim Jagd <b> <i> Wenn </i> </b> es durch mehrere durch mehrere Verschiedene Temperaturräume während einer Jagd. Je länger ein Hantu in einem Raum ist, desto kälter wird er und dies wird sich auf seine Geschwindigkeit auswirken. <br> 
+            <img src = "https://zero-network.net/phasmophobia/static/imgs/wiki/graph_hantu.png" style = "max-width: 60%; padding: 10px 0px;">
+        </div>
+        <hr>
+        <div class="text">
+            <b> Moroi (mit LOS + Smudge): </b> <br> 
+             Die Geschwindigkeit eines Moroi hängt von der durchschnittlichen Gesundheit des Teams ab. Bei 0% geistiger Gesundheit beginnt die Grundgeschwindigkeit eines Moroi bei 2,25 m/s, bis sie LOS (A) hat. Mit 13 Sekunden kontinuierlicher LOS kann ein Moroi bei 3,71 m/s (d) maximal maximal ausgeben, die schnellste eines Ghosts. <br> <br> 
+             Ein Moroi hat auch die längste "Blindheit" Periode, wenn es von einem Geist verschmiert wurde. Wenn ein Moroi beim Verschmelzen (B) eine LOS -Geschwindigkeit erhöht, nimmt die Geschwindigkeit 7,5 Sekunden lang langsam ab, anstatt der Standard 5 Sekunden. Nach dem Verschwinden des Verschmutzens wird die Geschwindigkeit weiter zunehmen, wenn LOS wiedererlangt wird (c). <br> 
+             <img src = "https://zero-network.net/phasmophobia/static/imgs/wiki/graph_moroi.png" style = "max-width: 60%; padding: 10px 0px;">
+        </div>
+        <hr>
+        <div class = "text"> 
+            <b> Moroi gegen Thaye: </b> <br> 
+            Die Moroi und Thaye sind einige der schnellsten Geister im Spiel und sind manchmal schwer zu unterscheiden, aber es gibt einen wichtigen Unterschied: Ein Thaye wird mit Los niemals beschleunigt. <br> <br> 
+            Thaye: <br> 
+            Thayes Alter und schwächer und langsamer, desto länger sind die Spieler um sie herum. Das jüngste Thaye wird sich immer bei einer Geschwindigkeit von 2,75 m/s bei 100%, selbst mit LOS bewegen, und wird bei jeder Jagd langsamer, wenn sie den Spielern ausgesetzt sind. <br> 
+            <img src = "https://zero-network.net/phasmophobia/static/imgs/wiki/graph_thaye.png" style = "max-width: 60%; padding: 10px 0px;"> <br> 
+            Moroi: <br> 
+            Moroi ohne LOS wird langsamer sein als junge Thayes und bewegt sich bei nur 2,25 m/s (gepunktete Linie), aber sie sind in der Lage, eine Geschwindigkeit viel schneller zu erreichen als in kontinuierlicher LOS (durchgezogene Linie). <br> 
+            <img src = "https://zero-network.net/phasmophobia/static/imgs/wiki/graph_moroi2.png" style = "max-width: 60%; padding: 10px 0px;">
+        </div>
+        <hr>
+        <div class = "text"> 
+            <b> mimic </b> <br> 
+            Die Mimik ist in jedem Jagdmuster in der Lage und sollte in Erinnerung bleiben. 
+        </div> 
     </div>
 </div>
 

@@ -322,7 +322,7 @@ function bpm_calc(forced=false) {
         var av_ms = get_ms(input_bpm)
         input_ms = document.getElementById("bpm_type").checked ? av_ms : ex_ms
         document.getElementById('input_bpm').innerHTML = `${Math.round(input_bpm)}<br>bpm`;
-        document.getElementById('input_speed').innerHTML = `${input_ms}<br>m/s`;
+        document.getElementById('input_speed').innerHTML = `${input_ms}<br>m/s`.replace(".",",");
 
         bpm_hist.push({"speed":input_ms,"seconds":(taps[taps.length - 1] - start_ts)/1000});
         
@@ -372,7 +372,7 @@ function mark_ghost_details(ms)
         var speed_tab = document.getElementById(`${additional_ghost_data[g]}_speed_breakdown`)
         for (var i = 1, row; row = speed_tab.rows[i]; i++){
             $(row).removeClass("row_select")
-            var speed = parseFloat(row.getElementsByClassName(`${additional_ghost_data[g]}_speed_item`)[0].textContent.replace(" m/s",""))
+            var speed = parseFloat(row.getElementsByClassName(`${additional_ghost_data[g]}_speed_item`)[0].textContent.replace(",",".").replace(" m/s",""))
             if(((speed - additional_ghost_var[g]) <= ms && ms <= (speed + additional_ghost_var[g]))){
                 $(row).addClass("row_select")
                 $("#guide_tab_footstep").show()
@@ -410,9 +410,9 @@ function mark_ghosts(ms){
             }
 
             // Get min and max
-            var min_speed = parseFloat(speeds[0].replaceAll(" m/s",""))
+            var min_speed = parseFloat(speeds[0].replace(",",".").replaceAll(" m/s",""))
             if (speeds.length > 1){
-                var max_speed = parseFloat(speeds[1].replaceAll(" m/s",""))
+                var max_speed = parseFloat(speeds[1].replace(",",".").replaceAll(" m/s",""))
             }
             else{
                 var max_speed = min_speed

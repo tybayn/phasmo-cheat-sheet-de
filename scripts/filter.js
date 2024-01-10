@@ -526,9 +526,9 @@ function filter(ignore_link=false){
         }
 
         // Get min and max
-        var min_speed = parseFloat(speeds[0].replaceAll(" m/s",""))
+        var min_speed = parseFloat(speeds[0].replace(",",".").replaceAll(" m/s",""))
         if (speeds.length > 1){
-            var max_speed = parseFloat(speeds[1].replaceAll(" m/s",""))
+            var max_speed = parseFloat(speeds[1].replace(",",".").replaceAll(" m/s",""))
         }
         else{
             var max_speed = min_speed
@@ -1175,7 +1175,7 @@ function loadSettings(){
     if ((user_settings['bpm'] ?? 0) > 0){
         document.getElementById('input_bpm').innerHTML = `${user_settings['bpm']}<br>bpm`
         var cms = document.getElementById("bpm_type").checked ? get_ms(user_settings['bpm']) : get_ms_exact(user_settings['bpm'])
-        document.getElementById('input_speed').innerHTML = `${cms}<br>m/s`;
+        document.getElementById('input_speed').innerHTML = `${cms}<br>m/s`.replace(".",",");
         try{
             mark_ghosts(cms)
         } catch(Error){
