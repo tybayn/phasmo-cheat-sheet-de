@@ -94,6 +94,7 @@
       "behavior": [
         "<Tells>",
         "Banshee scream through paramic  <span class=\"sound\" onClick=\"playSound('https://zero-network.net/phasmophobia/static/assets/banshee_scream.wav')\">🔊</span>",
+        "Das Ziel verliert 15 % geistige Gesundheit, wenn man den Geist während eines „Singing Ghost“-Ereignisses berührt (der Standardentzug beträgt 10 %)",
         "<Verhalten>",
         "Verfolgt sein Ziel nur während einen Hunt)",
         "Wird auf sein Ziel zusteuern, ohne EMF 2 zu verlassen",
