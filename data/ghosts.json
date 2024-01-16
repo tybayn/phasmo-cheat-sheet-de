@@ -54,6 +54,7 @@
         "Erscheint nicht in den Geister Fotos",
         "Während eines Hunts oder während des DOT-Zustands führt das Aufnehmen eines Fotos dazu, dass der Geist verschwindet",
         "Während der Jagd weniger sichtbar (siehe Registerkarte „Anleitungen“)",
+        "Entzieht bei Ereignissen/Jagden geistige Gesundheit (0,5 %/s), solange der Spieler sichtbar ist und sich in einem Umkreis von 10 m um den Spieler befindet",
         "<Verhalten>",
         "Kann zu einem zufälligen Spieler wandern und EMF 2 hinterlassen"
       ]
