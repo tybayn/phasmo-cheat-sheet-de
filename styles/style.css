@@ -81,6 +81,11 @@ hr {
     z-index: 110;
   }
 
+  .tab_rotate{
+    transform: rotate(-90deg);
+    width: max-content;
+  }
+
   #settings_box {
     position: fixed;
     top: 0;
@@ -101,19 +106,22 @@ hr {
 
   #settings_tab {
     position: absolute;
-    transform: rotate(-90deg);
-    height: 16px;
-    width: 115px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 16px;
+    height: 115px;
     text-align: center;
-    top: 56px;
-    right: -76px;
+    top: 6px;
+    right: -27px;
     background-color: #313248;
     padding: 5px;
     cursor: pointer;
     border-style: solid;
     border-color: #ccc;
-    border-width: 0px 1px 1px 1px;
-    border-radius: 0px 0px 5px 5px;
+    border-width: 1px 1px 1px 0px;
+    border-radius: 0px 5px 5px 0px;
   }
 
   #settings_status,
@@ -212,19 +220,22 @@ hr {
 
   #event_tab {
     position: absolute;
-    transform: rotate(-90deg);
-    height: 16px;
-    width: 105px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 16px;
+    height: 105px;
     text-align: center;
-    top: 184px;
-    right: -71px;
+    top: 138px;
+    right: -27px;
     background-color: #313248;
     padding: 5px;
     cursor: pointer;
     border-style: solid;
     border-color: #ccc;
-    border-width: 0px 1px 1px 1px;
-    border-radius: 0px 0px 5px 5px;
+    border-width: 1px 1px 1px 0px;
+    border-radius: 0px 5px 5px 0px;
   }
 
   #wiki_box {
@@ -247,30 +258,34 @@ hr {
 
   #wiki_tab {
     position: absolute;
-    transform: rotate(-90deg);
-    height: 16px;
-    width: 95px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 16px;
+    height: 95px;
     text-align: center;
-    top: 303px;
-    right: -66px;
+    top: 260px;
+    right: -27px;
     background-color: #313248;
     padding: 5px;
     cursor: pointer;
     border-style: solid;
     border-color: #ccc;
-    border-width: 0px 1px 1px 1px;
-    border-radius: 0px 0px 5px 5px;
+    border-width: 1px 1px 1px 0px;
+    border-radius: 0px 5px 5px 0px;
   }
 
   #guide_tab_footstep{
-    background-image: url(../imgs/footsteps-bpm.png);
+    background-image: url(../imgs/footsteps.png);
+    filter: invert(1);
+    opacity: 0.5;
     width: 16px;
     height: 16px;
     background-size: cover;
-    transform: rotate(90deg);
     position: absolute;
-    bottom: 2px;
-    left: 3px;
+    bottom: 3px;
+    left: 5px;
 }
   #maps_box {
     position: fixed;
@@ -293,29 +308,32 @@ hr {
 
   #maps_tab {
     position: absolute;
-    transform: rotate(-90deg);
-    height: 16px;
-    width: 95px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 16px;
+    height: 95px;
     text-align: center;
-    top: 417px;
-    right: -66px;
+    top: 372px;
+    right: -27px;
     background-color: #313248;
     padding: 5px;
     cursor: pointer;
     border-style: solid;
     border-color: #ccc;
-    border-width: 0px 1px 1px 1px;
-    border-radius: 0px 0px 5px 5px;
+    border-width: 1px 1px 1px 0px;
+    border-radius: 0px 5px 5px 0px;
   }
 
-  #lang_blackout{
+  .blockout{
     position: fixed;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.9);
+    background: rgba(0,0,0,0.4);
     left: 0;
     top: 0;
-    z-index: 10;
+    z-index: -999;
 }
 
 #language_box{
@@ -352,18 +370,51 @@ hr {
     border-radius: 5px 0px 0px 5px;
 }
 
+#theme_box{
+  position: fixed;
+  top: 46px;
+  z-index: 1;
+  width: 160px;
+  height: 24px;
+  background-color: #313248;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  align-items: flex-start;
+  color: #fff;
+  padding: 5px 8px 5px 8px;
+  font-size: 14px;
+  transition: right 0.5s ease;
+}
+
+#theme_tab{
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  text-align: center;
+  top: 0px;
+  left: -35px;
+  background-color: #313248;
+  padding: 5px;
+  cursor: pointer;
+  border-style: solid;
+  border-color: #ccc;
+  border-width: 1px 0px 1px 1px;
+  border-radius: 5px 0px 0px 5px;
+}
+
+.language, .theme{
+  width: 135px;
+  cursor: pointer;
+}
+
   .settings_title {
     font-size: 26px;
     margin: 2px 0px 10px 0px;
   }
 
-  #settings_box .icon,
-  #discord_link_box .icon,
-  #event_box .icon,
-  #wiki_box .icon,
-  #maps_box .icon,
-  #news_box .icon,
-  #language_box .icon {
+  #settings_box .icon, #discord_link_box .icon, #event_box .icon, #wiki_box .icon, #maps_box .icon, #news_box .icon, #language_box .icon, #theme_box .icon {
     position: absolute;
     top: 5px;
     right: 4px;
@@ -381,7 +432,8 @@ hr {
   #wiki_box .icon:before,
   #maps_box .icon:before,
   #news_box .icon:before,
-  #language_box .icon:before {
+  #language_box .icon:before,
+  #theme_box .icon:before {
     content: "";
     position: absolute;
     width: 3px;
@@ -397,7 +449,8 @@ hr {
   #wiki_box .icon:after,
   #maps_box .icon:after,
   #news_box .icon:after,
-  #language_box .icon:after {
+  #language_box .icon:after,
+  #theme_box .icon:after {
     content: "";
     position: absolute;
     width: 15px;
@@ -452,14 +505,23 @@ hr {
     border-radius: 5px;
   }
 
-  #speed_offset {
-    font-size: 20px;
+  #speed_offset{
     margin-top: 5px;
     font-weight: bold;
-  }
+    width: calc(100% - 30px);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
 
-  .speed_icon {
-    display: inline-block;
+#offset_value{
+    font-size: 20px;
+}
+
+.speed_icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: #fff;
     border-radius: 15px;
     color: #444;
@@ -1369,6 +1431,13 @@ hr {
         background-color: #ffffff60;
     }
 
+    #bpm_hist{
+        padding: 0px 2px;
+        margin-bottom: 2px;
+        background: rgba(0,0,0,0.3);
+        border-radius: 3px;
+    }
+
     #tap_viz{
         color: #ffffff52;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -1450,6 +1519,7 @@ hr {
     padding-bottom: 30px;
     margin: -8px -8px -8px 8px;
     padding-left: 26px;
+    padding-right: 32px;
   }
 
   .copyright {
@@ -1667,9 +1737,10 @@ hr {
   }
   .ghost_card {
     display: grid;
-    width: 490px;
+    max-width: 510px;
+    min-width: 470px;
     border-radius: 5px;
-    grid-template-columns: 245px 245px;
+    grid-template-columns: 245px auto;
     grid-template-rows: 45px 35px 45px;
     color: white;
     background-color: #313248;
@@ -1677,6 +1748,7 @@ hr {
     height: 125px;
     overflow: hidden;
     position: relative;
+    flex:1;
   }
 
   .ghost_name {
@@ -2187,7 +2259,8 @@ input {
 }
 
 .selected {
-  background-color: #353 !important;
+    background-color: #353 !important;
+    background: linear-gradient(45deg, rgb(47, 71, 47) 0%, rgba(60,111,60,1) 100%) !important;
 }
 
 .dot-flashing {
