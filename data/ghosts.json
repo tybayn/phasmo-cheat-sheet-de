@@ -2,6 +2,7 @@
   "ghosts": [
     {
       "ghost": "Spirit",
+      "name": "Spirit",
       "min_speed": 1.7,
       "max_speed": null,
       "alt_speed": null,
@@ -10,7 +11,7 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["EMF Level 5", "Geisterbox", "Geisterbuch"],
+      "evidence": ["EMF 5", "Spirit Box", "Writing"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
@@ -19,6 +20,7 @@
     },
     {
       "ghost": "Gespenst",
+      "name": "Gespenst",
       "min_speed": 1.7,
       "max_speed": null,
       "alt_speed": null,
@@ -27,18 +29,19 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["EMF Level 5", "Geisterbox", "D.O.T.S Projektor"],
+      "evidence": ["EMF 5", "Spirit Box", "DOTs"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
         "Der Geist wird niemals in das Salz eines Tiers treten",
         "Wird während einer Jagd nicht durch Salz der Stufe 3 verlangsamt",
         "<Verhalten>",
-        "Kann zu zufälligen Spielern teleportiert werden, wobei EMF 2 oder EMF Level 5 gezeigt werden"
+        "Kann zu zufälligen Spielern teleportiert werden, wobei EMF 2 oder EMF 5 gezeigt werden"
       ]
     },
     {
       "ghost": "Phantom",
+      "name": "Phantom",
       "min_speed": 1.7,
       "max_speed": null,
       "alt_speed": null,
@@ -47,7 +50,7 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["Geisterbox", "Ultraviolett", "D.O.T.S Projektor"],
+      "evidence": ["Spirit Box", "Ultraviolet", "DOTs"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
@@ -61,6 +64,7 @@
     },
     {
       "ghost": "Poltergeist",
+      "name": "Poltergeist",
       "min_speed": 1.7,
       "max_speed": null,
       "alt_speed": null,
@@ -69,7 +73,7 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["Geisterbox", "Ultraviolett", "Geisterbuch"],
+      "evidence": ["Spirit Box", "Ultraviolet", "Writing"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
@@ -82,15 +86,16 @@
     },
     {
       "ghost": "Banshee",
+      "name": "Banshee",
       "min_speed": 1.7,
       "max_speed": null,
       "alt_speed": null,
       "speed_is_range": 0,
       "has_los": 1,
       "hunt_sanity": "50%",
-      "hunt_sanity_low": "50%",
-      "hunt_sanity_high": "50%",
-      "evidence": ["Ultraviolett", "Geisterorb", "D.O.T.S Projektor"],
+      "hunt_sanity_low": "12%",
+      "hunt_sanity_high": "87%",
+      "evidence": ["Ultraviolet", "Ghost Orbs", "DOTs"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
@@ -107,6 +112,7 @@
     },
     {
       "ghost": "Dschinn",
+      "name": "Dschinn",
       "min_speed": 1.7,
       "max_speed": 2.5,
       "alt_speed": null,
@@ -115,7 +121,7 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["EMF Level 5", "Ultraviolett", "Gefriertemperaturen"],
+      "evidence": ["EMF 5", "Ultraviolet", "Freezing"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
@@ -128,6 +134,7 @@
     },
     {
       "ghost": "Mare",
+      "name": "Mare",
       "min_speed": 1.7,
       "max_speed": null,
       "alt_speed": null,
@@ -136,7 +143,7 @@
       "hunt_sanity": "60%",
       "hunt_sanity_low": "40%",
       "hunt_sanity_high": "60%",
-      "evidence": ["Geisterbox", "Geisterorb", "Geisterbuch"],
+      "evidence": ["Spirit Box", "Ghost Orbs", "Writing"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
@@ -150,6 +157,7 @@
     },
     {
       "ghost": "Revenant",
+      "name": "Revenant",
       "min_speed": 1.0,
       "max_speed": 3.0,
       "alt_speed": null,
@@ -158,7 +166,7 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["Geisterorb", "Geisterbuch", "Gefriertemperaturen"],
+      "evidence": ["Ghost Orbs", "Writing", "Freezing"],
       "nightmare_evidence": null,
       "behavior": [
         "<Geschwindigkeit>",
@@ -167,6 +175,7 @@
     },
     {
       "ghost": "Shade",
+      "name": "Shade",
       "min_speed": 1.7,
       "max_speed": null,
       "alt_speed": null,
@@ -175,11 +184,11 @@
       "hunt_sanity": "35%",
       "hunt_sanity_low": "35%",
       "hunt_sanity_high": "35%",
-      "evidence": ["EMF Level 5", "Geisterbuch", "Gefriertemperaturen"],
+      "evidence": ["EMF 5", "Writing", "Freezing"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Führt keine Interaktionen mit jemandem im Raum durch, die zu EMF 2, 3 oder 5 führen (außer bei Geisterbuch).",
+        "Führt keine Interaktionen mit jemandem im Raum durch, die zu EMF 2, 3 oder 5 führen (außer bei Writing).",
         "Wird nicht jagen, wenn sich jemand im Raum aufhält",
         "<Verhalten>",
         "Mehr Events bei geringerer geistiger Gesundheit",
@@ -188,7 +197,8 @@
       ]
     },
     {
-      "ghost": "Dämon",
+      "ghost": "Demon",
+      "name": "Dämon",
       "min_speed": 1.7,
       "max_speed": null,
       "alt_speed": null,
@@ -197,7 +207,7 @@
       "hunt_sanity": "70%",
       "hunt_sanity_low": "70%",
       "hunt_sanity_high": "100%",
-      "evidence": ["Ultraviolett", "Geisterbuch", "Gefriertemperaturen"],
+      "evidence": ["Ultraviolet", "Writing", "Freezing"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
@@ -211,6 +221,7 @@
     },
     {
       "ghost": "Yurei",
+      "name": "Yurei",
       "min_speed": 1.7,
       "max_speed": null,
       "alt_speed": null,
@@ -219,7 +230,7 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["Geisterorb", "Gefriertemperaturen", "D.O.T.S Projektor"],
+      "evidence": ["Ghost Orbs", "Freezing", "DOTs"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
@@ -231,6 +242,7 @@
     },
     {
       "ghost": "Oni",
+      "name": "Oni",
       "min_speed": 1.7,
       "max_speed": null,
       "alt_speed": null,
@@ -239,7 +251,7 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["EMF Level 5", "Gefriertemperaturen", "D.O.T.S Projektor"],
+      "evidence": ["EMF 5", "Freezing", "DOTs"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
@@ -252,6 +264,7 @@
     },
     {
       "ghost": "Yokai",
+      "name": "Yokai",
       "min_speed": 1.7,
       "max_speed": null,
       "alt_speed": null,
@@ -260,7 +273,7 @@
       "hunt_sanity": "80%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "80%",
-      "evidence": ["Geisterbox", "Geisterorb", "D.O.T.S Projektor"],
+      "evidence": ["Spirit Box", "Ghost Orbs", "DOTs"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
@@ -273,6 +286,7 @@
     },
     {
       "ghost": "Hantu",
+      "name": "Hantu",
       "min_speed": 1.44,
       "max_speed": 2.7,
       "alt_speed": null,
@@ -281,8 +295,8 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["Ultraviolett", "Geisterorb", "Gefriertemperaturen"],
-      "nightmare_evidence": "Gefriertemperaturen",
+      "evidence": ["Ultraviolet", "Ghost Orbs", "Freezing"],
+      "nightmare_evidence": "Freezing",
       "behavior": [
         "<Tells>",
         "Geister können während der Jagd bei ausgeschaltetem Breaker in jedem Raum einen sichtbaren, eiskalten Atem verspüren",
@@ -297,6 +311,7 @@
     },
     {
       "ghost": "Goryo",
+      "name": "Goryo",
       "min_speed": 1.7,
       "max_speed": null,
       "alt_speed": null,
@@ -305,20 +320,21 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["EMF Level 5", "Ultraviolett", "D.O.T.S Projektor"],
-      "nightmare_evidence": "D.O.T.S Projektor",
+      "evidence": ["EMF 5", "Ultraviolet", "DOTs"],
+      "nightmare_evidence": "DOTs",
       "behavior": [
         "<Tells>",
-        "D.O.T.S Projektor erscheinen nur auf der Kamera und werden selten angezeigt, wenn sich der Spieler im selben Raum befindet",
+        "DOTs erscheinen nur auf der Kamera und werden selten angezeigt, wenn sich der Spieler im selben Raum befindet",
         "<Verhalten>",
         "Lieblingsräume können nicht geändert werden",
         "Läuft nicht über weite Strecken",
         "<Beweis>",
-        "Garantierte D.O.T.S Projektor im Albtraum-/Wahnsinnsmodus"
+        "Garantierte DOTs im Albtraum-/Wahnsinnsmodus"
       ]
     },
     {
       "ghost": "Myling",
+      "name": "Myling",
       "min_speed": 1.7,
       "max_speed": null,
       "alt_speed": null,
@@ -327,7 +343,7 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["EMF Level 5", "Ultraviolett", "Geisterbuch"],
+      "evidence": ["EMF 5", "Ultraviolet", "Writing"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
@@ -338,6 +354,7 @@
     },
     {
       "ghost": "Onryo",
+      "name": "Onryo",
       "min_speed": 1.7,
       "max_speed": null,
       "alt_speed": null,
@@ -346,7 +363,7 @@
       "hunt_sanity": "60%",
       "hunt_sanity_low": "60%",
       "hunt_sanity_high": "100%",
-      "evidence": ["Geisterbox", "Geisterorb", "Gefriertemperaturen"],
+      "evidence": ["Spirit Box", "Ghost Orbs", "Freezing"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
@@ -359,7 +376,8 @@
       ]
     },
     {
-      "ghost": "Die Zwillinge",
+      "ghost": "The Twins",
+      "name": "Die Zwillinge",
       "min_speed": 1.53,
       "max_speed": 1.87,
       "alt_speed": null,
@@ -368,7 +386,7 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["EMF Level 5", "Geisterbox", "Gefriertemperaturen"],
+      "evidence": ["EMF 5", "Spirit Box", "Freezing"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
@@ -381,6 +399,7 @@
     },
     {
       "ghost": "Raiju",
+      "name": "Raiju",
       "min_speed": 1.7,
       "max_speed": 2.5,
       "alt_speed": null,
@@ -389,7 +408,7 @@
       "hunt_sanity": "65%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "65%",
-      "evidence": ["EMF Level 5", "Geisterorb", "D.O.T.S Projektor"],
+      "evidence": ["EMF 5", "Ghost Orbs", "DOTs"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
@@ -402,6 +421,7 @@
     },
     {
       "ghost": "Obake",
+      "name": "Obake",
       "min_speed": 1.7,
       "max_speed": null,
       "alt_speed": null,
@@ -410,20 +430,21 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["EMF Level 5", "Ultraviolett", "Geisterorb"],
-      "nightmare_evidence": "Ultraviolett",
+      "evidence": ["EMF 5", "Ultraviolet", "Ghost Orbs"],
+      "nightmare_evidence": "Ultraviolet",
       "behavior": [
         "<Tells>",
         "Spezielle 6-Finger-Fingerabdrücke",
         "Hat eine Chance von 6,66 %, das Geistermodell zu ändern, wenn es während der Jagd flackert (garantiert einmal pro Jagd, kehrt zum Originalmodell zurück)",
-        "Hinterlässt nicht immer Ultraviolettte Spuren",
-        "Kann Ultraviolettte Spuren früher als 2 Minuten verschwinden lassen",
+        "Hinterlässt nicht immer Ultraviolette Spuren",
+        "Kann Ultraviolette Spuren früher als 2 Minuten verschwinden lassen",
         "<Beweis>",
-        "Garantiertes Ultraviolettt im Albtraum-/Wahnsinnsmodus"
+        "Garantiertes Ultraviolett im Albtraum-/Wahnsinnsmodus"
       ]
     },
     {
-      "ghost": "Der Mimik",
+      "ghost": "The Mimic",
+      "name": "Der Mimik",
       "min_speed": 1.7,
       "max_speed": null,
       "alt_speed": null,
@@ -432,7 +453,7 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "35%",
       "hunt_sanity_high": "100%",
-      "evidence": ["Geisterbox", "Ultraviolett", "Gefriertemperaturen"],
+      "evidence": ["Spirit Box", "Ultraviolet", "Freezing"],
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
@@ -447,6 +468,7 @@
     },
     {
       "ghost": "Moroi",
+      "name": "Moroi",
       "min_speed": 1.5,
       "max_speed": 2.25,
       "alt_speed": 3.71,
@@ -455,20 +477,21 @@
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
       "hunt_sanity_high": "50%",
-      "evidence": ["Geisterbox", "Geisterbuch", "Gefriertemperaturen"],
-      "nightmare_evidence": "Geisterbox",
+      "evidence": ["Spirit Box", "Writing", "Freezing"],
+      "nightmare_evidence": "Spirit Box",
       "behavior": [
         "<Tells>",
-        "Verflucht den Spieler, wenn er durch Paramic oder Geisterbox gehört wird. Der Fluch lässt die geistige Gesundheit doppelt so schnell sinken",
+        "Verflucht den Spieler, wenn er durch Paramic oder Spirit Box gehört wird. Der Fluch lässt die geistige Gesundheit doppelt so schnell sinken",
         "Die Dauer der Weihrauchblindheit wurde pro Stufe um 50 % erhöht (7,5 Sek., 9 Sek. bzw. 10,5 Sek.)",
         "<Geschwindigkeit>",
         "Schneller, wenn die durchschnittliche geistige Gesundheit geringer ist, kann in Sichtlinie eine Geschwindigkeit von 3,71 m/s erreichen",
         "<Beweis>",
-        "Garantierte Geisterbox im Albtraum-/Wahnsinnsmodus"
+        "Garantierte Spirit Box im Albtraum-/Wahnsinnsmodus"
       ]
     },
     {
       "ghost": "Deogen",
+      "name": "Deogen",
       "min_speed": 0.4,
       "max_speed": 3.0,
       "alt_speed": null,
@@ -477,22 +500,23 @@
       "hunt_sanity": "40%",
       "hunt_sanity_low": "40%",
       "hunt_sanity_high": "40%",
-      "evidence": ["Geisterbox", "Geisterbuch", "D.O.T.S Projektor"],
-      "nightmare_evidence": "Geisterbox",
+      "evidence": ["Spirit Box", "Writing", "DOTs"],
+      "nightmare_evidence": "Spirit Box",
       "behavior": [
         "<Tells>",
-        "Schweres Atmen durch die Geisterbox, wenn der Geist weniger als 1 m entfernt ist  <span class=\"sound\" onClick=\"playSound('https://zero-network.net/phasmophobia/static/assets/deogen_breathing.wav')\">🔊</span>",
+        "Schweres Atmen durch die Spirit Box, wenn der Geist weniger als 1 m entfernt ist  <span class=\"sound\" onClick=\"playSound('https://zero-network.net/phasmophobia/static/assets/deogen_breathing.wav')\">🔊</span>",
         "mann Kann sich nicht vor einem Deogen verstecken",
         "<Verhalten>",
-        "Erhöhte Chance für D.O.T.S Projektor/Schreiben",
+        "Erhöhte Chance für DOTs/Schreiben",
         "<Geschwindigkeit>",
         "3,0 m/s in großer Entfernung, sinkt auf 0,4 m/s in der Nähe des Spielers",
         "<Beweis>",
-        "Garantierte Geisterbox im Albtraum-/Wahnsinnsmodus"
+        "Garantierte Spirit Box im Albtraum-/Wahnsinnsmodus"
       ]
     },
     {
       "ghost": "Thaye",
+      "name": "Thaye",
       "min_speed": 1.0,
       "max_speed": 2.75,
       "alt_speed": null,
@@ -501,13 +525,13 @@
       "hunt_sanity": "75%",
       "hunt_sanity_low": "35%",
       "hunt_sanity_high": "75%",
-      "evidence": ["Geisterorb", "Geisterbuch", "D.O.T.S Projektor"],
+      "evidence": ["Ghost Orbs", "Writing", "DOTs"],
       "nightmare_evidence": null,
       "behavior": [
         "<Verhalten>",
         "Der Geist altert mit der Zeit (alle 1–2 Minuten), während sich der Spieler in der Nähe befindet",
         "In jüngeren Jahren aktiver",
-        "Erhöhte Chance für D.O.T.S Projektor/Schreiben",
+        "Erhöhte Chance für DOTs/Schreiben",
         "<Hunt Sanity>",
         "Als Jüngster jagt er zu 75 %, als Ältester zu 15 %",
         "<Geschwindigkeit>",
@@ -516,13 +540,13 @@
     }
   ],
   "version": "v0.9.4.0",
-  "evidence": [
-    "EMF Level 5",
-    "Ultraviolett",
-    "Geisterbuch",
-    "Gefriertemperaturen",
-    "D.O.T.S Projektor",
-    "Geisterorb",
-    "Geisterbox"
-  ]
+  "evidence": {
+      "EMF 5":"EMF Level 5",
+      "Ultraviolet":"Ultraviolett",
+      "Writing":"Geisterbuch",
+      "Freezing":"Gefriertemperaturen",
+      "DOTs":"D.O.T.S Projektor",
+      "Ghost Orbs":"Geisterorb",
+      "Spirit Box":"Geisterbox"
+  }
 }
