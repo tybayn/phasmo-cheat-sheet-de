@@ -1182,7 +1182,7 @@ function showTheme(){
 }
 
 function flashMode(){
-    var cur_evidence = parseInt(document.getElementById("num_evidence").value)
+    var cur_evidence = document.getElementById("num_evidence").value
     var mode_text = {"-1":"Benutzerdefiniert","0":"Apokalypse","1":"Wahnsinn","2":"Albtraum","3":"Profi","3I":"Fortgeschritten","3A":"Anfänger"}[cur_evidence]
     document.getElementById("game_mode").innerHTML = `${mode_text}<span>(${cur_evidence} Beweis)</span>`.replace("-1",document.getElementById("cust_num_evidence").value)
     $("#game_mode").fadeIn(500,function () {
