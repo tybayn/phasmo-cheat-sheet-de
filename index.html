@@ -104,9 +104,9 @@
       >
         <strong>Beweise:</strong>
         <ul>
-          <li>
-            "anzahl der nachweise &lt;nummer&gt;" oder "schwierigkeit &lt;nummer&gt;" -> Legen Sie die Anzahl der Beweise fest
-          </li>
+          <li>"schwierigkeit &lt;schwierigkeit&gt;" -> Einstellen der Schwierigkeit</li>
+          <li>"anzahl der nachweise &lt;nummer&gt;" -> Benutzerdefiniert: Anzahl der Beweise festlegen</li>
+          <li>"jagddauer &lt;dauer&gt;" -> Benutzerdefiniert: Dauer der Jagd einstellen</li>
           <li>"beweise &lt;beweise&gt;" -> Als gefundene Beweise markieren</li>
           <li>"beweise nicht &lt;beweise&gt;" -> Als nicht gefundenen Beweis markieren</li>
           <li>
@@ -155,8 +155,10 @@
         <ul>
           <li>"timer starten" -> Starten Sie den Timer für das Räucherstäbchen</li>
           <li>"timer stoppen " -> Stoppen Sie den Timer für das Räucherstäbchen</li>
-          <li>"abklinkungszeit starten" -> Starten Sie den Abkühlungstimer</li>
-          <li>"abklinkungszeit stoppen" -> Stoppen Sie den Abkühlungstimer</li>
+          <li>"warten starten" -> Starten Sie den Abkühlungstimer</li>
+          <li>"warten stoppen" -> Stoppen Sie den Abkühlungstimer</li>
+          <li>"jagd starten" -> Starten Sie den Jagdtimer</li>
+          <li>"jagd stoppen" -> Stoppen Sie den Jagdtimer</li>
         </ul>
         <hr />
         <strong>Verschiedenes:</strong>
@@ -167,6 +169,7 @@
           <li>
             "geistergeschwindigkeit &lt;prozent&gt;" -> Modifikator für die Geistergeschwindigkeit auf 50%, 75%, 100%, 125% oder 150% einstellen
           </li>
+          <li>"karte &lt;kartenname&gt; auswählen" -> Wählt die angegebene Karte aus</li>
           <li>"karte [&lt;kartenname&gt;] anzeigen" -> Öffnet die Registerkarte Karte und zeigt die Karte an</li>
           <li>"karte schließen" oder "karte ausblenden" -> Schließt die Karteikarte</li>
           <li>
@@ -223,6 +226,9 @@
       </div>
       <div class="modifier_note less_pad">
           <input type="checkbox" id="mute_timer_toggle" name="mute_timer_toggle" class="settings_check" onclick="mute('toggle');saveSettings();"><label for="mute_timer_toggle">Mute Timer Toggle</label>
+      </div>
+      <div class="modifier_note less_pad">
+          <input type="checkbox" id="timer_count_up" name="timer_count_up" class="settings_check" onclick="toggleCountup();saveSettings();"><label for="timer_count_up">Timer Count Up</label>
       </div>
       <hr />
       <div class="modifier_volume yfont white">Geschwindigkeitsversatz</div>
@@ -403,12 +409,7 @@
     <span class="icon" onclick="showMaps()"></span>
 
     <div class="maps_title yfont white">Karten</div>
-    <div
-      class="maps_image"
-      onmouseenter="zoomMap(this)"
-      onmouseleave="unZoomMap(this)"
-      onmousemove="moveZoom(this,event)"
-    >
+    <div class="maps_image" onpointerenter="zoomMap(this)" onpointerleave="unZoomMap(this)" onpointermove="moveZoom(this,event)">
       <div class="map_image"></div>
       <div class="hover_zoom">+ Hover zum vergrössern</div>
     </div>
@@ -447,19 +448,12 @@
     </div>
 
   <div class="data">
-    <div class="menu">
+    <div id="menu" class="menu">
       <div class="tools-filter-buttons">
-        <button
-          id="show_filter_button"
-          class="filter_tool_button filter_tool_button_live"
-        >
+        <button id="show_filter_button" class="filter_tool_button filter_tool_button_live" onclick="showMenu()">
           Filter
         </button>
-        <button
-          id="show_tool_button"
-          class="filter_tool_button filter_tool_button_back"
-          onclick="toggleFilterTools()"
-        >
+        <button id="show_tool_button" class="filter_tool_button filter_tool_button_back" onclick="toggleFilterTools();showMenu();">
           Werkzeuge
         </button>
       </div>
@@ -467,11 +461,9 @@
         <div class="timer_title yfont white">Timers</div>
         <div class="timers">
           <div class="timer_block">
-            <div
-              class="modifier_smudge_timer yfont white"
-              onclick="toggle_timer()"
-            >
-              Räucherstäbchen Timer
+            <div class="modifier_smudge_timer yfont white" onclick="toggle_timer()">
+              Weihrauch
+              <div class="modifier_note_2">('T' - starten/stoppen)</div>
             </div>
             <div class="line_labels" onclick="toggle_timer();send_timer();">
               <div class="spirit_line_label">Spirit</div>
@@ -489,17 +481,13 @@
             <div id="time_left" onclick="toggle_timer();send_timer();">
               <span id="minute">03</span>:<span id="second">00</span>
             </div>
-            <div class="modifier_note_2" onclick="toggle_timer();send_timer();">
-              (Drücke 'T' zum starten/stoppen)
-            </div>
+            
           </div>
           <hr />
           <div class="timer_block">
-            <div
-              class="modifier_smudge_timer yfont white"
-              onclick="toggle_cooldown_timer()"
-            >
-              Abklinkungszeit
+            <div class="modifier_smudge_timer yfont white" onclick="toggle_cooldown_timer()">
+              Warten
+              <div class="modifier_note_2">('C' - starten/stoppen)</div>
             </div>
             <div
               class="line_labels"
@@ -530,11 +518,27 @@
                 >25</span
               >
             </div>
-            <div
-              class="modifier_note_2"
-              onclick="toggle_cooldown_timer();send_cooldown_timer();"
-            >
-              (Drücke 'H' zum starten/stopapen)
+          </div>
+          <hr>
+          <div class="timer_block">
+            <div class="modifier_smudge_timer yfont white" onclick="toggle_hunt_timer();send_hunt_timer();">
+              Jagd
+                <div class="modifier_note_2">('H' - starten/stoppen)</div>
+            </div>
+            <div class="line_labels" onclick="toggle_hunt_timer();send_hunt_timer();">
+                <div class="hunt_cursed_line_label">Cursed</div>
+                <div class="hunt_size_label">Karte: S, Jagd: N</div>
+            </div>
+            <div id="huntProgress" onclick="toggle_hunt_timer();send_hunt_timer();">
+                <img src="imgs/play.png" id="play_hunt_button" class="play_button">
+                <div id="huntProgressBar">
+                    <div id="huntProgressBarInner" class="bar"></div>
+                    <div class="normal_line"></div>
+                    <div class="cursed_line"></div>
+                </div>
+            </div>
+            <div id="time_left_hunt" onclick="toggle_hunt_timer();send_hunt_timer();">
+                <span id="minute_hunt">00</span>:<span id="second_hunt">50</span>
             </div>
           </div>
         </div>
@@ -603,17 +607,30 @@
       <div id="filter-content" class="filter-content">
         <div class="evidence_title yfont white">
           Beweis
-          <select
-            name="num_evidence"
-            id="num_evidence"
-            class="num_evidence"
-            onchange="filter();flashMode();saveSettings();"
-          >
-            <option value="3">3</option>
-            <option value="2">2</option>
-            <option value="1">1</option>
-            <option value="0">0</option>
-          </select>
+        </div>
+
+        <select name="num_evidence" id="num_evidence" class="num_evidence" onchange="showCustom();filter();flashMode();updateMapDifficulty(this.value);saveSettings();">
+            <option value="3A">Anfänger (3)</option>
+            <option value="3I">Fortgeschritten (3)</option>
+            <option value="3">Profi (3)</option>
+            <option value="2">Albtraum (2)</option>
+            <option value="1">Wahnsinn (1)</option>
+            <option value="0">Apokalypse (0)</option>
+            <option value="-1">Benutzerdefiniert (?)</option>
+        </select>
+
+        <div id="custom_options" style="display: none;">
+            <select name="cust_num_evidence" id="cust_num_evidence" class="cust_num_evidence" style="width: calc(50% - 2px); margin-right: 2px;" onchange="filter();flashMode();saveSettings();">
+                <option value="3">Beweis: 3</option>
+                <option value="2">Beweis: 2</option>
+                <option value="1">Beweis: 1</option>
+                <option value="0">Beweis: 0</option>
+            </select>
+            <select name="cust_hunt_length" id="cust_hunt_length" class="cust_num_evidence"  style="width: calc(50% - 2px); margin-left: 2px;" onchange="filter();updateMapDifficulty(this.value);saveSettings();">
+                <option value="3A">Jagd: Niedrig</option>
+                <option value="3I">Jagd: Mittel</option>
+                <option value="3">Jagd: Hoch</option>
+            </select>
         </div>
         <div id="game_mode" class="yfont white" style="display: none">
           Wahnsinn
@@ -719,7 +736,8 @@
       <div class="copyright" onclick="showInfo()">
         <img class="question" src="imgs/question.png" /> Infos / Urheberrecht
       </div>
-      <button id="reset" class="yfont" onclick="reset()">Zurücksetzen</button>
+      <div id="close-menu-button" onclick="closeMenu()"></div>
+            <button id="reset" class="yfont standard_reset" onclick="reset()" onmouseenter="checkResetButton()" onmouseleave="resetResetButton()">Zurücksetzen</button>
     </div>
 
     <div id="cards" class="cards"><div class="dot-flashing"></div></div>
@@ -737,7 +755,7 @@
             document.getElementById("settings_box").style.left = "calc(-60% - 40px)";
             document.getElementById("event_box").style.left = "calc(-60% - 40px)";
             document.getElementById("wiki_box").style.left = "calc(-60% - 40px)";
-            document.getElementById("maps_box").style.left = "calc(-60% - 40px)";
+            document.getElementById("maps_box").style.left = "calc(-100% + 60px)";
         }
         else{
             document.getElementById("settings_box").style.left = "23px";
