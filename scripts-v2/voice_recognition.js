@@ -617,7 +617,7 @@ function parse_speech(vtext){
         if(document.getElementById("num_evidence").value == "-1"){
             var smallest_num = '3'
             var smallest_val = 100
-            var prev_value = document.getElementById("num_evidence").value
+            var prev_value = document.getElementById("cust_num_evidence").value
             var all_difficulty = ['0','1','2','3']
 
             for(var i = 0; i < all_difficulty.length; i++){
