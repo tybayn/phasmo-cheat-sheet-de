@@ -203,66 +203,8 @@
 
     <div class="settings_title yfont white">Einstellungen</div>
     <div class="info_block">
-      <div class="modifier_volume yfont white">Lautstärke</div>
-      <input
-        type="range"
-        id="modifier_volume"
-        name="volume"
-        min="0"
-        max="100"
-        step="2"
-        default="50"
-        onchange="setVolume();saveSettings();"
-      />
-      <div class="modifier_volume_labels">
-        <div class="modifier_volume_label">0%</div>
-        <div class="modifier_volume_label">25%</div>
-        <div class="modifier_volume_label">50%</div>
-        <div class="modifier_volume_label">75%</div>
-        <div class="modifier_volume_label">100%</div>
-      </div>
-      <div class="modifier_note">
-        <input type="checkbox" id="mute_timer_countdown" name="mute_timer_countdown" class="settings_check" onclick="mute('countdown');saveSettings();"><label for="mute_timer_countdown">Mute Timer Countdown</label>
-      </div>
-      <div class="modifier_note less_pad">
-          <input type="checkbox" id="mute_timer_toggle" name="mute_timer_toggle" class="settings_check" onclick="mute('toggle');saveSettings();"><label for="mute_timer_toggle">Mute Timer Toggle</label>
-      </div>
-      <div class="modifier_note less_pad">
-          <input type="checkbox" id="timer_count_up" name="timer_count_up" class="settings_check" onclick="toggleCountup();saveSettings();"><label for="timer_count_up">Timer Count Up</label>
-      </div>
-      <hr />
-      <div class="modifier_volume yfont white">Geschwindigkeitsversatz</div>
-      <div id="speed_offset">
-        <span id="minus_speed" class="speed_icon" onclick="adjustOffset(-1);setTempo();saveSettings();">-1</span>
-                <span id="minus_speed" class="speed_icon" onclick="adjustOffset(-0.1);setTempo();saveSettings();">-.1</span>
-                <span id="offset_value"> 0.0% </span>
-                <span id="minus_speed" class="speed_icon" onclick="adjustOffset(0.1);setTempo();saveSettings();">+.1</span>
-                <span id="minus_speed" class="speed_icon" onclick="adjustOffset(1);setTempo();saveSettings();">+1</span>
-      </div>
-      <div class="modifier_note">(Passen Sie die Schrittgeschwindigkeit an)</div>
-      <hr />
-      <div class="modifier_volume yfont white">Geschwindigkeitsfilterlogik</div>
-      <div class="speed_logic_select">
-        <span>ODER</span>
-        <label for="speed_logic_type" onchange="filter();saveSettings();">
-          <input type="checkbox" name="" id="speed_logic_type" />
-          <div class="toggle"></div>
-        </label>
-        <span>UND</span>
-      </div>
-      <hr />
-      <div class="modifier_volume yfont white">BPM to m/s</div>
-      <div class="speed_logic_select">
-        <span>Genau</span>
-        <label for="bpm_type" onchange="bpm_calc(true);saveSettings();">
-          <input type="checkbox" name="" id="bpm_type" />
-          <div class="toggle"></div>
-        </label>
-        <span>Gerundet</span>
-      </div>
-      <hr />
       <div class="modifier_volume yfont white">Stimmbefehle</div>
-      <div class="journal_link" style="width: 75%; margin-top: 10px">
+      <div class="journal_link" style="width: calc(100% - 7px); margin-top: 10px">
         <div class="journal_link_buttons">
           <button
             id="start_voice"
@@ -382,6 +324,67 @@
       <div id="link_id_note" class="modifier_note">
         (STATUS: Nicht verbunden!)
       </div>
+      <hr />
+      <div class="modifier_volume yfont white">Geschwindigkeitsversatz</div>
+      <div id="speed_offset">
+        <span id="minus_speed" class="speed_icon" onclick="adjustOffset(-1);setTempo();saveSettings();">-1</span>
+                <span id="minus_speed" class="speed_icon" onclick="adjustOffset(-0.1);setTempo();saveSettings();">-.1</span>
+                <span id="offset_value"> 0.0% </span>
+                <span id="minus_speed" class="speed_icon" onclick="adjustOffset(0.1);setTempo();saveSettings();">+.1</span>
+                <span id="minus_speed" class="speed_icon" onclick="adjustOffset(1);setTempo();saveSettings();">+1</span>
+      </div>
+      <div class="modifier_note">(Passen Sie die Schrittgeschwindigkeit an)</div>
+      <hr />
+      <div class="modifier_volume yfont white">Geschwindigkeitsfilterlogik</div>
+      <div class="speed_logic_select">
+        <span>ODER</span>
+        <label for="speed_logic_type" onchange="filter();saveSettings();">
+          <input type="checkbox" name="" id="speed_logic_type" />
+          <div class="toggle"></div>
+        </label>
+        <span>UND</span>
+      </div>
+      <hr />
+      <div class="modifier_volume yfont white">BPM to m/s</div>
+      <div class="speed_logic_select">
+        <span>Genau</span>
+        <label for="bpm_type" onchange="bpm_calc(true);saveSettings();">
+          <input type="checkbox" name="" id="bpm_type" />
+          <div class="toggle"></div>
+        </label>
+        <span>Gerundet</span>
+      </div>
+      <hr />
+      <div class="modifier_volume yfont white">Lautstärke</div>
+      <input
+        type="range"
+        id="modifier_volume"
+        name="volume"
+        min="0"
+        max="100"
+        step="2"
+        default="50"
+        onchange="setVolume();saveSettings();"
+      />
+      <div class="modifier_volume_labels">
+        <div class="modifier_volume_label">0%</div>
+        <div class="modifier_volume_label">25%</div>
+        <div class="modifier_volume_label">50%</div>
+        <div class="modifier_volume_label">75%</div>
+        <div class="modifier_volume_label">100%</div>
+      </div>
+      <div class="modifier_option">
+        <input type="checkbox" id="mute_timer_countdown" name="mute_timer_countdown" class="settings_check" onclick="mute('countdown');saveSettings();"><label for="mute_timer_countdown">Mute Timer Countdown</label>
+      </div>
+      <div class="modifier_option less_pad">
+          <input type="checkbox" id="mute_timer_toggle" name="mute_timer_toggle" class="settings_check" onclick="mute('toggle');saveSettings();"><label for="mute_timer_toggle">Mute Timer Toggle</label>
+      </div>
+      <div class="modifier_option less_pad">
+          <input type="checkbox" id="timer_count_up" name="timer_count_up" class="settings_check" onclick="toggleCountup();saveSettings();"><label for="timer_count_up">Timer Count Up</label>
+      </div>
+      <div class="modifier_option less_pad">
+        <input type="checkbox" id="timer_split" name="timer_split" class="settings_check" onclick="saveSettings();"><label for="timer_split">Split Timer Parts (Desktop Link)</label>
+      </div>   
     </div>
     <div id="session">-</div>
   </div>
@@ -609,13 +612,13 @@
           Beweis
         </div>
 
-        <select name="num_evidence" id="num_evidence" class="num_evidence" onchange="showCustom();filter();flashMode();updateMapDifficulty(this.value);saveSettings();">
+        <select name="num_evidence" id="num_evidence" class="num_evidence" onchange="showCustom();filter();flashMode();setGhostSpeedFromDifficulty(this.value);updateMapDifficulty(this.value);bpm_calc(true);saveSettings();">
             <option value="3A">Anfänger (3)</option>
             <option value="3I">Fortgeschritten (3)</option>
             <option value="3">Profi (3)</option>
             <option value="2">Albtraum (2)</option>
             <option value="1">Wahnsinn (1)</option>
-            <option value="0">Apokalypse (0)</option>
+            <option value="0">Apokalypse III (0)</option>
             <option value="-1">Benutzerdefiniert (?)</option>
         </select>
 
@@ -746,7 +749,8 @@
     <div id="domovoi-text" style="display: none;">Hallo! Ich bin Domo!</div>
     <img id="domovoi-img" src="imgs/domovoi.png" onmouseenter="domovoi_show_last()" onmouseleave="domovoi_hide_last()" ondblclick="domovoi_print_logs()">
   </div>
-  <div id="eye" onclick="revive()"><img src="imgs/eye.png"></div>
+  <input type="checkbox" id="priority_sort" onchange="prioritySort();saveSettings();"><label for="priority_sort" title="Sort faded ghosts to the bottom"><img id="sort_img" src="imgs/not-sort-icon.png"></label>
+    <div id="eye" onclick="revive()" title="Show manually hidden ghosts"><img src="imgs/eye.png"></div>
 
 
     <script>
