@@ -488,7 +488,7 @@ function send_ghost_data_link(ghost){
 
 function send_empty_data_link(){
     if(hasDLLink){
-        dlws.send(JSON.stringify({"action":"GHOSTDATA","ghost":`None|<i>Klicken Sie auf einen Geist, um seine Geschichten und Verhaltensweisen zu sehen\n(Verwenden Sie ' [ ' und ' ] ', um durch die Geister zu blättern.)<i>`}))
+        dlws.send(JSON.stringify({"action":"GHOSTDATA","ghost":`None|<i>Klicken Sie auf einen Geist, um seine Geschichten und Verhaltensweisen zu sehen\n(Verwenden Sie ' ü ' und ' + ', um durch die Geister zu blättern.)<i>`}))
     }
 }
 
