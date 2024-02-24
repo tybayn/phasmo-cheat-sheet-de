@@ -323,7 +323,7 @@ function link_link(){
                     send_ghost_data_link(rev(all_ghosts,incoming_state['ghost']))
                 }
                 if (incoming_state['action'].toUpperCase() == "GHOSTSELECT"){
-                    select(document.getElementById(incoming_state['ghost']))
+                    select(document.getElementById(rev(all_ghosts,incoming_state['ghost'])))
                 }
                 if (incoming_state['action'].toUpperCase() == "TIMER"){
                     let force_start = incoming_state.hasOwnProperty("reset") && incoming_state["reset"] ? true : false;
@@ -469,7 +469,7 @@ function send_ghost_data_link(ghost){
             readd_classes.push("permhidden")
 
         $(document.getElementById(ghost)).removeClass(readd_classes)
-        data = `<b>${ghost}:<b>\n`
+        data = `<b>${document.getElementById(ghost).querySelector(".ghost_name").innerText}:<b>\n`
         data += document.getElementById(ghost).querySelector(".ghost_evidence").innerText.trim().replaceAll("\n",", ") + (ghost == "The Mimic" ? ", *Geisterorb" : "") + "\n"
         data += document.getElementById(ghost).querySelector(".ghost_behavior").innerText
         data = data.replace("Tells","\n<b>Tells:<b>\n")
