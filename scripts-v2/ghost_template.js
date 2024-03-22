@@ -22,10 +22,10 @@ behavior_titles = {
   "<Tells>": "<div class='dtitle'><i>Tells</i><div class='ddash'></div></div>",
   "<Verhalten>":
     "<div class='dtitle'><i>Verhalten</i><div class='ddash'></div></div>",
-  "<Hunt Sanity>":
-    "<div class='dtitle'><i>Hunt Sanity</i><div class='ddash'></div></div>",
-  "<Geschwindigkeit>":
-    "<div class='dtitle'><i>Geschwindigkeit</i><div class='ddash'></div></div>",
+  "<Jagd Geisteszustand>":
+    "<div class='dtitle'><i>Jagd Geisteszustand</i><div class='ddash'></div></div>",
+  "<Jagd Geschwindigkeit>":
+    "<div class='dtitle'><i>Jagd Geschwindigkeit</i><div class='ddash'></div></div>",
   "<Beweis>":
     "<div class='dtitle'><i>Beweis</i><div class='ddash'></div></div>",
 };

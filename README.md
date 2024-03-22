@@ -1,6 +1,6 @@
 # Unofficial Phasmo Cheat Sheet (German Translation)
 
-A client facing web-app guide for the horror video game Phasmophobia. This repo has been translated from English to German by DerFliegendeHollaender and Mapstabeats2.
+A client facing web-app guide for the horror video game Phasmophobia. This repo has been translated from English to German by DerFliegendeHollaender, Mapstabeats2, and @lichtschweif.
 
 In order to make this version work with other languages, the following features from the original have been removed:
 - Discord Link

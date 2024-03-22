@@ -15,7 +15,7 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Wenn man den Geist erzürnt, wird eine Jagd nach 180ern statt der normalen 90er verhindert"
+        "Wenn geräuchert, dann kann für die nächsten 180s keine weitere Jagd stattfinden, anstatt den normalen 90s"
       ]
     },
     {
@@ -33,10 +33,10 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Der Geist wird niemals in das Salz eines Tiers treten",
-        "Wird während einer Jagd nicht durch Salz der Stufe 3 verlangsamt",
+        "Wird niemals in Salz sämtlicher Stufen treten",
+        "Wird während einer Jagd nicht von Stufe 3 Salz verlangsamt",
         "<Verhalten>",
-        "Kann zu zufälligen Spielern teleportiert werden, wobei EMF 2 oder EMF 5 gezeigt werden"
+        "Kann sich zu einem zufälligen Spiele teleportieren, hinterlässt dabei jedoch EMF 2 oder EMF 5"
       ]
     },
     {
@@ -54,9 +54,9 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Erscheint nicht in den Geister Fotos",
-        "Während eines Hunts oder während des DOT-Zustands führt das Aufnehmen eines Fotos dazu, dass der Geist verschwindet",
-        "Während der Jagd weniger sichtbar (siehe Registerkarte „Anleitungen“)",
+        "Wird nicht auf Geisterfotos gezeigt",
+        "Verschwindet während eines Events oder der DOTs-Erscheinung, durch ein Foto",
+        "Während einer Jagd kaum sichtbar (Siehe \"Handbuch\")",
         "Entzieht bei Ereignissen/Jagden geistige Gesundheit (0,5 %/s), solange der Spieler sichtbar ist und sich in einem Umkreis von 10 m um den Spieler befindet",
         "<Verhalten>",
         "Kann zu einem zufälligen Spieler wandern und EMF 2 hinterlassen"
@@ -77,11 +77,11 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Kann mehrere Gegenstände gleichzeitig werfen, wodurch die geistige Gesundheit des Spielers pro geworfenem Gegenstand um 2 % sinkt",
-        "Wirft während einer Jagd alle 0,5 Sekunden einen Gegenstand",
+        "Kann mehrere Objekte gleichzeitig werfen, und zieht dabei 2% Geisteszustand pro Itemwurf ab",
+        "Wirft während einer Jagd alle 0,5s einen Gegenstand",
         "<Verhalten>",
-        "Höhere Chance, Objekte zu werfen und mit ihnen zu interagieren",
-        "Kann Gegenstände schneller und weiter werfen"
+        "Höher Chance, mit Gegenständen zu interagieren, oder diese zu werfen",
+        "Kann Objekte weiter und schneller werfen"
       ]
     },
     {
@@ -99,15 +99,15 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Banshee scream through paramic  <span class=\"sound\" onClick=\"playSound('https://zero-network.net/phasmophobia/static/assets/banshee_scream.wav')\">🔊</span>",
-        "Das Ziel verliert 15 % geistige Gesundheit, wenn man den Geist während eines „Singing Ghost“-Ereignisses berührt (der Standardentzug beträgt 10 %)",
+        "Bansheeschrei durch das Parabolmikro <span class=\"sound\" onClick=\"playSound('https://zero-network.net/phasmophobia/static/assets/banshee_scream.wav')\">🔊</span>",
+        "Das Ziel verliert 15% Geisteszustand wenn es während einem singenden Geisterevent den Geist berührt (Standard Abzug ist 10%)",
         "<Verhalten>",
-        "Verfolgt sein Ziel nur während einen Hunt)",
-        "Wird auf sein Ziel zusteuern, ohne EMF 2 zu verlassen",
-        "Wird versuchen, sich im DOT-Zustand auf sein Ziel zuzubewegen",
-        "Singt am liebsten bei Geister Events",
-        "<Hunt Sanity>",
-        "Jagt, wenn die geistige Gesundheit des Ziels 50 % oder weniger beträgt (auch wenn sich das Ziel außerhalb befindet)"
+        "Fokussiert sich auf sein Ziel während einer Jagd (außer wenn das Ziel draußen ist)",
+        "Folgt seinem Ziel, ohne EMF 2 zu hinterlassen",
+        "Bewegt sich wahrscheinlich während der DOTs-Erscheinung auf sein Ziel zu",
+        "Bevorzugt singende Geisterevents",
+        "<Jagd Geisteszustand>",
+        "Jagd wenn das Ziel einen Geisteszustand von maximal 50% erreicht (auch wenn das Ziel draußen ist), kann also schon ab 87% durchschnittlichem Geisteszustand jagen"
       ]
     },
     {
@@ -125,11 +125,11 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Die Fähigkeit verringert die geistige Gesundheit von Spielern in der Nähe um 25 %, wenn EMF 2 am Breaker ist",
+        "Fähigkeit mit welcher der Geisteszustand um 25% verringert wird, dazu hinterlässt diese EMF 2 oder EMF 5 am Sicherungskasten (wenn dieser an ist)",
         "<Verhalten>",
-        "Sicherungskasten lässt sich nicht ausschalten",
-        "<Geschwindigkeit>",
-        "2,5 m/s, wenn der Sicherungskasten eingeschaltet ist und der Geist weiter als 3 m von einem gesehenen Spieler entfernt ist, ansonsten 1,7 m/s"
+        "Kann den Sicherungskasten nicht selber ausschalten",
+        "<Jagd Geschwindigkeit>",
+        "2,5m/s wenn der Sicherungskasten an ist, er LoS hat und weiter als 3m von dem anvisierten Spieler entfernt ist, 1,7m/s wenn dies nicht der Fall ist"
       ]
     },
     {
@@ -147,12 +147,13 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Es hatt die Möglichkeit, ein Licht, das ein Spieler eingeschaltet hat, sofort auszuschalten",
-        "Das Licht kann nicht eingeschaltet werden (Tastatur und Fernseher ausgenommen)",
+        "Fähigkeit den Lichtschalter nach dem einschalten sofort wieder auszuschalten (kann mit 10 Sekunden Abklingzeit von jedem Spieler individuell getestet werden)",
+        "Kann keine Lichter anschalten (PC und TV eingeschlossen)",
         "<Verhalten>",
-        "Es ist wahrscheinlicher, dass das Licht ausgeht und kaputtgeht",
-        "<Hunt Sanity>",
-        "60 % wenn das Licht im aktuellen Raum des Geistes ausgeschaltet ist, 40 % wenn es eingeschaltet ist"
+        "Höhere Chance die Lampen zerplatzen zu lassen",
+        "Höhere Chance in einen dunklen Raum zu wandern",
+        "<Jagd Geisteszustand>",
+        "60% wenn die Lichter im aktuellen Geisterraum aus sind, 40% wenn an"
       ]
     },
     {
@@ -169,8 +170,8 @@
       "evidence": ["Ghost Orbs", "Writing", "Freezing"],
       "nightmare_evidence": null,
       "behavior": [
-        "<Geschwindigkeit>",
-        "3,0 m/s, sobald der Spieler wahrgenommen wurde (Ausrüstung, Stimme oder Sichtlinie) und bis der Geist den letzten bekannten Standort des Spielers erreicht hat, wo er allmählich auf 1 m/s verlangsamt wird"
+        "<Jagd Geschwindigkeit>",
+        "3,0m/s sofort wenn er einen Spieler aufspürt (durch Ausrüstung, Stimme oder LoS), wird nach dem Erreichen des zuletzt gesehenen Orts langsamer bis auf 1m/s"
       ]
     },
     {
@@ -188,12 +189,12 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Führt keine Interaktionen mit jemandem im Raum durch, die zu EMF 2, 3 oder 5 führen (außer bei Writing).",
-        "Wird nicht jagen, wenn sich jemand im Raum aufhält",
+        "Macht wenn ein Spieler im gleichen Raum ist keine Interaktion welche in EMF 2, 3 oder 5 resultiert (Geisterbuch oder Kerzen ausblasen ausgeschlossen)",
+        "Wird keine Jagd oder Geisterevent machen, wenn ein Spieler im gleichen Raum ist",
         "<Verhalten>",
-        "Mehr Events bei geringerer geistiger Gesundheit",
-        "Es ist weniger wahrscheinlich, dass es als vollständiges Geistermodell erscheint",
-        "Hat eine Chance, als Schatten zu erscheinen, wenn er aus einer Spieluhr oder einem Beschwörungskreis beschworen wird"
+        "Macht mehr Events bei niedrigem Geisteszustand (kann kein Geisterevent bei 100% Geisteszustand machen)",
+        "Höhere Chance als Schatten-Geistermodel zu erscheinen während eines Geisterevents",
+        "Einziger Geist, der als Schatten-/ oder Durchsichtiges-Geistermodel erscheinen kann während dem Beschwörungskreisevent"
       ]
     },
     {
@@ -211,11 +212,11 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Das Anfeuern des Geistes verhindert eine Jagd für 60er statt der normalen 90er",
-        "20s minimum hunt cool-down (normal is 25s)",
+        "Räuchern hält den Geist vom jagen ab für 60s anstatt den normalen 90s",
+        "20s minimale Jagdabklingzeit (normal ist 25s)",
         "<Verhalten>",
         "Die Reichweite des Kruzifixes wurde pro Stufe um 50 % erhöht (4,5 m, 6 m bzw. 7,5 m).",
-        "<Hunt Sanity>",
+        "<Jagd Geisteszustand>",
         "Fähigkeit, bei jeder Vernunft zu jagen, jagt normalerweise bei 70 %"
       ]
     },
@@ -234,10 +235,10 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Kann eine Tür schließen und die geistige Gesundheit von Spielern in der Nähe um 15 % senken <b><i>if</i></b> wenn eine Türe im Raum ist",
-        "Nur ein Geist, der eine Ausgangstür außerhalb einer Jagd- oder Geisterevents schließen kann",
+        "Kann eine Tür komplett zuschlagen und dabei den Geisteszustand von Spielern in der Nähe um 15% verringern",
+        "Einziger Geist, welcher mit der Haustür interagieren kann, ohne in der Jagd oder einem Geisterevent zu sein",
         "<Verhalten>",
-        "Mit Smudge-sticks fängt man die Geister in seinem Raum ein und verhindert 60 Sekunden lang, dass sie umherwandern"
+        "Räuchern sperrt den Geist für 60s in seinem Raum ein"
       ]
     },
     {
@@ -255,9 +256,9 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Entzieht bei Geisterevents 20 % statt 10 %.",
-        "Wird <b><i>nicht</i></b> das „Geisternebel“-Event durchführen",
-        "Während der Jagd besser sichtbar (siehe Registerkarte „Guides“)",
+        "Zieht während eines Geisterevents 20% anstatt 10% vom Geisteszustand ab",
+        "Kann kein \"ghost mist\" Geisterevent machen (Airball)",
+        "Während einer Jagd deutlich sichtbarer (Siehe \"Handbuch\")",
         "<Verhalten>",
         "Aktiver wenn spieler in der nähe sind"
       ]
@@ -277,11 +278,12 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Der Hör-/Elektronikabstand beträgt bei der Jagd weniger als 2,5 m",
+        "Hör-/ und Elektrizitätserfassung sind während der Jagd auf 2,5m reduziert",
         "<Verhalten>",
-        "Aktiver, wenn man mit ihm spricht",
-        "<Hunt Sanity>",
-        "Kann bis zu 80 % des Verstandes jagen, wenn man in seiner Nähe spricht, jagt normalerweise mit 50 %"
+        "Aktiver wenn gesprochen wird",
+        "Musikbox kann viel näher an den Geist gebracht werden, bevor diese kaputt geht",
+        "<Jagd Geisteszustand>",
+        "Kann ab 80% jagen, wenn neben ihm geredet wird, normal ist ab 50%"
       ]
     },
     {
@@ -299,14 +301,15 @@
       "nightmare_evidence": "Freezing",
       "behavior": [
         "<Tells>",
-        "Geister können während der Jagd bei ausgeschaltetem Breaker in jedem Raum einen sichtbaren, eiskalten Atem verspüren",
-        "Der Breaker kann nicht eingeschaltet werden",
+        "Geist kann sichtbaren Atem ausstoßen, wenn der Sicherungskasten aus oder kaputt ist",
+        "Kann den Sicherungskasten nicht anschalten",
         "<Verhalten>",
         "Hohe chance den breaker auszuschalten",
-        "<Geschwindigkeit>",
-        "Schneller bei kälteren Temperaturen, <b>beschleunigt nicht in Sichtlinie</b>",
+        "<Jagd Geschwindigkeit>",
+        "Schneller bei Kälte",
+        "Wird mit LoS nicht schneller",
         "<Beweis>",
-        "Garantiertes Gefrier-Temeratur im Albtraum-/Wahnsinnsmodus "
+        "Garantierte Gefriertemperaturen auf Alptraum/ Wahnsinn"
       ]
     },
     {
@@ -324,12 +327,12 @@
       "nightmare_evidence": "DOTs",
       "behavior": [
         "<Tells>",
-        "DOTs erscheinen nur auf der Kamera und werden selten angezeigt, wenn sich der Spieler im selben Raum befindet",
+        "DOTs-Erscheinung nur in der Kamera sichtbar und erscheint nur wenn kein Spieler im Raum ist (kann außerhalb des Raumes beginnen und den Raum des Spieler betreten)",
         "<Verhalten>",
-        "Lieblingsräume können nicht geändert werden",
-        "Läuft nicht über weite Strecken",
+        "Kann seinen Lieblingsraum nicht wechseln",
+        "Verlässt seinen Raum nicht oft",
         "<Beweis>",
-        "Garantierte DOTs im Albtraum-/Wahnsinnsmodus"
+        "Erzwungener Hinweis DOTs auf Alptraum/ Wahnsinn"
       ]
     },
     {
@@ -347,9 +350,9 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Schritte und Gesang sind bei der Jagd nicht weiter als 12 m entfernt zu hören (normal sind 20 m)",
+        "Fußschritte und Stimme des Geistes können erst ab 12m gehört werden (normal ist 20m)",
         "<Verhalten>",
-        "Viele paranormale Geräusche durch Paramic"
+        "Viel Aktivität durch das Parabolmikro"
       ]
     },
     {
@@ -367,11 +370,11 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Wird nach dem Löschen jeder dritten Flamme Jagd auf jeden Verstand machen, wenn keine anderen Flammen oder Kruzifixe dies verhindern",
+        "Wird bei jedem Geisteszustand jagen, wenn er 3 Flammen erloschen hat",
         "<Verhalten>",
-        "Flammen wirken wie Kruzifixe und blasen eine Flamme aus, wenn sie versuchen zu jagen (innerhalb von 4 m)",
-        "Je mehr Spieler tot sind, desto wahrscheinlicher ist es, dass eine Flamme gelöscht wird",
-        "<Hunt Sanity>",
+        "Flammen dienen als Kruzifix, wird eine Flamme ausblasen wenn er versucht zu jagen (in 4m Reichweite)",
+        "Höhere Wahrscheinlichkeit Flammen auszublasen umso mehr Spieler tot sind",
+        "<Jagd Geisteszustand>",
         "Kann mit seiner Fähigkeit bei jedem Verstand jagen, jagt normalerweise mit 60 %"
       ]
     },
@@ -390,11 +393,11 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Führt oft gleichzeitig Interaktionen durch ",
+        "Kann 2 Interaktionen gleichzeitig machen, eine in Standardreichweite (3m) und eine in erweiterter Reichweite (16m)",
         "<Verhalten>",
-        "Decoy führt nur Interaktionen/EMF durch, keine Beweise oder Sensoren",
-        "<Geschwindigkeit>",
-        "Entweder 1,53 m/s oder 1,87 m/s, je nachdem, welcher „Zwilling“ jagte"
+        "Löst Bewegungssensoren, Salzabdrücke und Geisterbox nur bei seinem physischen Standort aus",
+        "<Jagd Geschwindigkeit>",
+        "1.53m/s wenn er von Standardreichweite jagt, 1,87m/s wenn er von erweiterter Reichweite jagt"
       ]
     },
     {
@@ -412,10 +415,10 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Während einer Jagd flackert die Elektronik auf 15 m statt auf 10 m",
-        "<Hunt Sanity>",
-        "Kann mit 65 % geistiger Gesundheit in der Nähe der aktiven Spielerausrüstung jagen",
-        "<Geschwindigkeit>",
+        "Lässt während einer Jagd Elektronik von 15m Reichweite flackern, anstatt der normalen 10m",
+        "<Jagd Geisteszustand>",
+        "Kann ab 65% Geisteszustand jagen, wenn in der Nähe von aktiver Spielerausrüstung",
+        "<Jagd Geschwindigkeit>",
         "2,5 m/s in der Nähe der aktiven Spielerausrüstung, ansonsten 1,7 m/s"
       ]
     },
@@ -434,12 +437,12 @@
       "nightmare_evidence": "Ultraviolet",
       "behavior": [
         "<Tells>",
-        "Spezielle 6-Finger-Fingerabdrücke",
-        "Hat eine Chance von 6,66 %, das Geistermodell zu ändern, wenn es während der Jagd flackert (garantiert einmal pro Jagd, kehrt zum Originalmodell zurück)",
-        "Hinterlässt nicht immer Ultraviolette Spuren",
-        "Kann Ultraviolette Spuren früher als 2 Minuten verschwinden lassen",
+        "Besonderer 6-Fingerabdruck (Siehe \"Handbuch\")",
+        "Hat eine 6,66% Chance während einer Jagd das Geistermodel zu verändern (garantiert einmal pro Jagd, kehrt immer wieder zum Ursprünglichen Geistermodel zurück)",
+        "Hat eine 25% Chance, kein Ultraviolett zu hinterlassen",
+        "Kann Fingerabdrücke doppelt so schnell verschwinden lassen wenn er seine Fähigkeit nutzt",
         "<Beweis>",
-        "Garantiertes Ultraviolett im Albtraum-/Wahnsinnsmodus"
+        "Erzwungener Hinweis Ultraviolett auf Alptraum/ Wahnsinn"
       ]
     },
     {
@@ -457,13 +460,13 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Zeigt immer Orbs als zusätzlichen gefälschten Beweis (4. Beweis) an, auch bei 0 Beweisen",
-        "Kopiert das Verhalten und die Eigenschaften anderer Geister",
-        "Ändert das Geisterverhalten alle 30 Sekunden bis 2 Minuten",
-        "<Hunt Sanity>",
-        "Kopiert das Verhalten des aktuell imitierten Geistes",
-        "<Geschwindigkeit>",
-        "Kopiert die Geschwindigkeit des aktuell imitierten Geistes"
+        "Erzwungener gefälschter Hinweis Geisterorb (Vierter Beweis), selbst in 0 Beweis-Spielmodi",
+        "Kopiert das Verhalten anderer Geister",
+        "Verändert sein Verhalten alle 30s bis 2min",
+        "<Jagd Geisteszustand>",
+        "Kopiert das Verhalten vom aktuell kopierten Geist",
+        "<Jagd Geschwindigkeit>",
+        "Kopiert die Geschwindigkeit vom aktuell kopierten Geist"
       ]
     },
     {
@@ -481,9 +484,9 @@
       "nightmare_evidence": "Spirit Box",
       "behavior": [
         "<Tells>",
-        "Verflucht den Spieler, wenn er durch Paramic oder Spirit Box gehört wird. Der Fluch lässt die geistige Gesundheit doppelt so schnell sinken",
-        "Die Dauer der Weihrauchblindheit wurde pro Stufe um 50 % erhöht (7,5 Sek., 9 Sek. bzw. 10,5 Sek.)",
-        "<Geschwindigkeit>",
+        "Verflucht einen Spieler wenn dieser den Geist durch das Parabolmikro oder Geisterbox hört, der Fluch lässt den Geisteszustand 2x so schnell sinken",
+        "Durch räuchern verursachte Blindheit hält 50% länger an (7,5s anstatt 5s)",
+        "<Jagd Geschwindigkeit>",
         "Schneller, wenn die durchschnittliche geistige Gesundheit geringer ist, kann in Sichtlinie eine Geschwindigkeit von 3,71 m/s erreichen",
         "<Beweis>",
         "Garantierte Spirit Box im Albtraum-/Wahnsinnsmodus"
@@ -504,11 +507,12 @@
       "nightmare_evidence": "Spirit Box",
       "behavior": [
         "<Tells>",
-        "Schweres Atmen durch die Spirit Box, wenn der Geist weniger als 1 m entfernt ist  <span class=\"sound\" onClick=\"playSound('https://zero-network.net/phasmophobia/static/assets/deogen_breathing.wav')\">🔊</span>",
-        "mann Kann sich nicht vor einem Deogen verstecken",
+        "Schweres Atemgeräusch durch die Geisterbox wenn in 1m Reichweite <span class=\"sound\" onClick=\"playSound('https://zero-network.net/phasmophobia/static/assets/deogen_breathing.wav')\">🔊</span>",
+        "Spieler kann sich vor dem Geist nicht verstecken",
+        "Sichtbarer während der Jagd (Siehe \"Handbuch\")",
         "<Verhalten>",
         "Erhöhte Chance für DOTs/Schreiben",
-        "<Geschwindigkeit>",
+        "<Jagd Geschwindigkeit>",
         "3,0 m/s in großer Entfernung, sinkt auf 0,4 m/s in der Nähe des Spielers",
         "<Beweis>",
         "Garantierte Spirit Box im Albtraum-/Wahnsinnsmodus"
@@ -529,13 +533,14 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Verhalten>",
-        "Der Geist altert mit der Zeit (alle 1–2 Minuten), während sich der Spieler in der Nähe befindet",
-        "In jüngeren Jahren aktiver",
-        "Erhöhte Chance für DOTs/Schreiben",
-        "<Hunt Sanity>",
-        "Als Jüngster jagt er zu 75 %, als Ältester zu 15 %",
-        "<Geschwindigkeit>",
-        "2,75 m/s beim jüngsten, 1,0 m/s beim ältesten <b>beschleunigt nicht in Sichtlinie</b>"
+        "Geist altert (alle 1-2min) wenn ein Spieler in der Nähe ist",
+        "Aktiver wenn jünger",
+        "Antwort auf Frage nach Alter ändert sich auf dem Quijabrett wenn der Geist altert",
+        "<Jagd Geisteszustand>",
+        "Jagd ab 75% Geisteszustand wenn am jüngsten, ab 15% wenn am ältesten",
+        "<Jagd Geschwindigkeit>",
+        "2,75m/s wenn am jüngsten, 1,0m/s wenn am ältesten",
+        "Wird mit LoS nicht schneller"
       ]
     }
   ],
