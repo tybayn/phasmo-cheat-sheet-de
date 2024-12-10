@@ -189,7 +189,8 @@
       "nightmare_evidence": null,
       "behavior": [
         "<Tells>",
-        "Macht wenn ein Spieler im gleichen Raum ist keine Interaktion welche in EMF 2, 3 oder 5 resultiert (Geisterbuch oder Kerzen ausblasen ausgeschlossen)",
+        "Kann keine Ereignisse im selben Raum wie ein Spieler durchführen (kann aber ein Ereignis außerhalb des Raums starten und sich zum Spieler teleportieren)",
+        "Führt keine Interaktionen durch, die EMF 2, EMF 3 oder EMF 5 zur Folge haben, während er sich im selben Raum wie der Spieler befindet, einschließlich Geisterschreiben und Flammenschlagen (kann aber den Raum verlassen und mit Dingen im Raum interagieren)",
         "Wird keine Jagd oder Geisterevent machen, wenn ein Spieler im gleichen Raum ist",
         "<Verhalten>",
         "Macht mehr Events bei niedrigem Geisteszustand (kann kein Geisterevent bei 100% Geisteszustand machen)",
